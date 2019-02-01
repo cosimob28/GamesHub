@@ -14,7 +14,7 @@ public class Utente implements Serializable {
 	public Utente() {
 		amministratore = 0;
 		tipo = "cliente";
-		// di default un utente non Ë amministratore, lo status potr‡ essere cambiato in
+		// di default un utente non √® amministratore, lo status potr√†  essere cambiato in
 		// seguito con il metodo setAmministratore
 	}
 
