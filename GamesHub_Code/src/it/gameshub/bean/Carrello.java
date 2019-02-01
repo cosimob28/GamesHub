@@ -25,7 +25,7 @@ public class Carrello {
 			for (int i = 0; i < products.size(); i++) {
 				String nome = (products.get(i)).getGioco().getName();
 				if (nome.equals(ordine.getGioco().getName())) {
-					products.get(i).addQuantità();
+					products.get(i).addQuantitÃ ();
 					trovato = 1;
 				}
 
@@ -77,7 +77,7 @@ public class Carrello {
 	public float getTotale() {
 		double imponibile = 0;
 		for (ItemOrder prod : products) {
-			imponibile += prod.getQuantità() * prod.getGioco().getPrice();
+			imponibile += prod.getQuantitÃ () * prod.getGioco().getPrice();
 		}
 		float totale = (float) (imponibile + ((22 * imponibile) / 100));
 		return (float) (Math.ceil(totale * Math.pow(10, 2)) / Math.pow(10, 2));

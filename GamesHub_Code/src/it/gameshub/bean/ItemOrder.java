@@ -9,7 +9,7 @@ public class ItemOrder {
 
 	private Gioco gioco;
 	private Immagine image;
-	private int quantit‡;
+	private int quantit√†;
 
 	public ItemOrder() {
 		this.gioco = null;
@@ -18,7 +18,7 @@ public class ItemOrder {
 
 	public ItemOrder(Gioco gioco) {
 		this.gioco = gioco;
-		quantit‡ = 1;
+		quantit√† = 1;
 	}
 
 	public void setGioco(Gioco game) {
@@ -37,21 +37,21 @@ public class ItemOrder {
 		return gioco;
 	}
 
-	public void addQuantit‡() {
-		quantit‡++;
+	public void addQuantit√†() {
+		quantit√†++;
 	}
 
-	public void addQuantit‡(int x) {
-		quantit‡ = quantit‡ + x;
+	public void addQuantit√†(int x) {
+		quantit√† = quantit√† + x;
 	}
 
-	public void setQuantit‡(int x) {
-		quantit‡ = x;
+	public void setQuantit√†(int x) {
+		quantit√† = x;
 	}
 
-	public int getQuantit‡() {
+	public int getQuantit√†() {
 
-		return quantit‡;
+		return quantit√†;
 	}
 
 	// /*Comparator per ordinare la lista dei prodotti in ordine di prezzo

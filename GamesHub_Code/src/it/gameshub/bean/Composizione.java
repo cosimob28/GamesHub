@@ -2,7 +2,7 @@ package it.gameshub.bean;
 
 public class Composizione {
 	private float costo;
-	private int ordine, quantit‡, gioco;
+	private int ordine, quantit√†, gioco;
 	String nomeGioco, immagine;
 
 	public Composizione() {
@@ -41,12 +41,12 @@ public class Composizione {
 		this.ordine = ordine;
 	}
 
-	public int getQuantit‡() {
-		return quantit‡;
+	public int getQuantit√†() {
+		return quantit√†;
 	}
 
-	public void setQuantit‡(int quantit‡) {
-		this.quantit‡ = quantit‡;
+	public void setQuantit√†(int quantit√†) {
+		this.quantit√† = quantit√†;
 	}
 
 	public int getGioco() {
