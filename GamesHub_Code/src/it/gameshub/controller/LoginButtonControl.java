@@ -8,17 +8,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class LogoutControl extends HttpServlet {
+public class LoginButtonControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public LogoutControl() {
+	public LoginButtonControl() {
 		super();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Homepage.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/LoginForm.jsp");
 		dispatcher.forward(request, response);
 
 	}
