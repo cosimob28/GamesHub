@@ -106,7 +106,7 @@ public class ImmagineModel {
 
 	}
 
-	public Collection<Immagine> doRetrieveAll(String order) throws SQLException {
+	public Collection<Immagine> doRetrieveAll() throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -114,10 +114,7 @@ public class ImmagineModel {
 
 		String selectSQL = "SELECT *  FROM " + ImmagineModel.TABLE_NAME;
 
-		if (order != null && !order.equals("")) {
-			selectSQL += " ORDER BY " + order;
-		}
-
+	
 		try {
 			connection = Manager.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);

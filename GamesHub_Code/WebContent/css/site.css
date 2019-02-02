@@ -1,0 +1,209 @@
+
+
+@media (min-width: 300px){
+	.container {
+	    max-width: 365px;
+	}
+	.product-card{
+		width: 270px;
+	}
+	.product-card.animate {
+	    width: 280px;
+	}
+	.product-front{
+	    width: 280px;
+	}
+	.product-front>img{
+		width: 280px;
+	}
+	.stats-container{
+	    width: 230px;
+	}
+}	
+
+@media (min-width: 576px){
+	.container {
+	    max-width: 370px;
+	}
+	.product-card{
+		width:310px;
+	}
+	.product-card.animate {
+		width:320px;
+	}
+	.product-front{
+		width:320px;
+	}
+	.product-front>img{
+		width:335px;
+		height:200px;
+	}
+	.stats-container{
+		width:265px;
+	}
+}
+
+@media (min-width: 768px){
+	.container {
+	    max-width: 720px;
+	}
+	.product-card{
+		width:310px;
+	}
+	.product-card.animate {
+		width:320px;
+	}
+	.product-front{
+		width:320px;
+	}
+	.product-front>img{
+		width:335px;
+		height:200px;
+	}
+	.stats-container{
+		width:265px;
+	}
+}
+
+@media (min-width: 992px){
+	.container {
+	    max-width: 710px;
+	}
+	.product-card{
+		width:310px;
+	}
+	.product-card.animate {
+		width:320px;
+	}
+	.product-front{
+		width:320px;
+	}
+	.product-front>img{
+		width:335px;
+		height:200px;
+	}
+	.stats-container{
+		width:265px;
+	}
+}
+
+@media (min-width: 1200px){
+	.container {
+    	max-width: 1050px;
+	}
+	.product-card{
+		width:310px;
+	}
+	.product-card.animate {
+		width:320px;
+	}
+	.product-front{
+		width:320px;
+	}
+	.product-front>img{
+		width:335px;
+		height:200px;
+	}
+	.stats-container{
+		width:265px;
+	}
+}
+
+
+
+
+/* Make the image fully responsive */
+  .carousel-inner img {
+      width: 100%;
+      height: 100%;
+      /* max-width:917.35px; */
+      max-height:305.78px;
+      min-height: 110.39px;
+  }
+
+ .carousel{
+ 	margin-left: 16%;
+ 	margin-right: 16%;
+ 	margin-bottom: 30px;
+    margin-top: 30px;
+ 	
+ }
+ 
+#cercaGioco{
+	border-radius: 30px;
+}
+
+#resultcontainer{
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	background-color: red;
+}
+
+/*visualizzazione giochi*/
+
+.main-section{
+    background-color: #f1f1f1;
+    padding: 20px;
+    margin-top:25px;
+}
+.product{
+    margin-bottom:5px;
+}
+.product-part{
+    margin:0px;
+    border:1px solid #DDDDDD;
+    background-color: #fff;
+    padding-bottom: 20px;
+}
+.img-section{
+    padding: 0px;
+}
+.img-section img{
+    width: 100%;
+}
+.product-title h1{
+    margin:0px;
+    color:#4C4C4C;
+    font-size:1.1em;
+    padding: 5px 0px;
+}
+.product-description{
+    padding: 3px 15px;
+}
+.product-description p{
+    color:#848484;
+}
+.product-cart p{
+    font-size:20px;
+    color:#4C4C4C;
+}
+.product-add-cart a{
+    border-radius:0px;
+    font-size: 11px;
+}
+
+.navbar.center .navbar-inner {
+    text-align: center;
+}
+
+.navbar.center .navbar-inner .nav {
+    display:inline-block;
+    float: none;
+}
+
+
+.resultBox{
+	
+}
+.resultList{
+	
+}
+.resultItem{
+	
+}
+
+.input-group > .input-group-append > .btn{
+	border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+	
+}

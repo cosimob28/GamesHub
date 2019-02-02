@@ -147,17 +147,13 @@ public class GiocoModel {
 		return (result != 0);
 	}
 
-	public synchronized Collection<Gioco> doRetrieveAll(String order) throws SQLException {
+	public synchronized Collection<Gioco> doRetrieveAll() throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
 		Collection<Gioco> products = new LinkedList<Gioco>();
 
 		String selectSQL = "SELECT *  FROM " + GiocoModel.TABLE_NAME;
-
-		if (order != null && !order.equals("")) {
-			selectSQL += " ORDER BY " + order;
-		}
 
 		try {
 			connection = Manager.getConnection();

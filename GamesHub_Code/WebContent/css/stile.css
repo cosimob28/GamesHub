@@ -1,0 +1,98 @@
+.container{
+
+  margin-top:150px;
+  
+}
+
+.containerModifica{
+	 margin-top:150px; 
+	 margin-left:200px;
+	 margin-right:200px;
+	 margin-bottom:40px;
+	 border: 2px #ddd solid;
+	 border-radius: 5px;
+}
+
+.nav-item{
+  padding-left: 30px;
+}
+
+
+.containerInsertForm{
+	/*padding-left:70px;
+	padding-top:70px;*/
+	margin-top:70px;
+	margin-left:70px;
+	margin-right:70px;
+}
+
+
+
+
+ /*css per cartView */
+ 
+.fs16 {
+    font-size: 100%;
+}
+.clr666 {
+    color: #666;
+}
+.cart_sci {
+    display: table;
+  
+ }
+
+#empty-sc .c-std {
+      min-height: 215px;
+      margin-top: 20px;
+      padding-left: 10px;
+      margin-left: 40px;
+      margin-right: 100%;
+}
+#h2cart{
+	margin-top: 10px;
+	font-weight: normal;
+    font-size: 1.846em;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    line-height: 1.95em;
+    font-family: "Helvetica Neue",Helvetica,Verdana,Sans-serif;
+}
+
+.text-b{
+	font-weight: bold;
+}
+
+.pt10{
+	padding-top: 10px;
+}
+
+@media screen and (max-width: 2000px) {
+.cart-image-container {
+    margin-top: 10 px;
+    float: right;
+}
+
+
+@media screen and (max-width: 959px){
+ img {
+    width: 100%;
+    
+}
+}
+
+img {
+    border: 0;
+    font-size: 0;
+}
+}
+.contenitore{
+	 padding-top:40px;
+	 margin-left: 40px;
+}
+
+
+
+
+

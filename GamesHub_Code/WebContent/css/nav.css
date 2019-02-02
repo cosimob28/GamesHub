@@ -1,0 +1,29 @@
+ /* Remove the navbar's default rounded borders and increase the bottom margin */ 
+    .navbar {
+      /* margin-bottom: 10px; */
+      border-radius: 0;
+    }
+    
+    .dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu a::after {
+  transform: rotate(-90deg);
+  position: absolute;
+  right: 6px;
+  top: .8em;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-left: .1rem;
+  margin-right: .1rem;
+}
+.fa.dropdown-item, .fas.dropdown-item, .far.dropdown-item, .fal.dropdown-item, .fab.dropdown-item{
+    float: right;
+}
+.dropdown-menu {
+    width: 100%;
+} 

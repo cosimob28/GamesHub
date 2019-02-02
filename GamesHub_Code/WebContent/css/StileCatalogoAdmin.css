@@ -1,0 +1,28 @@
+
+
+h2 {
+	text-align: center;
+}
+ #a:link, a:visited {
+   /* border-radius: 10px;
+    background-color: #87CEEB;
+    color: white;*/
+    margin-bottom: 10px!important;
+  /*  padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;*/
+}
+
+
+/*#a:hover, a:active {
+    background-color: blue;
+}*/
+
+#qty{
+	 border-radius: 4px;
+}
+label {
+	font-weight: bold;
+}
+

@@ -1,0 +1,306 @@
+﻿
+body {
+    background-position: center center;
+    background-repeat: no-repeat;
+    -ms-background-size: cover;
+    background-size: cover;
+    background-image: url(../img/background.jpg);
+	background-attachment:fixed;
+	font-family:"Open Sans","sans-serif","Arial";
+	color: #fff;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #111;
+}
+
+
+
+
+
+h1, h2, h3, h4, h5, h6
+{
+    font-weight: lighter;
+	margin-bottom: 30px;
+	color: #fff;
+	text-align: center;
+}
+
+div.logo {
+    background-image: url(../img/logo.png);
+}
+
+a {
+  color: #00b6f2;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: #00bfff;
+  text-decoration: underline;
+}
+
+.btn-link, .btn-link:hover, .btn-link:focus, .btn-link:active {
+    color: #00b6f2;
+}
+
+.btn-link:hover,
+.btn-link:focus {
+  color: #00bfff;
+  text-decoration: underline;
+}
+
+label {
+    font-family: arial;
+    font-size: 14px;
+    font-weight: initial;
+    font-style: italic;
+    color: #fff;
+    margin: 10px 0 0 0;
+	font-family:"Open Sans","sans-serif","Arial";
+}
+
+.form-control {
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 20px;
+    line-height: 1.42857;
+    color: #2E3339;
+    background-color: #FFF;
+    background-image: none;
+    border-radius: 0px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    display: block;
+    border: 1px solid #399D47;
+    height: 45px;
+	font-family:"Open Sans","sans-serif","Arial";
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #399D47;
+    border-color: #399D47;
+	font-size:1.3em;
+	height:40px;
+	font-family:"Open Sans","sans-serif","Arial";
+	font-weight: 600;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active {
+	color: #FFF;
+    background-color: #44BB55;
+    border-color: #44BB55;
+	font-size:1.3em;
+	height:40px;
+	font-family:"Open Sans","sans-serif","Arial";
+	font-weight: 600;
+}
+
+.btn.btn-link, a.uppercase {
+	text-transform:none;
+	font-family:"Open Sans","sans-serif","Arial";
+	color: #fff;
+	font-weight: initial;
+	font-style: italic;
+	padding-right:0px;
+	padding-top:14px;
+	
+}
+
+div.external-login {
+    margin-top: 30px;
+    padding: 15px 0;
+}
+
+.btn-default {
+	color: #fff;
+	background-color: #fff;
+	border: none;
+}
+
+#fb-connect, #fb-connect:hover {
+    background-image: url('test-skin/fb-connect.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    text-indent: -9999px;
+	background-color:transparent;
+}
+
+#psn-connect, #psn-connect:hover {
+    background-image: url('test-skin/psn-connect.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    text-indent: -9999px;
+	background-color:transparent;
+}
+
+#live-connect, #live-connect:hover {
+    background-image: url('test-skin/live-connect.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    text-indent: -9999px;
+	background-color:transparent;
+}
+
+.field-validation-error {
+	color:#D23637;
+}
+*/
+/*CREATE ACCOUNT */
+/*
+.create-account #AccountEmail, .create-account #AccountPassword, .create-account #AccountUsername {
+    height: 40px;
+    margin-bottom: 2px;
+    border: 1px solid #D0D2D4;
+    background-color: #FFF;
+    padding-left: 10px;
+    color: #5F7277;
+    font-family: "Open Sans","sans-serif";
+    font-weight: 400;
+    margin-top: 0px;
+}
+
+.create-account label {
+    font-family: "Open Sans","sans-serif";
+    font-weight: 400;
+    font-size: 14px;
+    font-style: italic;
+    margin-top: 5px;
+    color: #A4A4A4 !important;
+    margin-bottom: 0px;
+}
+
+.create-account h2 {
+    font-family: "Open Sans","sans-serif";
+    font-weight: 500;
+    color: #FFF;
+    font-size: 2em;
+    text-align: left;
+    margin-top: 20px;
+	margin-bottom: 20px;
+	font-weight: lighter;
+}
+
+.create-account .btn-primary {
+    color: #FFF;
+    background-color: #399D47;
+    border: medium none;
+    width: 100%;
+    height: 40px;
+    font-family: "Open Sans","sans-serif";
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 5px;
+    opacity:1;
+}
+
+.create-account .btn-primary:hover {
+    color: #FFF;
+    background-color: #44BB55;
+    border: medium none;
+    width: 100%;
+    height: 40px;
+    font-family: "Open Sans","sans-serif";
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 5px;
+    opacity:1;
+}
+
+.create-account a{
+    color: #FFF;
+    text-decoration: none;
+}
+
+.create-account a:hover {
+	color: #FFF;
+    text-decoration: underline;
+}
+
+.create-account span.field-validation-error {
+    color: #D23637;
+    font-size: 0.9em;
+    text-align: right;
+}
+
+.create-account .input-validation-error {
+    border: 1px solid #D23637 !important;
+    color: #D23637 !important;
+}
+
+.create-account #AccountDay, .create-account #AccountMonth {
+    margin-right: 35px;
+    border: 1px solid #D0D2D4;
+}
+
+.create-account #AccountDay, .create-account #AccountYear {
+    border: 1px solid #D0D2D4;
+}
+
+.create-account #AccountDay, .create-account #AccountMonth, .create-account #AccountYear {
+    border: 1px solid #D0D2D4;
+    background-color: #FFF;
+    color: #5F7277;
+    font-family: "Open Sans","sans-serif";
+    font-weight: 400;
+    padding-left: 15px;
+    font-size: 16px;
+    height: 40px;
+    border: 1px solid #D0D2D4;
+}
+
+.create-account #AccountCountrySelect {
+	height: 40px;
+    border: 1px solid #D0D2D4;
+}
+
+.input-validation-error , .input-validation-error:hover, .input-validation-error:focus {
+    border: 1px solid #D23637;
+    background-color: #FEE;
+}
+
+#Tou {
+	font-size:1em;
+}
+
+#AccountCountryName {
+    height: 40px;
+    margin-bottom: 2px;
+    border: 1px solid #D0D2D4;
+    background-color: #FFF;
+    padding-left: 10px;
+    color: #5F7277;
+    font-family: "Open Sans","sans-serif";
+    font-weight: 400;
+    margin-top: 0px;
+}
+
