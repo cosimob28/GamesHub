@@ -10,25 +10,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/ButtonVisualizzaPaginaProdottoControl")
-public class ButtonVisualizzaPaginaProdottoControl extends HttpServlet {
+@WebServlet("/ButtonModificaDatiAreaPersonaleControl")
+public class ButtonModificaDatiAreaPersonaleControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-   
-    public ButtonVisualizzaPaginaProdottoControl() {
+  
+    public ButtonModificaDatiAreaPersonaleControl() {
         super();
+        
     }
 
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ProductPage.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/MyOrderPage.jsp");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		doGet(request, response);
 	}
 

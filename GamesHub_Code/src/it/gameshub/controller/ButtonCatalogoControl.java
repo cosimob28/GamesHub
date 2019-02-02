@@ -10,25 +10,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/ButtonVisualizzaPaginaProdottoControl")
-public class ButtonVisualizzaPaginaProdottoControl extends HttpServlet {
+@WebServlet("/ButtonCatalogoControl")
+public class ButtonCatalogoControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-   
-    public ButtonVisualizzaPaginaProdottoControl() {
+
+    public ButtonCatalogoControl() {
         super();
     }
 
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ProductPage.jsp");
+		//aggiungere la pagina del catalogo
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		doGet(request, response);
 	}
 
