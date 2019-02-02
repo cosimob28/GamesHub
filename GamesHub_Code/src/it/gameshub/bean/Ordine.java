@@ -9,7 +9,7 @@ public class Ordine {
 	private int idOrdine;
 	private float importo;
 	private Date dataOrdine;
-	private String utente, stato;
+	private String utente, stato, trackingId;
 
 	public Ordine() {
 		/* setto la data odierna nel formato sql */
@@ -18,8 +18,17 @@ public class Ordine {
 		int mese = gc.get(Calendar.MONTH);
 		int anno = gc.get(Calendar.YEAR);
 		dataOrdine = new Date(anno - 1900, mese, giorno);
-		stato = "confermato";  // Lo stato iniziale dell'ordine è confermato.
+		stato = "confermato"; // Lo stato iniziale dell'ordine Ã¨ 'confermato'.
+		trackingId = "";
 
+	}
+
+	public String getTrackingId() {
+		return trackingId;
+	}
+
+	public void setTrackingId(String trackingId) {
+		this.trackingId = trackingId;
 	}
 
 	public String getStato() {

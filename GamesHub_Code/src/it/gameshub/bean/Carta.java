@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Carta {
 
-	private String numeroCarta, paese;
+	private String numeroCarta, paese, utente;
 	private int cvv;
 	private Date scadenza;
 
@@ -13,6 +13,18 @@ public class Carta {
 		this.cvv = cvv;
 		this.scadenza = scadenza;
 		this.paese = paese;
+	}
+	
+	public Carta() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getUtente() {
+		return utente;
+	}
+
+	public void setUtente(String utente) {
+		this.utente = utente;
 	}
 
 	public String getNumeroCarta() {
