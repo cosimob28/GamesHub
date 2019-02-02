@@ -83,7 +83,8 @@ public class GiocoModel {
 		String selectSQL = "SELECT * FROM " + GiocoModel.TABLE_NAME + " WHERE SerialNumber = ?";
 
 		try {
-			connection = ds.getConnection();//SOSTITUIRE CON MANAGER
+			//connection = ds.getConnection();
+			connection = Manager.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setInt(1, code);
 
@@ -127,7 +128,8 @@ public class GiocoModel {
 		String deleteSQL = "DELETE FROM " + GiocoModel.TABLE_NAME + " WHERE SerialNumber = ?";
 
 		try {
-			connection = ds.getConnection();//SOSTITUIRE CON MANAGER
+			//connection = ds.getConnection();
+			connection = Manager.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setInt(1, code);
 
@@ -226,7 +228,8 @@ public class GiocoModel {
 				+ " set Quantità = ?, Video= ?, Descrizione= ?, Prezzo= ? " + " WHERE SerialNumber = ? ";
 
 		try {
-			connection = ds.getConnection();//SOSTITUIRE CON MANAGER
+			//connection = ds.getConnection();
+			connection = Manager.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setInt(1, qty);
 			preparedStatement.setString(2, video);
@@ -258,7 +261,8 @@ public class GiocoModel {
 		String deleteSQL = "update " + GiocoModel.TABLE_NAME + " set Iva= ? ";
 
 		try {
-			connection = ds.getConnection();//SOSTITUIRE CON MANAGER
+			//connection = ds.getConnection();
+			connection = Manager.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setInt(1, iva);
 
