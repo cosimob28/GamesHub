@@ -69,8 +69,24 @@
 		<servlet-name>ButtonContattaciControl</servlet-name>
 		<servlet-class>it.gameshub.controller.ButtonContattaciControl</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>LoginControl</servlet-name>
+		<servlet-class>it.gameshub.controller.LoginControl</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>RegistrazioneControl</servlet-name>
+		<servlet-class>it.gameshub.controller.RegistrazioneControl</servlet-class>
+	</servlet>
+
+
+
 	<servlet-mapping>
 		<servlet-name>VisualizzaHomeControl</servlet-name>
 		<url-pattern>/home</url-pattern>
 	</servlet-mapping>
+	
+	<error-page>
+  <error-code>404</error-code>
+  <location>/404.jsp</location>
+</error-page>
 </web-app>

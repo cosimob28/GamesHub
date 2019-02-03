@@ -9,15 +9,15 @@
 				<h5>Get started</h5>
 				<ul>
 					<li><a href="ButtonHomeControl">Home</a></li>
-					<li><a href="user?azione=registrazioneView">Sign up</a></li>
-					<li><a href="Login.jsp">Login</a></li>
+					<li><a href="ButtonRegistrazioneControl">Sign up</a></li>
+					<li><a href="ButtonLoginControl">Login</a></li>
 				</ul>
 			</div>
 			<div class="col-sm-3">
 				<h5>About us</h5>
 				<ul>
-					<li><a href="OurTeam.jsp">Our Team</a></li>
-					<li><a href="ContactUs.jsp">Contact us</a></li>
+					<li><a href="ButtonChiSiamoControl">Our Team</a></li>
+					<li><a href="ButtonContattaciControl">Contact us</a></li>
 
 				</ul>
 			</div>
