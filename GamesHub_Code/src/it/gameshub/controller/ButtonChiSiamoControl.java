@@ -10,25 +10,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/ButtonMieiOrdiniControl")
-public class ButtonMieiOrdiniControl extends HttpServlet {
+@WebServlet("/ButtonChiSiamoControl")
+public class ButtonChiSiamoControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	
-    public ButtonMieiOrdiniControl() {
+       
+    
+    public ButtonChiSiamoControl() {
         super();
         
     }
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/MyOrderPage.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/OurTeam.jsp");
 		dispatcher.forward(request, response);
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		doGet(request, response);
 	}
 

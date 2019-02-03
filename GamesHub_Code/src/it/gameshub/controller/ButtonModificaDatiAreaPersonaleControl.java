@@ -24,7 +24,7 @@ public class ButtonModificaDatiAreaPersonaleControl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/MyOrderPage.jsp");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		dispatcher.forward(request, response);
 	}
 
 	

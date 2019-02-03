@@ -24,7 +24,7 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link" href="product?action=home">Home <span
+				<li class="nav-item"><a class="nav-link" href="ButtonHomeControl">Home <span
 						class="sr-only">(current)</span></a></li>
 
 				<li class="nav-item dropdown"><a
@@ -60,9 +60,9 @@
 
 							</ul></li>
 					</ul></li>
-				<li class="nav-item"><a class="nav-link" href="OurTeam.jsp">Chi siamo</a>
+				<li class="nav-item"><a class="nav-link" href="ButtonChiSiamoControl">Chi siamo</a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="ContactUs.jsp">Contattaci</a>
+				<li class="nav-item"><a class="nav-link" href="ButtonContattaciControl">Contattaci</a>
 				</li>
 			</ul>
 			<form class="navbar-form navbar-left" action="ResultList.jsp" method="post">
@@ -86,20 +86,20 @@
 					aria-expanded="false"> Ciao, <%=user.getNome()%>
 				</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="user?azione=logOut"><span
+						<a class="dropdown-item" href="ButtonLogoutControl"><span
 							class="fa fa-sign-out-alt"></span> Sign Out</a>
 							 <%if(user.isAmministratore()==true){ %>
 							<a class="dropdown-item" href="user?azione=adminPage"><span
 							class="fa fa-lock"></span> Area Admin</a>
 							
 							<%} else { %>
-							<a class="dropdown-item" href="UserPage.jsp"><span
+							<a class="dropdown-item" href="ButtonAreaPersonaleControl"><span
 							class="fa fa-user-circle"></span> I miei dati</a>
                           <%} %> 
 					</div></li>
-				<li class="nav-item"><a class="nav-link" href="product?action=carrello"><span
+				<li class="nav-item"><a class="nav-link" href="ButtonCarrelloControl"><span
 						class="fa fa-shopping-basket"></span> Carrello</a></li>
-				<li class="nav-item"><a class="nav-link" href="order?action=ordiniUtente"><span
+				<li class="nav-item"><a class="nav-link" href="ButtonMieiOrdiniControl"><span
 						class="fa fa-file-alt"></span> I Tuoi Ordini</a></li>
 			</ul> 
 		</div>

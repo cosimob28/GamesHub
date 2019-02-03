@@ -23,7 +23,7 @@ public class ButtonCatalogoControl extends HttpServlet {
 		
 		//aggiungere la pagina del catalogo
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		dispatcher.forward(request, response);
 	}
 
 

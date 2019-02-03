@@ -24,7 +24,7 @@ public class ButtonAggiungiAlCarrelloControl extends HttpServlet {
 		
 		//Aggiungere la pagina d'inoltro della richiesta.
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		dispatcher.forward(request, response);
 	}
 	
 	
