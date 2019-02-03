@@ -53,5 +53,4 @@ public class ButtonAggiungiAlCarrelloControl extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }

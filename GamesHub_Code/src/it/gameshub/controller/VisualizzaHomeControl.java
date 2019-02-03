@@ -39,7 +39,7 @@ public class VisualizzaHomeControl extends HttpServlet {
 			cart = new Carrello();
 			request.getSession().setAttribute("cart", cart);
 		}
-
+ 
 		try {
 			/* setta l'attributo products che conterrà tutti i giochi contenuti nel DB */
 			request.getSession().setAttribute("products", giocoModel.doRetrieveAll());
@@ -54,9 +54,9 @@ public class VisualizzaHomeControl extends HttpServlet {
 
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Homepage.jsp");
 		dispatcher.forward(request, response);
-
 	}
-
+	
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);

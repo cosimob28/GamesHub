@@ -52,7 +52,6 @@
 	}
 	request.getSession().setAttribute("arrayComProduct", arrayComProduct);
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
