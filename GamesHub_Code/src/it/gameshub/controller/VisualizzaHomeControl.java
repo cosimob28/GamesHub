@@ -43,11 +43,10 @@ public class VisualizzaHomeControl extends HttpServlet {
 		try {
 			/* setta l'attributo products che conterrà tutti i giochi contenuti nel DB */
 			request.getSession().setAttribute("products", giocoModel.doRetrieveAll());
-			/*
-			 * setta l'attributo ImageList che conterrà tutte le immagini dei giochi
-			 * contenuti nel DB
-			 */
+			
+			 /*setta l'attributo ImageList che conterrà tutte le immagini dei giochi contenuti nel DB*/
 			request.getSession().setAttribute("ImageList", immagineModel.doRetrieveAll());
+			
 		} catch (SQLException e) {
 			System.out.println("Error:" + e.getMessage());
 

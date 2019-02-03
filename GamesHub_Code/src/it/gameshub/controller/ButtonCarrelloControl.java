@@ -22,7 +22,7 @@ public class ButtonCarrelloControl extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("CartView.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/CartView.jsp");
 		dispatcher.forward(request, response);
 	}
 

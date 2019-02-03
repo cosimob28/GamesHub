@@ -30,7 +30,7 @@
 <article class="card-body mx-auto" style="max-width: 400px;">
 	<h4 class="card-title mt-3 text-center">Se hai già un account </h4>
 	<p>
-		 <a href="Login.jsp" class="btn btn-block btn-twitter"> <i class="fa fa-sign-in-alt"></i>   Login </a>
+		 <a href="ButtonLoginControl" class="btn btn-block btn-twitter"> <i class="fa fa-sign-in-alt"></i>   Login </a>
 			
 	</p>
 	<p class="divider-text">
@@ -38,7 +38,7 @@
     </p>
     <h4 class="card-title mt-3 text-center">Crea un account </h4>
     
-	<form name="form" id="form" action="user?azione=registrazione" method="post" onsubmit="return validate(this)">
+	<form name="form" id="form" action="RegistrazioneControl" method="post" onsubmit="return validate(this)">
 	
 	<div class="form-group input-group">
     	 <div class="input-group-prepend">
