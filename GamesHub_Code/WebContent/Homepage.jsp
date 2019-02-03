@@ -76,10 +76,31 @@ a:not ([href] ):not ([tabindex] ):hover {
 	cursor: default;
 }
 
-a:not ([href] ):not ([tabindex] ){
-	color: white;
-}
+a
+:not
+ 
+(
+[
+href
+]
+ 
+)
+:not
+ 
+(
+[
+tabindex
+]
+ 
+){
+color
+:
+ 
+white
+;
 
+
+}
 .autocomplete {
 	/*the container must be positioned relative:*/
 	position: relative;
@@ -380,8 +401,9 @@ a#myBtn .arrow:before {
 							if (game.getQuantity() > 0) {
 						%>
 						<div>
-							<a href="product?action=carrello" class="addToCart addCart"
-								id="<%=game.getCode()%>">Add to Cart</a>
+							<a href="ButtonAggiungiAlCarrelloControl?id=<%=game.getCode()%>"
+								class="addToCart addCart" id="<%=game.getCode()%>">Add to
+								Cart</a>
 						</div>
 						<%
 							} else {
