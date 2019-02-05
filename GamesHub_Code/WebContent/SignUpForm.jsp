@@ -241,7 +241,7 @@
 	  /* $("#mail").change(function(){
 		 mailCorrect = ValidateEmail(this);
 		 
-	 });  */
+	 });   */
 	 
 	 $("#phone").change(function(){
 		 numberCorrect = phonenumber(this);
