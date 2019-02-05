@@ -62,7 +62,7 @@
 
 
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
-<link href="css/fontawesome-all.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link href="css/site.css" rel="stylesheet" type="text/css">
 <link href="css/homepage.css" rel="stylesheet" type="text/css">
 <link href="css/footer.css" rel="stylesheet" type="text/css">
