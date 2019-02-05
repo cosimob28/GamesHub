@@ -18,6 +18,9 @@ public class ButtonLogoutControl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		request.getSession().removeAttribute("user");
+		request.getSession().removeAttribute("isGestoreCatalogo");
+		request.getSession().removeAttribute("isGestoreOrdini");
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Homepage.jsp");
 		dispatcher.forward(request, response);
 
