@@ -74,8 +74,9 @@ public class InviaEmailConfermaControl extends HttpServlet {
 		String password = request.getParameter("password");
 		nuovoUtente.setPin(password);
 
+		
+		request.getSession().removeAttribute("E-mail");
 		request.getSession().setAttribute("E-mail", email);
-		System.out.println("SONO QUI");
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/SendEmailConfirm.jsp");
 		dispatcher.forward(request, response);
 
