@@ -947,7 +947,7 @@ SET GLOBAL event_scheduler = ON;
 
 CREATE EVENT cancellaUtenti24ore
     ON SCHEDULE
-      EVERY 1 minute
+      EVERY 1 DAY
         DO
 delete from utente
 WHERE   utente.DataInvioMail < DATE_SUB(NOW(), INTERVAL 1 DAY)
