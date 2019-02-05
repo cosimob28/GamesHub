@@ -30,38 +30,38 @@
 								id="genereDropdown" href="#">Genere</a>
 								<ul class="dropdown-menu">
 									<li><a class="dropdown-item"
-										href="ResultList.jsp?genre=RPG">RPG</a></li>
+										href="CatalogoControl?genere=RPG">RPG</a></li>
 									<li><a class="dropdown-item"
-										href="ResultList.jsp?genre=Picchiaduro">Picchiaduro</a></li>
+										href="CatalogoControl?genere=Picchiaduro">Picchiaduro</a></li>
 									<li><a class="dropdown-item"
-										href="ResultList.jsp?genre=Avventura">Avventura</a></li>
+										href="CatalogoControl?genere=Avventura">Avventura</a></li>
 									<li><a class="dropdown-item"
-										href="ResultList.jsp?genre=Sport">Sport</a></li>
+										href="CatalogoControl?genere=Sport">Sport</a></li>
 									<li><a class="dropdown-item"
-										href="ResultList.jsp?genre=Simulazione">Simulazione</a></li>
+										href="CatalogoControl?genere=Simulazione">Simulazione</a></li>
 									<li><a class="dropdown-item"
-										href="ResultList.jsp?genre=Strategia">Strategia</a></li>
+										href="CatalogoControl?genere=Strategia">Strategia</a></li>
 									<li><a class="dropdown-item"
-										href="ResultList.jsp?genre=Azione">Azione</a></li>
+										href="CatalogoControl?genere=Azione">Azione</a></li>
 								</ul></li>
 							<li class="dropdown-submenu"><a
 								class="test dropdown-item dropdown-toggle" tabindex="-1"
 								id="piattaformaDropdown" href="#">Piattaforma</a>
 								<ul class="dropdown-menu">
 									<li><a class="dropdown-item"
-										href="ResultList.jsp?platform=PC">PC <span
+										href="CatalogoControl?platform=PC">PC <span
 											class="fas fa-laptop"></span></a></li>
 									<li><a class="dropdown-item"
-										href="ResultList.jsp?platform=XboxOne">XBOX <span
+										href="CatalogoControl?platform=XboxOne">XBOX <span
 											class="fab fa-xbox"></span></a></li>
 									<li><a class="dropdown-item"
-										href="ResultList.jsp?platform=PS3">PS3 <span
+										href="CatalogoControl?platform=PS3">PS3 <span
 											class="fab fa-playstation"></span></a></li>
 									<li><a class="dropdown-item"
-										href="ResultList.jsp?platform=PS4">PS4 <span
+										href="CatalogoControl?platform=PS4">PS4 <span
 											class="fab fa-playstation"></span></a></li>
 									<li><a class="dropdown-item"
-										href="ResultList.jsp?platform=Nintendo switch">Switch <span
+										href="CatalogoControl?platform=Nintendo switch">Switch <span
 											class="fab fa-nintendo-switch"></span></a></li>
 
 								</ul></li>
