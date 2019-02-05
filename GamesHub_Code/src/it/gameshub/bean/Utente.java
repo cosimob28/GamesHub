@@ -7,15 +7,24 @@ public class Utente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String Username, pin, nome, cognome, codiceFiscale, email, indirizzoSpedizione, telefono, sesso, tipo;
+	private String myHash;
 
-	private int amministratore;
+	// private int amministratore;
 	private Date dataDiNascita;
 
 	public Utente() {
-		amministratore = 0;
+		// amministratore = 0;
 		tipo = "cliente";
-		// di default un utente non è amministratore, lo status potrà  essere cambiato in
+		// di default un utente non è amministratore, lo status potrà essere cambiato in
 		// seguito con il metodo setAmministratore
+	}
+
+	public String getMyHash() {
+		return myHash;
+	}
+
+	public void setMyHash(String myHash) {
+		this.myHash = myHash;
 	}
 
 	public String getTipo() {
@@ -90,27 +99,12 @@ public class Utente implements Serializable {
 		this.telefono = telefono;
 	}
 
-	public boolean isAmministratore() {
-		if (amministratore == 1)
-			return true;
-		else
-			return false;
-	}
-
-	public void setAmministratore(int amministratore) {
-		this.amministratore = amministratore;
-	}
-
 	public Date getDataDiNascita() {
 		return dataDiNascita;
 	}
 
 	public void setDataDiNascita(Date dataDiNascita) {
 		this.dataDiNascita = dataDiNascita;
-	}
-
-	public int getAdmin() {
-		return amministratore;
 	}
 
 	public String getSesso() {
@@ -120,5 +114,15 @@ public class Utente implements Serializable {
 	public void setSesso(String sesso) {
 		this.sesso = sesso;
 	}
+
+	/*
+	 * public int getAdmin() { return amministratore; }
+	 * 
+	 * public boolean isAmministratore() { if (amministratore == 1) return true;
+	 * else return false; }
+	 * 
+	 * public void setAmministratore(int amministratore) { this.amministratore =
+	 * amministratore; }
+	 */
 
 }
