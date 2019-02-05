@@ -118,7 +118,7 @@
                             <td><input class="form-control qty" type="number" value=<%= beancart.getQuantità() %> min="1" max="<%=beancart.getGioco().getQuantity()%>" id="<%=beancart.getGioco().getCode()%>"/><p id ="demo"></p></td>
                             <td class="text-right" id="prezzo<%=beancart.getGioco().getCode() %>"><%=prezzo %> €</td>
                          
-                            <td class="text-right"><button type="button" class="btn btn-danger" onclick="location.href='product?action=deleteC&id=<%=beancart.getGioco().getCode()%>';" >Rimuovi  <span class="fa fa-trash-alt"></span></button> </td>
+                            <td class="text-right"><button type="button" class="btn btn-danger" onclick="location.href='ButtonEliminaDalCarrelloControl?id=<%=beancart.getGioco().getCode()%>';" >Rimuovi  <span class="fa fa-trash-alt"></span></button> </td>
                             
                         </tr>
 		
@@ -228,7 +228,7 @@
       			}				
     		}
   		};
-  			xhttp.open("POST", "update", true);
+  			xhttp.open("POST", "UpdateCartQuantityControl", true);
   			xhttp.setRequestHeader("content-type","application/x-www-form-urlencoded");
   			xhttp.setRequestHeader("connection","close");
   			xhttp.send("code="+codice+"&quantita="+qty+"&price="+prezzo+"&action="+action);	

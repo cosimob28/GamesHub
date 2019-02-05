@@ -13,7 +13,7 @@ Telefono char(12),
 Email varchar(30) not null,
 IndirizzoSpedizione varchar(50) not null,
 Sesso varchar(8) not null,
-Amministratore boolean default 0
+Tipo varchar(35) not null
 );
 
 
@@ -49,14 +49,16 @@ Ordine integer  not null,
 Gioco integer not null,
 NomeGioco varchar(200) not null,
 Immagine varchar(100),
-Foreign key(Ordine) references Ordine(IdOrdine)
+Foreign key(Ordine) references Ordine(IdOrdine),
+foreign key (Gioco)  references Gioco(SerialNumber)
 
 );
 
 
 create table Immagine(
 Nome varchar(1000) Primary key,
-Gioco integer not null
+Gioco integer not null,
+foreign key (Gioco)  references Gioco(SerialNumber)
 
 );
 
@@ -77,17 +79,17 @@ foreign key (Utente)  references Utente(Username)
 
 
 /*Utenti*/
-insert into Utente(Username,Pin,Nome,Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso,Amministratore)
-values('root','root','Admin','Admin','1990-01-10','ADM','0000000000','admin@gameshub.it','via Giovanni Paolo II, Fisciano','Uomo',1);
+insert into Utente(Username,Pin,Nome,Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso,Tipo)
+values('root','root','Admin','Admin','1990-01-10','ADM','0000000000','admin@gameshub.it','via Giovanni Paolo II, Fisciano','Uomo','Gestore catalogo');
 
-insert into Utente(Username,Pin,Nome,Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso,Amministratore)
-values('Luca1988','Luca88','Luca','Marini','1988-01-10','MRNLCA25L18G856S','3425012563','lucaMarini@gmail.com','via Lauro 24, Napoli ','Uomo',0);
+insert into Utente(Username,Pin,Nome,Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso,Tipo)
+values('Luca1988','Luca88','Luca','Marini','1988-01-10','MRNLCA25L18G856S','3425012563','lucaMarini@gmail.com','via Lauro 24, Napoli ','Uomo','cliente');
 
-insert into Utente(Username,Pin,Nome,Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso,Amministratore)
-values('Franco1995','Franco95','Francesco','Bianchi','1995-05-24','RSSFRN97O25F789H','3882450821','francesco@live.it','via Matteotti 98, Roma','Uomo',0);
+insert into Utente(Username,Pin,Nome,Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso,Tipo)
+values('Franco1995','Franco95','Francesco','Bianchi','1995-05-24','RSSFRN97O25F789H','3882450821','francesco@live.it','via Matteotti 98, Roma','Uomo','cliente');
 
-insert into Utente(Username,Pin,Nome,Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso,Amministratore)
-values('Laura1980','Laura80','Laura','Verdi','1980-03-11','VRDLRA80C51F205B','3206576122','verlaura@live.it','via Rossini 22, Milano','Donna',0);
+insert into Utente(Username,Pin,Nome,Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso,Tipo)
+values('Laura1980','Laura80','Laura','Verdi','1980-03-11','VRDLRA80C51F205B','3206576122','verlaura@live.it','via Rossini 22, Milano','Donna','cliente');
 /*Giochi*/
 
 insert into Gioco(SerialNumber,Nome,Prezzo,Pegi,Genere,Descrizione,Anno,Piattaforma,Video,Quantità)

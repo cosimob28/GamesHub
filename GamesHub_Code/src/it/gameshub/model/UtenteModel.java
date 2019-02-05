@@ -26,8 +26,8 @@ public class UtenteModel {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + UtenteModel.TABLE_NAME
-				+ " (Username,Pin,Nome, Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso)"
-				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ " (Username,Pin,Nome, Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso,Tipo)"
+				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			// connection = ds.getConnection();
@@ -43,6 +43,7 @@ public class UtenteModel {
 			preparedStatement.setString(8, user.getEmail());
 			preparedStatement.setString(9, user.getIndirizzoSpedizione());
 			preparedStatement.setString(10, user.getSesso());
+			preparedStatement.setString(11, user.getTipo());
 
 			preparedStatement.executeUpdate();
 
@@ -57,8 +58,6 @@ public class UtenteModel {
 		}
 	}
 
-	// Elimina un utente dal database(un utente può decidere di cancellare la sua
-	// iscrizione al sito)
 	// Vecchio doDelete
 	public boolean deleteUser(String username) throws SQLException {
 		Connection connection = null;
@@ -70,7 +69,7 @@ public class UtenteModel {
 
 		try {
 			// connection = ds.getConnection();
-			
+
 			connection = Manager.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setString(1, username);
@@ -99,7 +98,7 @@ public class UtenteModel {
 		String selectSQL = "SELECT * FROM " + UtenteModel.TABLE_NAME + " WHERE Username = ? ";
 
 		try {
-			//connection = ds.getConnection();
+			// connection = ds.getConnection();
 			connection = Manager.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setString(1, username);
@@ -117,7 +116,8 @@ public class UtenteModel {
 				bean.setEmail(rs.getString("Email"));
 				bean.setIndirizzoSpedizione(rs.getString("IndirizzoSpedizione"));
 				bean.setSesso(rs.getString("Sesso"));
-				bean.setAmministratore(rs.getInt("Amministratore"));
+				// bean.setAmministratore(rs.getInt("Amministratore"));
+				bean.setTipo(rs.getString("Tipo"));
 
 			}
 
@@ -149,7 +149,7 @@ public class UtenteModel {
 		}
 
 		try {
-			//connection = ds.getConnection();
+			// connection = ds.getConnection();
 			connection = Manager.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 
@@ -168,7 +168,8 @@ public class UtenteModel {
 				bean.setEmail(rs.getString("Email"));
 				bean.setIndirizzoSpedizione(rs.getString("IndirizzoSpedizione"));
 				bean.setSesso(rs.getString("Sesso"));
-				bean.setAmministratore(rs.getInt("Amministratore"));
+				// bean.setAmministratore(rs.getInt("Amministratore"));
+				bean.setTipo(rs.getString("Tipo"));
 				users.add(bean);
 			}
 
@@ -232,7 +233,7 @@ public class UtenteModel {
 		boolean v;
 		String selectSQL = "SELECT *  FROM " + UtenteModel.TABLE_NAME + " WHERE Username = ? ";
 		try {
-			//connection = ds.getConnection();
+			// connection = ds.getConnection();
 			connection = Manager.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setString(1, username);

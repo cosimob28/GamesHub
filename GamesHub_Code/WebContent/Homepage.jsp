@@ -62,7 +62,7 @@
 
 
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
-<link href="css/fontawesome-all.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link href="css/site.css" rel="stylesheet" type="text/css">
 <link href="css/homepage.css" rel="stylesheet" type="text/css">
 <link href="css/footer.css" rel="stylesheet" type="text/css">
@@ -471,36 +471,24 @@ a#myBtn .arrow:before {
 
 
 	<script>
-		$(document)
-				.ready(
-						function() {
-
-							$("#cercaGioco")
-									.keyup(
-											function(e) {
-												var searchField = $(
-														"#cercaGioco").val();
-												var xhttp = new XMLHttpRequest();
-												xhttp.onreadystatechange = function() {
-													if (xhttp.readyState == 4) {
-														var result = xhttp.responseText;
-														var r = eval('('
-																+ result + ')');
-														$("#cercaGioco").next()
-																.remove();
-														if (r != "null") {
-															$("#cercaGioco")
-																	.parent()
-																	.append(
-																			'<div id="cercaGiocoautocomplete-list" class="autocomplete-items"></div>');
+		$(document).ready(
+				function() {
+                     $("#cercaGioco").keyup(function(e) {
+							var searchField = $("#cercaGioco").val();
+							var xhttp = new XMLHttpRequest();
+						    xhttp.onreadystatechange = function() {
+							if (xhttp.readyState == 4) {
+									var result = xhttp.responseText;
+									var r = eval('('+ result + ')');
+									$("#cercaGioco").next().remove();
+								    if (r != "null") {
+										$("#cercaGioco").parent().append(
+											'<div id="cercaGiocoautocomplete-list" class="autocomplete-items"></div>');
 
 															for (var i = 0; i < r.length; i++) {
-																$(
-																		"#cercaGiocoautocomplete-list")
-																		.append(
-																				'<div><a href="ProductPage.jsp?id='
-																						+ r[i].id
-																						+ '">'
+																$("#cercaGiocoautocomplete-list").append(
+																				'<div><a href="ButtonVisualizzaPaginaProdottoControl?id='
+																						+ r[i].id+ '">'
 																						+ r[i].name
 																						+ '</a></div>');
 															}
@@ -508,17 +496,10 @@ a#myBtn .arrow:before {
 													}
 												};
 
-												xhttp.open("POST",
-														"googleSearch", true);
-												xhttp
-														.setRequestHeader(
-																"content-type",
-																"application/x-www-form-urlencoded");
-												xhttp.setRequestHeader(
-														"connection", "close");
-												xhttp
-														.send("action=matchProduct&searchField="
-																+ searchField);
+												xhttp.open("POST","RicercaConAjaxControl", true);
+												xhttp.setRequestHeader("content-type","application/x-www-form-urlencoded");
+												xhttp.setRequestHeader("connection", "close");
+												xhttp.send("action=matchProduct&searchField="+ searchField);
 
 											});
 
@@ -526,7 +507,7 @@ a#myBtn .arrow:before {
 									function(e) {
 										var id = $(this).attr('id');
 										var xhttp = new XMLHttpRequest();
-										$.get("update?action=addC&id=" + id,
+										$.get("ButtonAggiungiAlCarrelloControl?id=" + id,
 												function() {
 												});
 
