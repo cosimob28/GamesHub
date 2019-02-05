@@ -38,7 +38,7 @@
     </p>
     <h4 class="card-title mt-3 text-center">Crea un account </h4>
     
-	<form name="form" id="form" action="RegistrazioneControl" method="post" onsubmit="return validate(this)">
+	<form name="form" id="form" action="InviaEmailConfermaControl" method="post" onsubmit="return validate(this)">
 	
 	<div class="form-group input-group">
     	 <div class="input-group-prepend">
@@ -238,10 +238,10 @@
 			return true;
 	    }
 	  
-	 $("#mail").change(function(){
+	  /* $("#mail").change(function(){
 		 mailCorrect = ValidateEmail(this);
 		 
-	 });
+	 });  */
 	 
 	 $("#phone").change(function(){
 		 numberCorrect = phonenumber(this);
@@ -268,7 +268,7 @@
     
     
     $(document).ready(function(){
-    	 $("#userName").on("keyup click",function (e){
+    	 $("#userName").on("keyup click change",function (e){
     		   var userName = $(this).val();
     		   var xhttp = new XMLHttpRequest();
      			xhttp.onreadystatechange = function() {
@@ -298,29 +298,63 @@
      	    		}
      			};
      			
-     			xhttp.open("POST", "userName", true);
+     			xhttp.open("POST", "UsernameControl", true);
       			xhttp.setRequestHeader("content-type","application/x-www-form-urlencoded");
       			xhttp.setRequestHeader("connection","close");
       			xhttp.send("userName="+userName+"&azione="+"controlloUserName");	
     	       // return false;	   
         });
     	 
+  
+    	 
     
-    	
-    	 
-    	 
-    	 
-    	 
-    	 
-    	 
-    	 
-    	 
-    	 
-    	 
-    	 
-    	 
-    	 
-    	 
+    
+    
+    
+   	 $("#mail").on("keyup  change",function (e){
+   		   var email = $(this).val();
+   			mailCorrect = ValidateEmail(this);
+   			if(mailCorrect){
+   		   		var xhttp = new XMLHttpRequest();
+    				xhttp.onreadystatechange = function() {
+    					if (xhttp.readyState == 4) {
+    					
+    					
+	    	      			var result = xhttp.responseText;
+	    	      			var r = eval('('+result+')');
+	    	      			
+	    	      			if(r.avviso=="true"){ //se esiste già un account con lo stessa email
+	    	      				$("#demo2").text("Email già utilizzata");
+	    	      			 	$("#mail").css({"border-color":"red"});
+	    	      			 	mailCorrect = false;
+	    	      			}else if(r.avviso=="false"){ //l'email non è stata mai utilizzata
+	    	      				
+		    	      				$("#demo2").text("");
+		    	      				$("#mail").css({"border-color":"#00fd00"});
+		    	      				mailCorrect = true;
+	    	      				
+	    	      			
+	    	     	      	}   
+	    	      			else if(r.avviso=="spazio"){ 
+	    	      				$("#demo2").text("L'email non può contentere spazi");
+	    	      			 	$("#mail").css({"border-color":"red"});
+	    	      			 	mailCorrect = false;
+	    	      			} 
+	    	      			else {
+	    	      				$("#mail").css({"border-color":"#e6e6e6 "});
+	    	      			    $("#demo2").text("");
+	    	      			 	mailCorrect = false;
+	    	      			}
+    					}	
+    	    		};
+    			}
+    			
+    			xhttp.open("POST", "EmailControl", true);
+     			xhttp.setRequestHeader("content-type","application/x-www-form-urlencoded");
+     			xhttp.setRequestHeader("connection","close");
+     			xhttp.send("email="+email);	
+   	       // return false;	   
+       }); 
     });
     </script>
     

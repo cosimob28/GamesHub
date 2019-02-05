@@ -13,7 +13,10 @@ Telefono char(12),
 Email varchar(30) not null,
 IndirizzoSpedizione varchar(50) not null,
 Sesso varchar(8) not null,
-Tipo varchar(35) not null
+Tipo varchar(35) not null,
+DataInvioMail date not null,
+Verificato boolean,
+HashText varchar(50)
 );
 
 
@@ -79,17 +82,17 @@ foreign key (Utente)  references Utente(Username)
 
 
 /*Utenti*/
-insert into Utente(Username,Pin,Nome,Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso,Tipo)
-values('root','root','Admin','Admin','1990-01-10','ADM','0000000000','admin@gameshub.it','via Giovanni Paolo II, Fisciano','Uomo','Gestore catalogo');
+insert into Utente(Username,Pin,Nome,Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso,Tipo,DataInvioMail,Verificato)
+values('root','root','Admin','Admin','1990-01-10','ADM','0000000000','admin@gameshub.it','via Giovanni Paolo II, Fisciano','Uomo','Gestore catalogo','2018-02-10',true);
 
-insert into Utente(Username,Pin,Nome,Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso,Tipo)
-values('Luca1988','Luca88','Luca','Marini','1988-01-10','MRNLCA25L18G856S','3425012563','lucaMarini@gmail.com','via Lauro 24, Napoli ','Uomo','cliente');
+insert into Utente(Username,Pin,Nome,Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso,Tipo,DataInvioMail,Verificato)
+values('Luca1988','Luca88','Luca','Marini','1988-01-10','MRNLCA25L18G856S','3425012563','lucaMarini@gmail.com','via Lauro 24, Napoli ','Uomo','cliente','2019-02-05',true);
 
-insert into Utente(Username,Pin,Nome,Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso,Tipo)
-values('Franco1995','Franco95','Francesco','Bianchi','1995-05-24','RSSFRN97O25F789H','3882450821','francesco@live.it','via Matteotti 98, Roma','Uomo','cliente');
+insert into Utente(Username,Pin,Nome,Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso,Tipo,DataInvioMail,Verificato)
+values('Franco1995','Franco95','Francesco','Bianchi','1995-05-24','RSSFRN97O25F789H','3882450821','francesco@live.it','via Matteotti 98, Roma','Uomo','cliente','2019-02-05',true);
 
-insert into Utente(Username,Pin,Nome,Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso,Tipo)
-values('Laura1980','Laura80','Laura','Verdi','1980-03-11','VRDLRA80C51F205B','3206576122','verlaura@live.it','via Rossini 22, Milano','Donna','cliente');
+insert into Utente(Username,Pin,Nome,Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso,Tipo,DataInvioMail,Verificato)
+values('Laura1980','Laura80','Laura','Verdi','1980-03-11','VRDLRA80C51F205B','3206576122','verlaura@live.it','via Rossini 22, Milano','Donna','cliente','2019-02-04',true);
 /*Giochi*/
 
 insert into Gioco(SerialNumber,Nome,Prezzo,Pegi,Genere,Descrizione,Anno,Piattaforma,Video,Quantità)
@@ -938,3 +941,14 @@ values ('img/games/Mario Tennis Aces/slider.jpg',30);
 
 
 /* Fine inserimento immagini giochi */
+
+/* Inserimento istruzioni che eliminano un utente dopo 24 ore se non ha confermato la registrazione */
+SET GLOBAL event_scheduler = ON;
+
+CREATE EVENT cancellaUtenti24ore
+    ON SCHEDULE
+      EVERY 1 DAY
+        DO
+delete from utente
+WHERE   utente.DataInvioMail < DATE_SUB(NOW(), INTERVAL 1 DAY)
+and     utente.Verificato = false

@@ -26,8 +26,8 @@ public class UtenteModel {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + UtenteModel.TABLE_NAME
-				+ " (Username,Pin,Nome, Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso,Tipo)"
-				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ " (Username,Pin,Nome, Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso,Tipo,HashText)"
+				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			// connection = ds.getConnection();
@@ -44,6 +44,7 @@ public class UtenteModel {
 			preparedStatement.setString(9, user.getIndirizzoSpedizione());
 			preparedStatement.setString(10, user.getSesso());
 			preparedStatement.setString(11, user.getTipo());
+			preparedStatement.setString(12, user.getMyHash());
 
 			preparedStatement.executeUpdate();
 
