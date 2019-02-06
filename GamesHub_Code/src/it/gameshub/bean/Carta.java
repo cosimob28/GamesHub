@@ -6,13 +6,15 @@ public class Carta {
 
 	private String numeroCarta, paese, utente;
 	private int cvv;
-	private Date scadenza;
+	private String scadenza;
+	private long saldo;
 
-	public Carta(String numeroCarta, int cvv, Date scadenza, String paese) {
+	public Carta(String numeroCarta, int cvv, String scadenza, String paese,long saldo) {
 		this.numeroCarta = numeroCarta;
 		this.cvv = cvv;
 		this.scadenza = scadenza;
 		this.paese = paese;
+		this.saldo = saldo;
 	}
 	
 	public Carta() {
@@ -51,11 +53,19 @@ public class Carta {
 		this.cvv = cvv;
 	}
 
-	public Date getScadenza() {
+	public long getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(long saldo) {
+		this.saldo = saldo;
+	}
+
+	public String getScadenza() {
 		return scadenza;
 	}
 
-	public void setScadenza(Date scadenza) {
+	public void setScadenza(String scadenza) {
 		this.scadenza = scadenza;
 	}
 }

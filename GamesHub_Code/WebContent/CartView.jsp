@@ -196,15 +196,24 @@
 	<!-- Script utilizzato per ritornare alla home e aprire una nuova finestra con la fattura quando si acquista -->
 	<script>
 	$(document).ready(function(){
-	    $("#acq").click(function(event){
+		
+		//Codice vecchio che apriva la fattura
+		
+	    /* $("#acq").click(function(event){
 	    	event.preventDefault(); // evita che venga aperto il link dell'href
 	    	window.open('product?action=acquista','_blank','height=window.height() width=window.width()');
 	    	setTimeout(function(){
 	    		$('#home')[0].click();
 	    									
-	    	},1000);
+	    	},1000); 
 	    		 
 	    	
+	    }); */
+	    
+	    
+	    $("#acq").click(function(event){
+	    	event.preventDefault();
+	    	window.open('CheckoutPage.jsp',"_self");
 	    });
 	    
 	    $(".qty").on("keyup click change mousemove",function (e){
