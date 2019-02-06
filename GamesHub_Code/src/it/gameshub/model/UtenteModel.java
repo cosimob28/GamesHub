@@ -1,6 +1,7 @@
 package it.gameshub.model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,11 +24,15 @@ public class UtenteModel {
 	// vecchio doSave
 	public void saveUser(Utente user) throws SQLException {
 		Connection connection = null;
+
+		/*
+		 * Date dataInvio = new Date(0,0,0); System.out.println(dataInvio.getDay());
+		 */
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + UtenteModel.TABLE_NAME
-				+ " (Username,Pin,Nome, Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso,Tipo,HashText)"
-				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ " (Username,Pin,Nome, Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso,Tipo,HashText,DataInvioMail)"
+				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			// connection = ds.getConnection();
@@ -45,6 +50,7 @@ public class UtenteModel {
 			preparedStatement.setString(10, user.getSesso());
 			preparedStatement.setString(11, user.getTipo());
 			preparedStatement.setString(12, user.getMyHash());
+			preparedStatement.setDate(13, new java.sql.Date(System.currentTimeMillis()));
 
 			preparedStatement.executeUpdate();
 
@@ -119,6 +125,7 @@ public class UtenteModel {
 				bean.setSesso(rs.getString("Sesso"));
 				// bean.setAmministratore(rs.getInt("Amministratore"));
 				bean.setTipo(rs.getString("Tipo"));
+				bean.setVerificato(rs.getBoolean("Verificato"));
 
 			}
 
@@ -254,6 +261,58 @@ public class UtenteModel {
 					connection.close();
 			}
 		}
+		return v;
+	}
+
+	public boolean activateUser(String email, String hash) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		PreparedStatement preparedStatement1 = null;
+		boolean v = false;
+		String selectSQL = "SELECT * FROM " + UtenteModel.TABLE_NAME
+				+ " WHERE Email = ? and HashText = ? and Verificato = ? ";
+		try {
+
+			// connection = ds.getConnection();
+			connection = Manager.getConnection();
+
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, email);
+			preparedStatement.setString(2, hash);
+			preparedStatement.setInt(3, 0);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			if (rs.next()) {
+
+				String selectSQL1 = "update " + UtenteModel.TABLE_NAME + " set Verificato = ? "
+						+ " WHERE  Email = ? and HashText = ? ";
+				preparedStatement1 = connection.prepareStatement(selectSQL1);
+				preparedStatement1.setInt(1, 1);
+				preparedStatement1.setString(2, email);
+				preparedStatement1.setString(3, hash);
+
+				int i = preparedStatement1.executeUpdate();
+				System.out.print(i);
+				if (i == 1) {
+					v = true;
+				} else {
+					v = false;
+				}
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null && preparedStatement1 != null) {
+					preparedStatement.close();
+					preparedStatement1.close();
+				}
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		
 		return v;
 	}
 

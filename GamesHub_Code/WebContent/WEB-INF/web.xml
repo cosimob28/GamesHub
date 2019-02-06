@@ -91,10 +91,10 @@
     <servlet-class>it.gameshub.controller.UsernameControl</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>InviaEmailConfermaControl</servlet-name>
-    <servlet-class>it.gameshub.controller.InviaEmailConfermaControl</servlet-class>
+    <servlet-name>AttivaAccountControl</servlet-name>
+    <servlet-class>it.gameshub.controller.AttivaAccountControl</servlet-class>
   </servlet>
-    <servlet>
+  <servlet>
     <servlet-name>EmailControl</servlet-name>
     <servlet-class>it.gameshub.controller.EmailControl</servlet-class>
   </servlet>
@@ -102,7 +102,6 @@
     <servlet-name>VisualizzaHomeControl</servlet-name>
     <url-pattern>/home</url-pattern>
   </servlet-mapping>
-  
   <error-page>
     <error-code>404</error-code>
     <location>/404.jsp</location>

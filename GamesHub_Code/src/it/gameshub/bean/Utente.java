@@ -8,6 +8,7 @@ public class Utente implements Serializable {
 
 	private String Username, pin, nome, cognome, codiceFiscale, email, indirizzoSpedizione, telefono, sesso, tipo;
 	private String myHash;
+	private boolean verificato;
 
 	// private int amministratore;
 	private Date dataDiNascita;
@@ -17,6 +18,14 @@ public class Utente implements Serializable {
 		tipo = "cliente";
 		// di default un utente non è amministratore, lo status potrà essere cambiato in
 		// seguito con il metodo setAmministratore
+	}
+
+	public boolean isVerificato() {
+		return verificato;
+	}
+
+	public void setVerificato(boolean verificato) {
+		this.verificato = verificato;
 	}
 
 	public String getMyHash() {

@@ -40,28 +40,34 @@ public class LoginControl extends HttpServlet {
 			// controllo se c'è un utente con l'username passato come parametro
 			if (model.isAnUser(username)) {
 				Utente user = model.getUser(username);
-				if (user.getPin().equals(password)) { // Se la password è corretta
-					// Essendo che nome e password coincidono salvo l'utente nella sessione
-					request.getSession().setAttribute("user", user);
-					if (user.getTipo().equals("Gestore catalogo")) {
-						isGestoreCatalogo = true;
-						request.getSession().setAttribute("isGestoreCatalogo", isGestoreCatalogo);
-						option = 1;
-					} else if (user.getTipo().equals("Gestore ordini")) {
-						isGestoreCatalogo = true;
-						request.getSession().setAttribute("isGestoreOrdini", isGestoreOrdini);
-						option = 2;
-					} else {
-						isGestoreCatalogo = false;
-						isGestoreCatalogo = false;
-						request.getSession().setAttribute("isGestoreCatalogo", isGestoreCatalogo);
-						request.getSession().setAttribute("isGestoreOrdini", isGestoreOrdini);
-						option = 3; // Vado alla home page per l'utente normale
+				if (user.isVerificato()) {
+					if (user.getPin().equals(password)) { // Se la password è corretta
+						// Essendo che nome e password coincidono salvo l'utente nella sessione
+						request.getSession().setAttribute("user", user);
+						if (user.getTipo().equals("Gestore catalogo")) {
+							isGestoreCatalogo = true;
+							request.getSession().setAttribute("isGestoreCatalogo", isGestoreCatalogo);
+							option = 1;
+						} else if (user.getTipo().equals("Gestore ordini")) {
+							isGestoreCatalogo = true;
+							request.getSession().setAttribute("isGestoreOrdini", isGestoreOrdini);
+							option = 2;
+						} else {
+							isGestoreCatalogo = false;
+							isGestoreCatalogo = false;
+							request.getSession().setAttribute("isGestoreCatalogo", isGestoreCatalogo);
+							request.getSession().setAttribute("isGestoreOrdini", isGestoreOrdini);
+							option = 3; // Vado alla home page per l'utente normale
+						}
 					}
-				}
-				// Altrimenti se la password è errata
-				else {
-					String alert = "Password Errata ";
+					// Altrimenti se la password è errata
+					else {
+						String alert = "Password Errata ";
+						request.getSession().setAttribute("alert", alert);
+						option = 4;
+					}
+				}else {
+					String alert = "Verifica prima la tua e-mail ";
 					request.getSession().setAttribute("alert", alert);
 					option = 4;
 				}

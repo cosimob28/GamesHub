@@ -88,14 +88,10 @@
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="ButtonLogoutControl"><span
 							class="fa fa-sign-out-alt"></span> Sign Out</a>
-							 <%if(user.isAmministratore()==true){ %>
-							<a class="dropdown-item" href="user?azione=adminPage"><span
-							class="fa fa-lock"></span> Area Admin</a>
-							
-							<%} else { %>
+						
 							<a class="dropdown-item" href="ButtonAreaPersonaleControl"><span
 							class="fa fa-user-circle"></span> I miei dati</a>
-                          <%} %> 
+                          
 					</div></li>
 				<li class="nav-item"><a class="nav-link" href="ButtonCarrelloControl"><span
 						class="fa fa-shopping-basket"></span> Carrello</a></li>

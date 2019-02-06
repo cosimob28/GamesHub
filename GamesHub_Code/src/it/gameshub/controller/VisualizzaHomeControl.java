@@ -1,7 +1,9 @@
 package it.gameshub.controller;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -39,7 +41,9 @@ public class VisualizzaHomeControl extends HttpServlet {
 			cart = new Carrello();
 			request.getSession().setAttribute("cart", cart);
 		}
- 
+		//Calendar cal = Calendar.getInstance();
+		//System.out.println(cal.getTime().getDate());
+		System.out.println( new java.sql.Date(System.currentTimeMillis()));
 		try {
 			/* setta l'attributo products che conterrà tutti i giochi contenuti nel DB */
 			request.getSession().setAttribute("products", giocoModel.doRetrieveAll());

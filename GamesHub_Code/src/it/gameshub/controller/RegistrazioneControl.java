@@ -2,6 +2,7 @@ package it.gameshub.controller;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.Random;
 
 import javax.servlet.RequestDispatcher;
@@ -15,6 +16,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 import it.gameshub.bean.Utente;
 import it.gameshub.model.UtenteModel;
+import it.gameshub.utility.SendingEmail;
 
 @WebServlet("/RegistrazioneControl")
 public class RegistrazioneControl extends HttpServlet {
@@ -79,11 +81,18 @@ public class RegistrazioneControl extends HttpServlet {
 		Random random = new Random();
 		random.nextInt(999999);
 		myHash = DigestUtils.md5Hex("" + random);
-		nuovoUtente.setPin(newPword);
+		nuovoUtente.setPin(password);
 		nuovoUtente.setMyHash(myHash);
-
+        try {
+			model.saveUser(nuovoUtente);
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}
 		request.getSession().removeAttribute("E-mail");
 		request.getSession().setAttribute("E-mail", email);
+		SendingEmail se = new SendingEmail(email, myHash);
+		se.sendMail();
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/SendEmailConfirm.jsp");
 		dispatcher.forward(request, response);
 	}

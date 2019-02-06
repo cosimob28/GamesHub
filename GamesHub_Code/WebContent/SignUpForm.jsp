@@ -38,7 +38,7 @@
     </p>
     <h4 class="card-title mt-3 text-center">Crea un account </h4>
     
-	<form name="form" id="form" action="InviaEmailConfermaControl" method="post" onsubmit="return validate(this)">
+	<form name="form" id="form" action="RegistrazioneControl" method="post" onsubmit="return validate(this)">
 	
 	<div class="form-group input-group">
     	 <div class="input-group-prepend">
