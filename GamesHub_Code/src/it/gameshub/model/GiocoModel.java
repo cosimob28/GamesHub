@@ -41,7 +41,7 @@ public class GiocoModel {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + GiocoModel.TABLE_NAME
-				+ " (SerialNumber,Nome,Prezzo,Pegi,Genere,Descrizione,Anno,Piattaforma,Video,Quantità,Iva) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ " (SerialNumber,Nome,Prezzo,Pegi,Genere,Descrizione,Anno,Piattaforma,Video,Quantità) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			// Si ottiene una connessione da utilizzare come
@@ -248,32 +248,32 @@ public class GiocoModel {
 
 	}
 
-	public void updateIva(int iva) throws SQLException {
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-
-		int result = 0;
-
-		String deleteSQL = "update " + GiocoModel.TABLE_NAME + " set Iva= ? ";
-
-		try {
-			//connection = ds.getConnection();
-			connection = Manager.getConnection();
-			preparedStatement = connection.prepareStatement(deleteSQL);
-			preparedStatement.setInt(1, iva);
-
-			result = preparedStatement.executeUpdate();
-
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
-		}
-
-	}
+//	public void updateIva(int iva) throws SQLException {
+//		Connection connection = null;
+//		PreparedStatement preparedStatement = null;
+//
+//		int result = 0;
+//
+//		String deleteSQL = "update " + GiocoModel.TABLE_NAME + " set Iva= ? ";
+//
+//		try {
+//			//connection = ds.getConnection();
+//			connection = Manager.getConnection();
+//			preparedStatement = connection.prepareStatement(deleteSQL);
+//			preparedStatement.setInt(1, iva);
+//
+//			result = preparedStatement.executeUpdate();
+//
+//		} finally {
+//			try {
+//				if (preparedStatement != null)
+//					preparedStatement.close();
+//			} finally {
+//				if (connection != null)
+//					connection.close();
+//			}
+//		}
+//
+//	}
 
 }

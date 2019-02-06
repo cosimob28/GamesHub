@@ -30,7 +30,7 @@ public class CatalogControl extends HttpServlet {
 		String genere = (String)request.getParameter("genere");
 		String platform = (String)request.getParameter("platform");
 		
-		
+		System.out.println("OKOK");
 		Collection<Gioco> products = (Collection<Gioco>) request.getSession().getAttribute("products");
 		Iterator<Gioco> iter = products.iterator();
 		ArrayList<Gioco> listaGiochi = new ArrayList<Gioco>();

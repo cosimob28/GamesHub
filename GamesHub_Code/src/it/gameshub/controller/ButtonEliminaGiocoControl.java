@@ -31,14 +31,18 @@ public class ButtonEliminaGiocoControl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		int id = Integer.parseInt(request.getParameter("id"));
-		try {
-			giocoModel.deleteGame(id);
-		} catch (SQLException e) {
-			e.printStackTrace();
+		String parametro = request.getParameter("id");
+		if (parametro != null && !(parametro.equals(""))) {
+			int id = Integer.parseInt(parametro);
+			try {
+				giocoModel.deleteGame(id);
+				request.getSession().setAttribute("products", giocoModel.doRetrieveAll());
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/HomeGestoreCatalogo.jsp");
+			dispatcher.forward(request, response);
 		}
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/HomeGestoreCatalogo.jsp");
-		dispatcher.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

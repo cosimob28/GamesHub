@@ -35,33 +35,13 @@
     
     <!-- codice search -->
     
-       <%  String search= request.getParameter("search"); 
-           if(search!=null && products!= null)
-           {
-        	   ArrayList<Gioco> searchList = new ArrayList<Gioco>();
-                Iterator<?> it = products.iterator();
-				while (it.hasNext()) 
-				{
-					  Gioco x = (Gioco) it.next();
-					if((x.getName().indexOf(search))!=-1){  /*Ricerca per nome*/
-					     searchList.add(x);
-					}else if (((""+x.getCode()).indexOf(search))!=-1){ /*Ricerca per serialNumber*/
-						searchList.add(x);
-					}else if ((x.getPiattaforma().indexOf(search))!=-1){ /*Ricerca per piattaforma*/
-						searchList.add(x);
-					}
-					
-				}
-				 products= searchList;
-	        
-            } 
-
-%>
+ 
     <%if (products != null && products.size() != 0) { %>
 	<br><br><br><h2>Prodotti in magazzino</h2><br>
 
 <div class="catalogo">
 	<div class ="container">
+	 <div class="table-responsive"> 
 	<table class="table table-hover">
  <thead class="thead-light">
     <tr>
@@ -119,22 +99,19 @@
 
 </div>
 </div>
+</div>
 
 			
 <% if(products==null || products.size()==0){ %>
            <div class="jumbotron jumbotron-fluid">
             <div class="container">
-            <%if(search!=null){ %>
-            <h1 class="display-4">Risultati della ricerca</h1>
-             <p class="lead">Nessun risultato trovato. Esegui un'altra ricerca.</p>
-             <p class="lead">Puoi ricercare un prodotto per nome,serialNumber oppure piattaforma</p>
-             <%} else{%>
+          
              <h1 class="display-4">Nessun prodotto in magazzino</h1>
               <p class="lead">Inizia ad inserire i prodotti.</p>
               <a class="btn btn-outline-success" href="ButtonInserisciGiocoControl" > Vai all'inserimento </a>
              </div>
              </div>
-             <%} }%>
+             <%} %>
 
 </body>
 </html>

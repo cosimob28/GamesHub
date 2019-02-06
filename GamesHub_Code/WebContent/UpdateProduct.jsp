@@ -30,7 +30,7 @@ if(isGestoreCatalogo == null || isGestoreCatalogo==false){
     
      <jsp:include page="HeaderGestoreCatalogo.jsp"/>
      
- <form action="product?action=modificaProdotto&modifica=si" method="post">
+ <form action="ModificaGiocoControl" method="post">
  <div class ="containerModifica">
  <div class="table-responsive"> 
 <table class="table table-hover">
