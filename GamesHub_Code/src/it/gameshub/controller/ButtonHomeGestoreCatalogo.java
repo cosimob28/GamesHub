@@ -9,29 +9,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/ButtonLogoutControl")
-public class ButtonLogoutControl extends HttpServlet {
+@WebServlet("/ButtonHomeGestoreCatalogoControl")
+public class ButtonHomeGestoreCatalogo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public ButtonLogoutControl() {
+	public ButtonHomeGestoreCatalogo() {
 		super();
+
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		request.getSession().removeAttribute("user");
-		request.getSession().removeAttribute("isGestoreCatalogo");
-		request.getSession().removeAttribute("isGestoreOrdini");
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Homepage.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/HomeGestoreCatalogo.jsp");
 		dispatcher.forward(request, response);
-
 	}
 
-	// Nel caso si utilizza post la servelt funzionerà ugualmente
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doGet(request, response); // Richiama la doGet
+
+		doGet(request, response);
 	}
 
 }
