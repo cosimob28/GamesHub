@@ -99,7 +99,6 @@ public class LoginControl extends HttpServlet {
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/LoginForm.jsp");
 			dispatcher.forward(request, response);
 		}
-
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
