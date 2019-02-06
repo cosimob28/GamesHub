@@ -98,6 +98,22 @@
     <servlet-name>EmailControl</servlet-name>
     <servlet-class>it.gameshub.controller.EmailControl</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ButtonHomeGestoreCatalogoControl</servlet-name>
+    <servlet-class>it.gameshub.controller.ButtonHomeGestoreCatalogoControl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ButtonInserisciGiocoControl</servlet-name>
+    <servlet-class>it.gameshub.controller.ButtonInserisciGiocoControl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ButtonModificaGiocoControl</servlet-name>
+    <servlet-class>it.gameshub.controller.ButtonModificaGiocoControl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ButtonEliminaGiocoControl</servlet-name>
+    <servlet-class>it.gameshub.controller.ButtonEliminaGiocoControl</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>VisualizzaHomeControl</servlet-name>
     <url-pattern>/home</url-pattern>
