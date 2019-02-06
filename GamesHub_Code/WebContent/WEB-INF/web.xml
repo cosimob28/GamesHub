@@ -114,6 +114,10 @@
     <servlet-name>ButtonEliminaGiocoControl</servlet-name>
     <servlet-class>it.gameshub.controller.ButtonEliminaGiocoControl</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>CatalogControl</servlet-name>
+    <servlet-class>it.gameshub.controller.CatalogControl</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>VisualizzaHomeControl</servlet-name>
     <url-pattern>/home</url-pattern>
