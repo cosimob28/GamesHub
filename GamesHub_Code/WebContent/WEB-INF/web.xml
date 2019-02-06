@@ -119,6 +119,10 @@
     <servlet-class>it.gameshub.controller.CatalogControl</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>CheckCreditCardControl</servlet-name>
+    <servlet-class>it.gameshub.controller.CheckCreditCardControl</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>ModificaGiocoControl</servlet-name>
     <servlet-class>it.gameshub.controller.ModificaGiocoControl</servlet-class>
   </servlet>
@@ -130,10 +134,7 @@
     <servlet-name>CercaGestoreCatalogoControl</servlet-name>
     <servlet-class>it.gameshub.controller.CercaGestoreCatalogoControl</servlet-class>
   </servlet>
-  <servlet>
-    <servlet-name>CheckCreditCardControl</servlet-name>
-    <servlet-class>it.gameshub.controller.CheckCreditCardControl</servlet-class>
-  </servlet>
+  
   <servlet-mapping>
     <servlet-name>VisualizzaHomeControl</servlet-name>
     <url-pattern>/home</url-pattern>
