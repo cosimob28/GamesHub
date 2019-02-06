@@ -102,6 +102,10 @@
     <servlet-name>VisualizzaHomeControl</servlet-name>
     <url-pattern>/home</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CatalogControl</servlet-name>
+    <url-pattern>it.gameshub.controller.CatalogControl</url-pattern>
+  </servlet-mapping>
   <error-page>
     <error-code>404</error-code>
     <location>/404.jsp</location>
