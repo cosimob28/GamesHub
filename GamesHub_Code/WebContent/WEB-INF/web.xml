@@ -98,6 +98,43 @@
     <servlet-name>EmailControl</servlet-name>
     <servlet-class>it.gameshub.controller.EmailControl</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ButtonHomeGestoreCatalogoControl</servlet-name>
+    <servlet-class>it.gameshub.controller.ButtonHomeGestoreCatalogoControl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ButtonInserisciGiocoControl</servlet-name>
+    <servlet-class>it.gameshub.controller.ButtonInserisciGiocoControl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ButtonModificaGiocoControl</servlet-name>
+    <servlet-class>it.gameshub.controller.ButtonModificaGiocoControl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ButtonEliminaGiocoControl</servlet-name>
+    <servlet-class>it.gameshub.controller.ButtonEliminaGiocoControl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CatalogControl</servlet-name>
+    <servlet-class>it.gameshub.controller.CatalogControl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CheckCreditCardControl</servlet-name>
+    <servlet-class>it.gameshub.controller.CheckCreditCardControl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ModificaGiocoControl</servlet-name>
+    <servlet-class>it.gameshub.controller.ModificaGiocoControl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>InserimentoGiocoControl</servlet-name>
+    <servlet-class>it.gameshub.controller.InserimentoGiocoControl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CercaGestoreCatalogoControl</servlet-name>
+    <servlet-class>it.gameshub.controller.CercaGestoreCatalogoControl</servlet-class>
+  </servlet>
+  
   <servlet-mapping>
     <servlet-name>VisualizzaHomeControl</servlet-name>
     <url-pattern>/home</url-pattern>

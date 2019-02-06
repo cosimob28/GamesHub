@@ -30,38 +30,38 @@
 								id="genereDropdown" href="#">Genere</a>
 								<ul class="dropdown-menu">
 									<li><a class="dropdown-item"
-										href="CatalogoControl?genere=RPG">RPG</a></li>
+										href="CatalogControl?genere=RPG">RPG</a></li>
 									<li><a class="dropdown-item"
-										href="CatalogoControl?genere=Picchiaduro">Picchiaduro</a></li>
+										href="CatalogControl?genere=Picchiaduro">Picchiaduro</a></li>
 									<li><a class="dropdown-item"
-										href="CatalogoControl?genere=Avventura">Avventura</a></li>
+										href="CatalogControl?genere=Avventura">Avventura</a></li>
 									<li><a class="dropdown-item"
-										href="CatalogoControl?genere=Sport">Sport</a></li>
+										href="CatalogControl?genere=Sport">Sport</a></li>
 									<li><a class="dropdown-item"
-										href="CatalogoControl?genere=Simulazione">Simulazione</a></li>
+										href="CatalogControl?genere=Simulazione">Simulazione</a></li>
 									<li><a class="dropdown-item"
-										href="CatalogoControl?genere=Strategia">Strategia</a></li>
+										href="CatalogControl?genere=Strategia">Strategia</a></li>
 									<li><a class="dropdown-item"
-										href="CatalogoControl?genere=Azione">Azione</a></li>
+										href="CatalogControl?genere=Azione">Azione</a></li>
 								</ul></li>
 							<li class="dropdown-submenu"><a
 								class="test dropdown-item dropdown-toggle" tabindex="-1"
 								id="piattaformaDropdown" href="#">Piattaforma</a>
 								<ul class="dropdown-menu">
 									<li><a class="dropdown-item"
-										href="CatalogoControl?platform=PC">PC <span
+										href="CatalogControl?platform=PC">PC <span
 											class="fas fa-laptop"></span></a></li>
 									<li><a class="dropdown-item"
-										href="CatalogoControl?platform=XboxOne">XBOX <span
+										href="CatalogControl?platform=XboxOne">XBOX <span
 											class="fab fa-xbox"></span></a></li>
 									<li><a class="dropdown-item"
-										href="CatalogoControl?platform=PS3">PS3 <span
+										href="CatalogControl?platform=PS3">PS3 <span
 											class="fab fa-playstation"></span></a></li>
 									<li><a class="dropdown-item"
-										href="CatalogoControl?platform=PS4">PS4 <span
+										href="CatalogControl?platform=PS4">PS4 <span
 											class="fab fa-playstation"></span></a></li>
 									<li><a class="dropdown-item"
-										href="CatalogoControl?platform=Nintendo switch">Switch <span
+										href="CatalogControl?platform=Nintendo switch">Switch <span
 											class="fab fa-nintendo-switch"></span></a></li>
 
 								</ul></li>

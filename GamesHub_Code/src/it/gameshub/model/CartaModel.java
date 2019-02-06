@@ -21,16 +21,17 @@ public class CartaModel {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + CartaModel.TABLE_NAME
-				+ " (NumeroCarta,Cvv,Scadenza,Paese,Utente) VALUES (?, ?, ?, ?, ?)";
+				+ " (NumeroCarta,Cvv,Scadenza,Paese,Saldo,Utente) VALUES (?, ?, ?, ?, ?, ?)";
 
 		try {
 			connection = Manager.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setString(1, carta.getNumeroCarta());
 			preparedStatement.setInt(2, carta.getCvv());
-			preparedStatement.setDate(3, carta.getScadenza());
+			preparedStatement.setString(3, carta.getScadenza());
 			preparedStatement.setString(4, carta.getPaese());
-			preparedStatement.setString(5, carta.getUtente());
+			preparedStatement.setLong(5, carta.getSaldo());
+			preparedStatement.setString(6, carta.getUtente());
 
 			preparedStatement.executeUpdate();
 
@@ -61,9 +62,10 @@ public class CartaModel {
 
 				bean.setNumeroCarta(rs.getString("NumeroCarta"));
 				bean.setCvv(rs.getInt("Cvv"));
-				bean.setScadenza(rs.getDate("Scadenza"));
+				bean.setScadenza(rs.getString("Scadenza"));
 				bean.setPaese(rs.getString("Paese"));
 				bean.setUtente(rs.getString("Utente"));
+				bean.setSaldo(rs.getLong("Saldo"));
 
 			}
 

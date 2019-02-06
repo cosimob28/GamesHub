@@ -63,7 +63,7 @@ foreign key (Gioco)  references Gioco(SerialNumber)
 create table Immagine(
 Nome varchar(1000) Primary key,
 Gioco integer not null,
-foreign key (Gioco)  references Gioco(SerialNumber)
+foreign key (Gioco)  references Gioco(SerialNumber) on delete cascade
 
 );
 
