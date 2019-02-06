@@ -71,7 +71,7 @@ foreign key (Gioco)  references Gioco(SerialNumber)
 create table Carta(
 NumeroCarta varchar(50) Primary key,
 Cvv integer not null,
-Scadenza date not null,
+Scadenza char(6) not null,
 Paese varchar(30) not null,
 Saldo long not null,
 Utente varchar(30),
