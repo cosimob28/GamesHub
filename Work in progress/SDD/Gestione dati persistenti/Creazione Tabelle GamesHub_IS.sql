@@ -73,6 +73,7 @@ NumeroCarta varchar(50) Primary key,
 Cvv integer not null,
 Scadenza date not null,
 Paese varchar(30) not null,
+Saldo long not null,
 Utente varchar(30),
 foreign key (Utente)  references Utente(Username)
 );
