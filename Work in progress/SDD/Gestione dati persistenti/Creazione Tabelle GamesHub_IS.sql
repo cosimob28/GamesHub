@@ -70,9 +70,8 @@ foreign key (Gioco)  references Gioco(SerialNumber) on delete cascade
 
 create table Carta(
 NumeroCarta varchar(50) Primary key,
-Cvv integer not null,
+Cvv char(4) not null,
 Scadenza char(6) not null,
-Paese varchar(30) not null,
 Saldo long not null,
 Utente varchar(30),
 foreign key (Utente)  references Utente(Username)
