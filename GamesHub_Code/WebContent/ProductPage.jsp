@@ -336,7 +336,7 @@ img {
 						  <%
 						  	for(int i=1;i<=images.size();i++){ %>
 						  		<div class="tab-pane<%if(i==1){%> active <%} %>" id="pic-<%=i%>"><img src="<%=images.get(i-1).getName() %>" class="magnify" /></div>
-						  		
+
 						  <% } %>
 						  <%String video = game.getVideo(); 
 						  String youtubeID ="";
@@ -348,8 +348,7 @@ img {
 						</div>
 						
 						
-						
-						
+							
 						<ul class="preview-thumbnail nav nav-tabs">
 						
 						<%
