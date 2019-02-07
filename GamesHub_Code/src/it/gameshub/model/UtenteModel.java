@@ -312,38 +312,40 @@ public class UtenteModel {
 					connection.close();
 			}
 		}
-		
+
 		return v;
 	}
 
-	// public void doUpdate(String username) throws SQLException {
-	// Connection connection = null;
-	// PreparedStatement preparedStatement = null;
-	//
-	// int result = 0;
-	//
-	// String deleteSQL = "update " + UserModelDS.TABLE_NAME + " set Amministratore
-	// = ? " + " WHERE Username = ? ";
-	//
-	// try {
-	// //connection = ds.getConnection();
-	// connection = Manager.getConnection();
-	// preparedStatement = connection.prepareStatement(deleteSQL);
-	// preparedStatement.setInt(1, 1);
-	// preparedStatement.setString(2, username);
-	//
-	// result = preparedStatement.executeUpdate();
-	//
-	// } finally {
-	// try {
-	// if (preparedStatement != null)
-	// preparedStatement.close();
-	// } finally {
-	// if (connection != null)
-	// connection.close();
-	// }
-	// }
-	//
-	// }
+	public void doUpdate(String username, String password, String telefono, String indirizzo) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		int result = 0;
+
+		String deleteSQL = "update " + UtenteModel.TABLE_NAME
+				+ " set Telefono = ?, IndirizzoSpedizione = ?, Pin = ? " + " WHERE Username = ? ";
+
+		try {
+			// connection = ds.getConnection();
+			connection = Manager.getConnection();
+			preparedStatement = connection.prepareStatement(deleteSQL);
+			preparedStatement.setString(1, telefono);
+			preparedStatement.setString(2, indirizzo);
+			preparedStatement.setString(3, password);
+			preparedStatement.setString(4, username);
+
+			result = preparedStatement.executeUpdate();
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+
+	}
 
 }

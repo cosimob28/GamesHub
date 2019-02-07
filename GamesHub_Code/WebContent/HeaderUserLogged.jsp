@@ -15,7 +15,7 @@
 	
 <header id="myHeaderUserLogged">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="product?action=home"><img src="img/website/logoBianco.png" width="130px"/></a>
+		<a class="navbar-brand" href="ButtonHomeControl"><img src="img/website/logoBianco.png" width="130px"/></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
