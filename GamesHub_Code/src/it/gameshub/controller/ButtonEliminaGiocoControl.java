@@ -31,7 +31,8 @@ public class ButtonEliminaGiocoControl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String parametro = request.getParameter("id");
+		String parametro = (String) request.getParameter("id");
+		//System.out.println(parametro);
 		if (parametro != null && !(parametro.equals(""))) {
 			int id = Integer.parseInt(parametro);
 			try {

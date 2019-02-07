@@ -68,11 +68,18 @@
 			<td><%=bean.getQuantity()%></td>
 			
 				<td><a class="btn btn-outline-warning" href="ButtonModificaGiocoControl?id=<%=bean.getCode()%>" id="a" > Modifica </a>
-				<a class="btn btn-outline-danger" data-toggle="modal" data-target="#example" href=""  id="a" > Elimina </a></td>
+				<a class="btn btn-outline-danger" href="ButtonEliminaGiocoControl?id=<%=bean.getCode()%>" id="a" > Elimina </a></td>
+		
+
 		</tr>
 		
-		<!-- Modal -->
-<div class="modal fade" id="example" tabindex="1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	
+
+		<%
+				}
+			}%>     
+			
+			<div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -82,18 +89,15 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>Sei sicuro di voler eliminare il gioco dal catalogo ?</p>
+        <p>Sei sicuro di voler eliminare il gioco dal catalogo?</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
-        <a class="btn btn-primary" href="ButtonEliminaGiocoControl?id=<%=bean.getCode()%>"> Salva </a>
+        <a class="btn btn-primary" > Continua </a>
       </div>
     </div>
   </div>
-</div>
-		<%
-				}
-			}%>      
+</div> 
   </tbody>
 </table>
 
@@ -101,7 +105,7 @@
 </div>
 </div>
 
-			
+			v
 <% if(products==null || products.size()==0){ %>
            <div class="jumbotron jumbotron-fluid">
             <div class="container">
@@ -112,6 +116,6 @@
              </div>
              </div>
              <%} %>
-
+   
 </body>
 </html>

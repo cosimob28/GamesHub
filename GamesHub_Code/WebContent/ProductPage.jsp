@@ -16,6 +16,7 @@
 				game = x;
 			}
 		}
+		System.out.println(game.getDescription());
 		
 		ArrayList<Immagine> images = new ArrayList<Immagine>();
 		int iva=22;
@@ -338,10 +339,11 @@ img {
 						  		
 						  <% } %>
 						  <%String video = game.getVideo(); 
-						  	
-						  	String youtubeID = video.substring(video.length() - 11);
-						  		
-						  %>
+						  String youtubeID ="";
+						  	if(video.length()-11>=0){
+						  	 youtubeID = video.substring(video.length() - 11);
+						 
+						  }%>
 						  <div class="tab-pane" id="video"><iframe width="560" height="315" src="//www.youtube.com/embed/<%=youtubeID %>?showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
 						</div>
 						
@@ -420,7 +422,7 @@ img {
                     <%if(game.getQuantity()==0){ %>
                        	<button class="btn btn-danger disabled"><span style="margin-right:20px" class="fas fa-shopping-cart" aria-hidden="true"></span> Non disponibile</button>
                     <%}else{ %>	
-                    	<a class="btn btn-success addCart" href="product?action=carrello" id="<%=game.getCode()%>"><span style="margin-right:20px" class="fas fa-shopping-cart" aria-hidden="true" ></span> Add To Cart</a>
+                    	<a class="btn btn-success addCart" href="ButtonAggiungiAlCarrelloControl?id=<%=game.getCode()%>"><span style="margin-right:20px" class="fas fa-shopping-cart" aria-hidden="true" ></span> Add To Cart</a>
                     <%} %>
                     </div>                                        
                 </div>                              
@@ -530,7 +532,7 @@ img {
 				var id= $(this).attr('id');
 				var xhttp = new XMLHttpRequest();
 
-				$.get("update?action=addC&id="+id, function() {
+				$.get("ButtonAggiungiAlCarrelloControl?id="+id, function() {
 					});
 				
 	  			

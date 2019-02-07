@@ -270,7 +270,7 @@ a#myBtn .arrow:before {
 				%>
 
 				<div class="carousel-item <%if (i == 0) {%>active<%}%>">
-					<a href="ProductPage.jsp?id=<%=pr.getCode()%>"><img
+					<a href="ButtonVisualizzaPaginaProdottoControl?id=<%=pr.getCode()%>"><img
 						src='<%=im.getName()%>'></a>
 					<div class="carousel-caption">
 
@@ -318,7 +318,7 @@ a#myBtn .arrow:before {
 				%>
 
 				<div class="carousel-item <%if (i == 0) {%>active<%}%>">
-					<a href="ProductPage.jsp?id=<%=pr.getCode()%>"><img
+					<a href="ButtonVisualizzaPaginaProdottoControl?id=<%=pr.getCode()%>"><img
 						src='<%=im.getName()%>'></a>
 
 
@@ -401,7 +401,7 @@ a#myBtn .arrow:before {
 						%>
 						<div>
 							<a href="ButtonAggiungiAlCarrelloControl?id=<%=game.getCode()%>"
-								class="addToCart addCart" id="<%=game.getCode()%>">Add to
+								class="addToCart addCart" >Add to
 								Cart</a>
 						</div>
 						<%
@@ -421,7 +421,7 @@ a#myBtn .arrow:before {
 								%>
 								<span class="product_price"><%=prezzo%>€</span> <span
 									class="product_name"><a class="productLink"
-									href="ProductPage.jsp?id=<%=game.getCode()%>"><%=game.getName()%></a></span>
+									href="ButtonVisualizzaPaginaProdottoControl?id=<%=game.getCode()%>"><%=game.getName()%></a></span>
 								<%
 									String s = game.getDescription();
 								%>
