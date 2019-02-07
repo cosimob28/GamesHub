@@ -134,7 +134,10 @@
     <servlet-name>CercaGestoreCatalogoControl</servlet-name>
     <servlet-class>it.gameshub.controller.CercaGestoreCatalogoControl</servlet-class>
   </servlet>
-  
+   <servlet>
+    <servlet-name>CercaGiocoUtenteControl</servlet-name>
+    <servlet-class>it.gameshub.controller.CercaGiocoUtenteControl</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>VisualizzaHomeControl</servlet-name>
     <url-pattern>/home</url-pattern>

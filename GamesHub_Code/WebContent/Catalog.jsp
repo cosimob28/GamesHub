@@ -121,7 +121,7 @@
 		<%if(bean.getQuantity()>0) {%>
 				<td><a class="btn btn-danger" href="ButtonAggiungiAlCarrelloControl?id=<%=bean.getCode()%>" id="a" > Aggiungi al carrello </a>
 		<%}else{ %>
-		        <td><a class="btn btn-secondary disabled" href="product?action=modificaProdotto&id=<%=bean.getCode()%>" id="a" disabled> Non disponibile </a>
+		        <td><a class="btn btn-secondary disabled" href="" id="a" disabled> Non disponibile </a>
 		<%} %>
 		</tr>
 		<%
@@ -134,6 +134,7 @@
 </div>
 
 <jsp:include page="Footer.jsp" />
+<script src="js/custom.js"></script> 
 </body>
 
 </html>

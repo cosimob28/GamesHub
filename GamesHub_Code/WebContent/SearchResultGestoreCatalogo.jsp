@@ -58,6 +58,7 @@
 							<th scope="col">Prodotto</th>
 							<th scope="col">Piattaforma</th>
 							<th scope="col">Pezzi disponibili</th>
+							<th scope="col">Azioni</th>
 
 						</tr>
 					</thead>
@@ -75,7 +76,11 @@
 							<td><%=bean.getPiattaforma()%></td>
 							<td><%=bean.getQuantity()%></td>
 
-
+							<td><a class="btn btn-outline-warning"
+								href="ButtonModificaGiocoControl?id=<%=bean.getCode()%>" id="a">
+									Modifica </a> <a class="btn btn-outline-danger"
+								href="ButtonEliminaGiocoControl?id=<%=bean.getCode()%>" id="a">
+									Elimina </a></td>
 
 							<%
 								}
@@ -94,23 +99,23 @@
 	<%
 		if (searchResult == null || searchResult.size() == 0) {
 	%>
-	
-	<div class="jumbotron jumbotron-fluid">
-		
-			<div class="container" style=" margin-top: 50px;" >
-				<h1 class="display-4">Risultati della ricerca</h1>
-				<p class="lead">Nessun risultato trovato. Esegui un'altra
-					ricerca.</p>
-				<p class="lead">Puoi ricercare un prodotto per nome,serialNumber
-					oppure piattaforma</p>
-				<a class="btn btn-outline-success"
-					href="ButtonHomeGestoreCatalogoControl"> Ritorna al catalogo </a>
-				<%
-					}
-				%>
 
-			</div>
-		
+	<div class="jumbotron jumbotron-fluid">
+
+		<div class="container" style="margin-top: 50px;">
+			<h1 class="display-4">Risultati della ricerca</h1>
+			<p class="lead">Nessun risultato trovato. Esegui un'altra
+				ricerca.</p>
+			<p class="lead">Puoi ricercare un prodotto per nome,serialNumber
+				oppure piattaforma</p>
+			<a class="btn btn-outline-success"
+				href="ButtonHomeGestoreCatalogoControl"> Ritorna al catalogo </a>
+			<%
+				}
+			%>
+
+		</div>
+
 	</div>
 
 

@@ -71,11 +71,11 @@
 					<li class="nav-item"><a class="nav-link"
 						href="ButtonContattaciControl">Contattaci</a></li>
 				</ul>
-				<form class="navbar-form navbar-left" action="ResultList.jsp"
+				<form class="navbar-form navbar-left" action="CercaGiocoUtenteControl"
 					method="post">
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="Search"
-							name="searchQuery">
+							name="search">
 						<div class="input-group-append">
 							<button class="btn btn-outline-secondary" type="submit">
 								<i class="fa fa-search"></i>

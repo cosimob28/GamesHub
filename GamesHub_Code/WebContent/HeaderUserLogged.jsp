@@ -36,27 +36,27 @@
 						<li class="dropdown-submenu">
 						<a class="test dropdown-item dropdown-toggle" tabindex="-1" id="genereDropdown" href="#">Genere</a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="ResultList.jsp?genre=RPG">RPG</a></li>
-								<li><a class="dropdown-item" href="ResultList.jsp?genre=Picchiaduro">Picchiaduro</a></li>
-								<li><a class="dropdown-item" href="ResultList.jsp?genre=Avventura">Avventura</a></li>
-								<li><a class="dropdown-item" href="ResultList.jsp?genre=Sport">Sport</a></li>
-								<li><a class="dropdown-item" href="ResultList.jsp?genre=Simulazione">Simulazione</a></li>
-								<li><a class="dropdown-item" href="ResultList.jsp?genre=Strategia">Strategia</a></li>
-								<li><a class="dropdown-item" href="ResultList.jsp?genre=Azione">Azione</a></li>
+								<li><a class="dropdown-item" href="CatalogControl?genere=RPG">RPG</a></li>
+								<li><a class="dropdown-item" href="CatalogControl?genere=Picchiaduro">Picchiaduro</a></li>
+								<li><a class="dropdown-item" href="CatalogControl?genere=Avventura">Avventura</a></li>
+								<li><a class="dropdown-item" href="CatalogControl?genere=Sport">Sport</a></li>
+								<li><a class="dropdown-item" href="CatalogControl?genere=Simulazione">Simulazione</a></li>
+								<li><a class="dropdown-item" href="CatalogControl?genere=Strategia">Strategia</a></li>
+								<li><a class="dropdown-item" href="CatalogControl?genere=Azione">Azione</a></li>
 							</ul>
 						 </li>
 						<li class="dropdown-submenu">
 						<a class="test dropdown-item dropdown-toggle" tabindex="-1" id="piattaformaDropdown" href="#">Piattaforma</a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="ResultList.jsp?platform=PC">PC <span
+								<li><a class="dropdown-item" href="CatalogControl?platform=PC">PC <span
 										class="fas fa-laptop"></span></a></li>
-								<li><a class="dropdown-item" href="ResultList.jsp?platform=XboxOne">XBOX <span
+								<li><a class="dropdown-item" href="CatalogControl?platform=XboxOne">XBOX <span
 										class="fab fa-xbox"></span></a></li>
-								<li><a class="dropdown-item" href="ResultList.jsp?platform=PS3">PS3 <span
+								<li><a class="dropdown-item" href="CatalogControl?platform=PS3">PS3 <span
 										class="fab fa-playstation"></span></a></li>
-								<li><a class="dropdown-item" href="ResultList.jsp?platform=PS4">PS4 <span
+								<li><a class="dropdown-item" href="CatalogControl?platform=PS4">PS4 <span
 										class="fab fa-playstation"></span></a></li>
-								<li><a class="dropdown-item" href="ResultList.jsp?platform=Nintendo switch">Switch <span
+								<li><a class="dropdown-item" href="CatalogControl?platform=Nintendo switch">Switch <span
 										class="fab fa-nintendo-switch"></span></a></li>
 
 							</ul></li>
@@ -66,9 +66,9 @@
 				<li class="nav-item"><a class="nav-link" href="ButtonContattaciControl">Contattaci</a>
 				</li>
 			</ul>
-			<form class="navbar-form navbar-left" action="ResultList.jsp" method="post">
+			<form class="navbar-form navbar-left" action="CercaGiocoUtenteControl" method="post">
 				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Search" name="searchQuery">
+					<input type="text" class="form-control" placeholder="Search" name="search">
 					<div class="input-group-append">
 						<button class="btn btn-outline-secondary" type="submit">
 							<i class="fa fa-search"></i>
