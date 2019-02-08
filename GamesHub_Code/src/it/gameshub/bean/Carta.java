@@ -4,16 +4,16 @@ import java.sql.Date;
 
 public class Carta {
 
-	private String numeroCarta, paese, utente;
-	private int cvv;
+	private String numeroCarta, utente;
+	private String cvv;
 	private String scadenza;
 	private long saldo;
 
-	public Carta(String numeroCarta, int cvv, String scadenza, String paese,long saldo) {
+	public Carta(String numeroCarta, String cvv, String scadenza,long saldo,String utente) {
 		this.numeroCarta = numeroCarta;
 		this.cvv = cvv;
 		this.scadenza = scadenza;
-		this.paese = paese;
+		this.utente = utente;
 		this.saldo = saldo;
 	}
 	
@@ -37,19 +37,13 @@ public class Carta {
 		this.numeroCarta = numeroCarta;
 	}
 
-	public String getPaese() {
-		return paese;
-	}
+	
 
-	public void setPaese(String paese) {
-		this.paese = paese;
-	}
-
-	public int getCvv() {
+	public String getCvv() {
 		return cvv;
 	}
 
-	public void setCvv(int cvv) {
+	public void setCvv(String cvv) {
 		this.cvv = cvv;
 	}
 

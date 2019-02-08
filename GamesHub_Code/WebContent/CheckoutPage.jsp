@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="java.util.*,it.gameshub.bean.Gioco,it.gameshub.model.GiocoModel,it.gameshub.bean.Carrello,it.gameshub.bean.Utente,it.gameshub.bean.Immagine,it.gameshub.bean.ItemOrder"%>
+	pageEncoding="UTF-8" import="java.util.*,it.gameshub.bean.Gioco,it.gameshub.model.GiocoModel,it.gameshub.bean.Carrello,it.gameshub.bean.Utente,it.gameshub.bean.Immagine,it.gameshub.bean.ItemOrder,it.gameshub.model.CartaModel,it.gameshub.bean.Carta"%>
 
 <% 
 	Collection<?> products = (Collection<?>) request.getSession().getAttribute("products");
@@ -32,9 +32,7 @@
 		        	
 		      %>
 	<jsp:include page="HeaderUserLogged.jsp"/>
-	<%} else { %>
-	<jsp:include page="Header.jsp"/>
-	<%} %>
+	
 	<% if(cart != null) { 
  			
 			   
@@ -45,11 +43,34 @@
 		
 
 
-
+<div id="usernameToSend" style="display: none;"><%=user.getUsername() %></div>
 <div class="container wrapper">    
             <div class="row cart-body">
-                <div class="form-horizontal">
+                <form class="form-horizontal" role="form" id="payment-form" method="POST" action="ConcludiAcquistoControl">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-push-6 col-sm-push-6">
+                    
+                    
+                    
+                    <div class="panel panel-info">
+	                	<div class="panel-heading"> Modalità di spedizione</div>
+	                		<div class="panel-body">
+	                			<div class="container">
+	                        
+	                				<div class="form-group">
+                                		<div class="col-md-12">
+                                                  
+                                    <input type="radio" name="spedizione" value="9" onclick="checkRadioButton();"> Rapida (9 € - 3 gg.)<br>
+									<input type="radio" name="spedizione" value="3" checked onclick="checkRadioButton();"> Standard (3 € - 7 gg.)<br>
+                                	
+                                </div>
+	                                	
+	                            	</div>
+								</div>
+	                         
+	                        </div>
+	                    </div>
+                    
+                    
                     <!--REVIEW ORDER-->
                     <div class="panel panel-info">
                         <div class="panel-heading">
@@ -97,22 +118,41 @@
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     <strong>Subtotal</strong>
-                                    <div class="pull-right"><span><%= cart.getTotale() %> €</span></div>
+                                    <div class="pull-right"><span id="cartPrice"><%= cart.getTotale() %></span><span> €</span></div>
                                 </div>
                                 <div class="col-xs-12">
                                     <small>Shipping</small>
-                                    <div class="pull-right"><span>COSTO SPEDIZIONE</span></div>
+                                    <div class="pull-right" ><span id="shippingCost"> </span> <span>€</span></div>
                                 </div>
                             </div>
                             <div class="form-group"><hr /></div>
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     <strong>Order Total</strong>
-                                    <div class="pull-right"><span>TOTALE CARRELLO + SPEDIZIONE</span></div>
+                                    <div class="pull-right"><span id="totalPrice"></span> <span> €</span></div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="panel panel-info">
+	                	<div class="panel-heading"> Conferma Acquisto</div>
+	                		<div class="panel-body">
+	                			<div class="container">
+	                        
+	                				<div class="form-group">
+                                		<div class="col-md-12">
+                                            <button type="submit" id="confermaAcquisto" class=" btn btn-success">Conferma</button>      
+                                    	
+                                	
+                                </div>
+	                                	
+	                            	</div>
+								</div>
+	                         
+	                        </div>
+	                    </div>
+                    
                     <!--REVIEW ORDER END-->
                 </div>
                 <%}%>
@@ -123,24 +163,33 @@
                         <div class="panel-body">
                         
                         <div class="form-group">
-                                <div class="col-md-12">                        
+                                <div class="col-md-12">
+                                    <%if (user.getIndirizzoSpedizione()!=null){ %>                    
                                     <input type="checkbox" id="addressCheck" name="group1" value="currentAddress" onclick="showAddAddress()"> Usa il tuo indirizzo corrente<br>
+                                	<%} %>
                                 </div>
                             </div>
                             
     <script type="text/javascript">
     function showAddAddress() {
         if (document.getElementById('addressCheck').checked) {
-            document.getElementById('addAddress').style.display='none';
+            document.getElementById('newAddress').style.display='none';
+            document.getElementById('existingAddress').style.display='block';
         } else {
-        	document.getElementById('addAddress').style.display='block';
+        	document.getElementById('existingAddress').style.display='none';
+        	document.getElementById('newAddress').style.display='block';
         }
     }
     </script>
                             
                             
-                            
-                        <div id="addAddress">
+                        <div id="existingAddress" style="display: none;">
+                        <%if (user.getIndirizzoSpedizione()!=null){ %>                    
+                        	<h4>Indirizzo: <%=user.getIndirizzoSpedizione() %></h4>
+                        <%} %>
+                        </div>    
+                        
+                        <div id="newAddress">
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <h4>Shipping Address</h4>
@@ -215,9 +264,9 @@
                         <div class="panel-body">
                         <div class="container">
                         
-                        <div class="form-group">
+                        <div class="form-group" id="checkboxWrapper">
                                 <div class="col-md-12">                        
-                                    <input type="checkbox" id="cardCheck" name="group2" value="currentCard" onclick="showAddCart()"> Usa la tua carta salvata<br>
+                                    <input type="checkbox" id="cardCheck" name="group2" value="currentCard" onclick="showAddCard()"> Usa la tua carta salvata<br>
                                 </div>
                             </div>
                         
@@ -227,16 +276,54 @@
         <div class="col-xs-12 col-md-4">
         
         
+        
+        	<div id="existingCard" style="display: none;">
+        		        		<h4>ESISTENTE</h4>
+        	
+        	</div>    
             <!-- CREDIT CARD FORM STARTS HERE -->
-            <div class="panel panel-default credit-card-box" id="toHide">
+            <div class="panel panel-default credit-card-box" id="newCard" >
             
-            
+           
             <script type="text/javascript">
-    function showAddCart() {
+    function showAddCard() {
         if (document.getElementById('cardCheck').checked) {
-            document.getElementById('toHide').style.display='none';
+        	
+            document.getElementById('newCard').style.display='none'; 
+            document.getElementById('existingCard').style.display='block';
+            
+            var searchField = $("#usernameToSend").html();
+			var xhttp = new XMLHttpRequest();
+		    xhttp.onreadystatechange = function() {
+				if (xhttp.readyState == 4) {
+						var result = xhttp.responseText;
+						/* alert(result); */
+						var r = eval('('+ result + ')');
+					    if (result != "null") {
+					    	document.getElementById('existingCard').innerHTML = "Numero Carta : "+r.numero;
+						}
+					    else{
+					    	document.getElementById('checkboxWrapper').style.display='none';
+					    	document.getElementById('existingCard').innerHTML = "Non hai nessuna carta, aggiungine una. ";
+					    	document.getElementById('newCard').style.display='block'; 
+					    }
+				}
+			};
+
+			xhttp.open("POST","OttieniCartaDiCreditoControl", true);
+			xhttp.setRequestHeader("content-type","application/x-www-form-urlencoded");
+			xhttp.setRequestHeader("connection", "close");
+			xhttp.send("username="+ searchField);
+            
+            
+            
+            
         } else {
-        	document.getElementById('toHide').style.display='block';
+        	
+        	document.getElementById('existingCard').style.display='none';
+        	 document.getElementById('newCard').style.display='block'; 
+        	
+        	
         }
     }
     </script>
@@ -253,7 +340,7 @@
                     
                     
                     
-                    <form role="form" id="payment-form" method="POST" action="javascript:void(0);">
+                    <div >
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
@@ -302,7 +389,7 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
-                                <button class="subscribe btn btn-success btn-lg btn-block" type="button">Start Subscription</button>
+                                <button class="subscribe btn btn-success btn-lg btn-block" type="button">Verifica</button>
                             </div>
                         </div>
                         <div class="row" style="display:none;">
@@ -310,7 +397,7 @@
                                 <p class="payment-errors"></p>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>            
             <!-- CREDIT CARD FORM ENDS HERE -->
@@ -327,20 +414,18 @@
                 </div>
                 
                 
-            </div>
+            </form>
             <div class="row cart-footer">
         
             </div>
     </div>
   </div>  
-    
+    <%}%>
     
     <script type="text/javascript">
 	var $form = $('#payment-form');
 	
-	
-
-	
+	checkRadioButton();
 	/* $form.find('.subscribe').on('click', payWithStripe); */
 	
 	$form.find('.subscribe').on('click', checkCreditCard);
@@ -359,24 +444,40 @@
 	    var expiry = $form.find('[name=cardExpiry]').val();
 	    var ccNumber = $form.find('[name=cardNumber]').val().replace(/\s/g,'');
 	    var cvc = $form.find('[name=cardCVC]').val();
-	    
+	    var username = $("#usernameToSend").html();
 	  
 	    
 	    var http = new XMLHttpRequest();
-	    var url = 'CheckCreditCardControl';
-	    var params = 'cardNumber='+ccNumber+'&cardExpiry='+expiry+'&CVC='+cvc+'';
+	    var url = 'AggiungiCartaDiCreditoControl';
+	    var params = 'username='+username+'&cardNumber='+ccNumber+'&cardExpiry='+expiry+'&CVC='+cvc+'';
 	    http.open('POST', url, true);
 
 	    //Send the proper header information along with the request
 	    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
 	    http.onreadystatechange = function() {//Call a function when the state changes.
-	        if(http.readyState == 4 && http.status == 200) {
-	            alert(http.responseText);
+	        if(http.readyState == 4) {
+	        	var result = http.responseText;
+				var r = eval('('+ result + ')');
+				 alert(r.risposta); 
+				if(r.risposta==="esistente"){
+					$form.find('.payment-errors').text('Carta già presente');
+                    $form.find('.payment-errors').closest('.row').show(); 
+                    $form.find('.subscribe').html('Verifica').prop('disabled', false);
+				}
+				else if (r.risposta==="OK") {
+					
+					$form.find('.subscribe').html('Carta Aggiunta').prop('disabled', true);
+					$form.find('.payment-errors').text('');
+                    $form.find('.payment-errors').closest('.row').show();
+				}
+	            showAddCard(); 
 	        }
 	    }
 	    http.send(params);
 	 }
+	 
+	
 	 
 	/* If you're using Stripe for payments */
 	function payWithStripe(e) {
@@ -500,6 +601,41 @@
 	    }
 	}, 250);
 	
+	
+	function checkRadioButton() {
+		var radios = document.getElementsByName('spedizione');
+	
+		for (var i = 0, length = radios.length; i < length; i++)
+		{
+		 if (radios[i].checked)
+		 {
+		  // do whatever you want with the checked radio
+		  
+		 	document.getElementById('shippingCost').innerHTML = radios[i].value;	
+		  	totalPrice(radios[i].value);
+		  // only one radio can be logically checked, don't check the rest
+		  break;
+		 }
+		}
+	}	
+	
+	function totalPrice(shippingCost) {
+		var price = document.getElementById('cartPrice').innerHTML;
+		
+		totalPriceValue = Number(shippingCost) + Number(price);
+		
+		document.getElementById('totalPrice').innerHTML = totalPriceValue.toFixed(2);
+	
+	}	
+	
+	
+	
+	/* $("#confermaAcquisto").click(function(event){
+    	event.preventDefault(); // evita che venga aperto il link dell'href
+   
+    		 
+    	
+    }); */
 
 </script>
     
