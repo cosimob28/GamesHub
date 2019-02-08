@@ -24,15 +24,15 @@ public class OrdineModel {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		String insertSQL = "INSERT INTO " + OrdineModel.TABLE_NAME + " (Importo,DataOrdine,Utente) VALUES (?, ?, ?)";
+		String insertSQL = "INSERT INTO " + OrdineModel.TABLE_NAME + " (Importo,DataOrdine,Stato,Utente) VALUES (?, ?, ?, ?)";
 
 		try {
 			connection = Manager.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setFloat(1, ordine.getImporto());
 			preparedStatement.setDate(2, ordine.getDataOrdine());
-			preparedStatement.setString(3, ordine.getUtente());
-
+			preparedStatement.setString(3, ordine.getStato());
+			preparedStatement.setString(4, ordine.getUtente());
 			preparedStatement.executeUpdate();
 
 		} finally {
