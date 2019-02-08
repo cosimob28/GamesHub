@@ -103,13 +103,13 @@
 							<td>Indirizzo:</td>
 							<td><input type="text" class="form-control"
 								name="inputIndirizzo"
-								placeholder="<%=user.getIndirizzoSpedizione()%>"></td>
+								value="<%=user.getIndirizzoSpedizione()%>"></td>
 						</tr>
 
 						<tr>
 							<td>Telefono</td>
 							<td><input type="text" class="form-control" id="phone"
-								name="inputTelefono" placeholder="<%=user.getTelefono()%>">
+								name="inputTelefono" value="<%=user.getTelefono()%>">
 							</td>
 						</tr>
 						<tr>
@@ -137,8 +137,8 @@
 	</form>
 	<jsp:include page="Footer.jsp" />
 	<script>
-		var numberCorrect = false;
-		var passwordCorrect = false;
+		var numberCorrect = true;
+		var passwordCorrect = true;
 
 		function passwordValidator(password) {
 			var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{6,}$/;
