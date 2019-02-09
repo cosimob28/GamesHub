@@ -82,6 +82,13 @@ color: red !important;}
 
 </head>
 <body>
+
+<script type="text/javascript">
+	window.onload = function() {
+	  var input = document.getElementById("address").focus();
+	}
+</script>
+
 <%   Utente user = (Utente)request.getSession().getAttribute("user");
 		         if(user!=null){
 		        	
