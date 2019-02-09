@@ -26,8 +26,10 @@ create table Ordine(
 IdOrdine integer Primary key auto_increment,
 Importo float not null,
 DataOrdine date not null,
-Stato varchar(20),
-Utente varchar(30),
+Stato varchar(20) not null,
+Indirizzo varchar(60) not null,
+TrackingId varchar(100),
+Utente varchar(30) not null,
 foreign key (Utente)  references Utente(Username)
 );
 
@@ -50,13 +52,12 @@ Quantità integer not null
 create table Composizione(
 Costo float not null,
 Quantità integer,
-Ordine integer  not null,
+Ordine integer not null,
 Gioco integer not null,
 NomeGioco varchar(200) not null,
 Immagine varchar(100),
-Foreign key(Ordine) references Ordine(IdOrdine),
+foreign key (Ordine) references Ordine(IdOrdine),
 foreign key (Gioco)  references Gioco(SerialNumber)
-
 );
 
 
