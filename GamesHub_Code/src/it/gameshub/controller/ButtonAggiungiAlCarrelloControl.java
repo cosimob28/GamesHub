@@ -36,6 +36,10 @@ public class ButtonAggiungiAlCarrelloControl extends HttpServlet {
 
 		// Prelevo il carrello dalla sessione
 		Carrello cart = (Carrello) request.getSession().getAttribute("cart");
+		if (cart == null) {
+			cart = new Carrello();
+			request.getSession().setAttribute("cart", cart);
+		}
 		// Si prende il parametro id dalla richiesta
 		String id_gioco = (String) request.getParameter("id");
 		if (!id_gioco.equals("") && id_gioco != null) {

@@ -17,9 +17,10 @@ import it.gameshub.model.ImmagineModel;
 public class ButtonVisualizzaPaginaProdottoControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static GiocoModel giocoModel;
+	static ImmagineModel immagineModel;
 
 	static {
-
+		immagineModel = new ImmagineModel();
 		giocoModel = new GiocoModel();
 	}
 
@@ -33,6 +34,7 @@ public class ButtonVisualizzaPaginaProdottoControl extends HttpServlet {
 		request.setAttribute("id", myString);
 		try {
 			request.getSession().setAttribute("products", giocoModel.doRetrieveAll());
+			request.getSession().setAttribute("ImageList", immagineModel.doRetrieveAll());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -503,15 +503,14 @@ a#myBtn .arrow:before {
 
 											});
 
-							$(".addCart").click(
-									function(e) {
-										var id = $(this).attr('id');
-										var xhttp = new XMLHttpRequest();
-										$.get("ButtonAggiungiAlCarrelloControl?id=" + id,
-												function() {
-												});
-
-									});
+                 	$(".addCart").click(function(e){
+            			var id= $(this).attr('id');
+            			var xhttp = new XMLHttpRequest();
+            			$.get("ButtonAggiungiAlCarrelloControl?id="+id, function() {
+            				});
+            			
+              			
+            		});
 
 						});
 	</script>

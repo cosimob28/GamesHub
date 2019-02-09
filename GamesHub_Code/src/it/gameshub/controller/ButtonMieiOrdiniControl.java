@@ -40,30 +40,32 @@ public class ButtonMieiOrdiniControl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Utente user = (Utente) request.getSession().getAttribute("user");
-		Collection<Ordine> ordiniUtente;
-		try {
-			// Prelevo dal DB tutti gli ordini effettuati dall'utente
-			ordiniUtente = ordineModel.getListaOrdiniUtente(user);
-			request.getSession().setAttribute("ordiniUtente", ordiniUtente);
+		if (user != null) {
+			Collection<Ordine> ordiniUtente;
+			try {
+				// Prelevo dal DB tutti gli ordini effettuati dall'utente
+				ordiniUtente = ordineModel.getListaOrdiniUtente(user);
+				request.getSession().setAttribute("ordiniUtente", ordiniUtente);
 
-			ArrayList<ItemComp> composizioneOrdini = new ArrayList<ItemComp>();
+				ArrayList<ItemComp> composizioneOrdini = new ArrayList<ItemComp>();
 
-			if (ordiniUtente != null && ordiniUtente.size() != 0) {
+				if (ordiniUtente != null && ordiniUtente.size() != 0) {
 
-				Iterator<?> it = ordiniUtente.iterator();
-				while (it.hasNext()) {
-					Ordine x = (Ordine) it.next();
-					ItemComp y = new ItemComp();
-					Collection<Composizione> compOrdine = composizioneModel.searchComposizione(x.getIdOrdine());
-					y.setCompOrdine(compOrdine);
-					y.setOrdine(x);
-					composizioneOrdini.add(y);
+					Iterator<?> it = ordiniUtente.iterator();
+					while (it.hasNext()) {
+						Ordine x = (Ordine) it.next();
+						ItemComp y = new ItemComp();
+						Collection<Composizione> compOrdine = composizioneModel.searchComposizione(x.getIdOrdine());
+						y.setCompOrdine(compOrdine);
+						y.setOrdine(x);
+						composizioneOrdini.add(y);
+					}
 				}
-			}
-			request.getSession().setAttribute("composizioneOrdini", composizioneOrdini);
-		} catch (SQLException e) {
+				request.getSession().setAttribute("composizioneOrdini", composizioneOrdini);
+			} catch (SQLException e) {
 
-			e.printStackTrace();
+				e.printStackTrace();
+			}
 		}
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/MyOrdersPage.jsp");
 		dispatcher.forward(request, response);

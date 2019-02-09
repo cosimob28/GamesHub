@@ -3,7 +3,7 @@
 
 <% 
 	Collection<?> products = (Collection<?>) request.getSession().getAttribute("products");
-	Gioco product = (Gioco) request.getAttribute("product");
+	//Gioco product = (Gioco) request.getAttribute("product");
 	
 	Carrello cart = (Carrello) request.getSession().getAttribute("cart");
 %>

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.gameshub.bean.Carrello;
+
 @WebServlet("/ButtonCarrelloControl")
 public class ButtonCarrelloControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -19,6 +21,11 @@ public class ButtonCarrelloControl extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		Carrello cart = (Carrello) request.getSession().getAttribute("cart");
+		if (cart == null) {
+			cart = new Carrello();
+			request.getSession().setAttribute("cart", cart);
+		}
 
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/CartView.jsp");
 		dispatcher.forward(request, response);
