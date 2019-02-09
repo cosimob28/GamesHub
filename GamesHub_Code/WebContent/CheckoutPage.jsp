@@ -13,18 +13,73 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Checkout</title>
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link href="css/site.css" rel="stylesheet" type="text/css">
-	<link href="css/homepage.css" rel="stylesheet" type="text/css">
-	<link href="css/footer.css" rel="stylesheet" type="text/css">
+	
 	<link rel="stylesheet" href="css/PaymentPage.css">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link href="css/footer.css" rel="stylesheet" type="text/css">
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.payment/1.2.3/jquery.payment.min.js"></script>
 	<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+
+<style>	
+
+body {
+    
+    font-size: 16px !important;
+    
+}
+.error{
+border-color: red !important;
+color: red !important;}
+
+
+#checkoutPage{
+	margin-top: 50px !important;
+}
+
+.navbar-collapse.collapse {
+    display: flex !important;
+    }
+.navbar-right {
+    margin-left: 30px;
+}
+	.navbar-brand {
+  display: inline-block !important;
+  padding-top: 0.3125rem !important;
+  padding-bottom: 0.3125rem !important;
+  margin-right: 1rem !important;
+  font-size: 1.25rem !important;
+  line-height: inherit !important;
+  white-space: nowrap !important;
+}
+    .nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+     background-color: transparent; 
+    border-color: #337ab7;
+}
+
+.btn-outline-secondary {
+    color: #6c757d;
+    background-color: transparent;
+    background-image: none;
+    border-color: #6c757d;
+    border-radius: 5px;
+}
+</style>
+
+
+
 </head>
 <body>
 <%   Utente user = (Utente)request.getSession().getAttribute("user");
@@ -44,7 +99,7 @@
 
 
 <div id="usernameToSend" style="display: none;"><%=user.getUsername() %></div>
-<div class="container wrapper">    
+<div class="container wrapper" id = "checkoutPage">    
             <div class="row cart-body">
                 <form class="form-horizontal" role="form" id="payment-form" method="POST" action="ConcludiAcquistoControl">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-push-6 col-sm-push-6">
@@ -196,14 +251,14 @@
                                 </div>
                             </div>
                             
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <div class="col-md-12"><strong>Country:</strong></div>
                                 <div class="col-md-12">
                                     <input type="text" class="form-control" name="country" value="" />
                                 </div>
-                            </div>
+                            </div> -->
                             
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <div class="col-md-6 col-xs-12">
                                     <strong>First Name:</strong>
                                     <input type="text" name="first_name" class="form-control" value="" />
@@ -213,7 +268,7 @@
                                     <strong>Last Name:</strong>
                                     <input type="text" name="last_name" class="form-control" value="" />
                                 </div>
-                            </div>
+                            </div> -->
                             
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Address:</strong></div>
@@ -229,30 +284,31 @@
                                 </div>
                             </div>
                             
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <div class="col-md-12"><strong>State:</strong></div>
                                 <div class="col-md-12">
                                     <input type="text" name="state" class="form-control" value="" />
                                 </div>
-                            </div>
+                            </div> -->
                             
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <div class="col-md-12"><strong>Zip / Postal Code:</strong></div>
                                 <div class="col-md-12">
                                     <input type="text" name="zip_code" class="form-control" value="" />
                                 </div>
-                            </div>
+                            </div> -->
                             
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <div class="col-md-12"><strong>Phone Number:</strong></div>
                                 <div class="col-md-12"><input type="text" name="phone_number" class="form-control" value="" /></div>
-                            </div>
+                            </div> -->
                             
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <div class="col-md-12"><strong>Email Address:</strong></div>
                                 <div class="col-md-12"><input type="text" name="email_address" class="form-control" value="" /></div>
-                            </div>
-                         </div>   
+                            </div> -->
+                            
+                        </div>   
                             
                             
                         </div>
@@ -421,10 +477,13 @@
     </div>
   </div>  
     <%}%>
+    <jsp:include page="Footer.jsp" />
     
     <script type="text/javascript">
 	var $form = $('#payment-form');
-	
+	var address = $form.find('[name=address]').val();
+    var city = $form.find('[name=city]').val();
+    
 	checkRadioButton();
 	/* $form.find('.subscribe').on('click', payWithStripe); */
 	
@@ -586,6 +645,8 @@
 	paymentFormReady = function() {
 	    if ($form.find('[name=cardNumber]').hasClass("success") &&
 	        $form.find('[name=cardExpiry]').hasClass("success") &&
+	        $form.find('[name=address]').val().length > 1 &&
+	        $form.find('[name=city]').val().length > 1 &&
 	        $form.find('[name=cardCVC]').val().length > 1) {
 	        return true;
 	    } else {

@@ -60,7 +60,7 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<link href="css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
 	<link href="css/fontawesome-all.css" rel="stylesheet" type="text/css">
 	<link href="css/site.css" rel="stylesheet" type="text/css">
 	<link href="css/homepage.css" rel="stylesheet" type="text/css">		
@@ -113,7 +113,7 @@
 		
 /*****************globals*************/
 body {
-  font-family: 'open sans';
+  /* font-family: 'open sans'; */
   overflow-x: hidden; }
 
 img {

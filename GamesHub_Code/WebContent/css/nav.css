@@ -1,29 +1,29 @@
  /* Remove the navbar's default rounded borders and increase the bottom margin */ 
     .navbar {
       /* margin-bottom: 10px; */
-      border-radius: 0;
+      border-radius: 0 !important;
     }
     
     .dropdown-submenu {
-  position: relative;
+  position: relative !important;
 }
 
 .dropdown-submenu a::after {
-  transform: rotate(-90deg);
-  position: absolute;
-  right: 6px;
-  top: .8em;
+  transform: rotate(-90deg) !important;
+  position: absolute !important;
+  right: 6px !important;
+  top: .8em !important;
 }
 
 .dropdown-submenu .dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-left: .1rem;
-  margin-right: .1rem;
+  top: 0 !important;
+  left: 100% !important;
+  margin-left: .1rem !important;
+  margin-right: .1rem !important;
 }
 .fa.dropdown-item, .fas.dropdown-item, .far.dropdown-item, .fal.dropdown-item, .fab.dropdown-item{
-    float: right;
+    float: right !important;
 }
 .dropdown-menu {
-    width: 100%;
+    width: 100% !important;
 } 
