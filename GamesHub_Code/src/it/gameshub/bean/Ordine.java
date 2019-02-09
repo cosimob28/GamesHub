@@ -9,7 +9,7 @@ public class Ordine {
 	private int idOrdine;
 	private float importo;
 	private Date dataOrdine;
-	private String utente, stato, trackingId;
+	private String utente, stato, trackingId, indirizzo;
 
 	public Ordine() {
 		/* setto la data odierna nel formato sql */
@@ -21,6 +21,14 @@ public class Ordine {
 		stato = "confermato"; // Lo stato iniziale dell'ordine è 'confermato'.
 		trackingId = "";
 
+	}
+
+	public String getIndirizzo() {
+		return indirizzo;
+	}
+
+	public void setIndirizzo(String indirizzo) {
+		this.indirizzo = indirizzo;
 	}
 
 	public String getTrackingId() {

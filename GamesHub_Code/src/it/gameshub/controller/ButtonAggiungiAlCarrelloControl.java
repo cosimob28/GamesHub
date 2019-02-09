@@ -37,9 +37,10 @@ public class ButtonAggiungiAlCarrelloControl extends HttpServlet {
 		// Prelevo il carrello dalla sessione
 		Carrello cart = (Carrello) request.getSession().getAttribute("cart");
 		// Si prende il parametro id dalla richiesta
-		int id = Integer.parseInt(request.getParameter("id"));
+		String id_gioco=(String)request.getParameter("id");
+		int id = Integer.parseInt(id_gioco);
 		try {
-			// Preleva il gioco selezionato
+			// aggiunge al carrello il gioco selezionato
 			cart.addProduct(new ItemOrder(model.getGioco(id)));
 		} catch (SQLException e) {
 			e.printStackTrace();

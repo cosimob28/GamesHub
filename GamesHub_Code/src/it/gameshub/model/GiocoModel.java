@@ -95,7 +95,6 @@ public class GiocoModel {
 				bean.setName(rs.getString("Nome"));
 				bean.setPrice(rs.getFloat("Prezzo"));
 				bean.setPegi(rs.getInt("Pegi"));
-
 				bean.setGenere(rs.getString("Genere"));
 				bean.setDescription(rs.getString("Descrizione"));
 				bean.setAnno(rs.getInt("Anno"));

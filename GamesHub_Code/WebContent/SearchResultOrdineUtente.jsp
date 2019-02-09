@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-    Collection<ItemComp> composizioneOrdini = (Collection<ItemComp>) request.getSession().getAttribute("composizioneOrdini");
+    Collection<ItemComp> searchResult = (Collection<ItemComp>) request.getSession().getAttribute("searchResult");
     Collection<?> products = (Collection<?>) request.getSession().getAttribute("products");
     Utente user = (Utente)request.getSession().getAttribute("user");
     ArrayList<ItemOrder> arrayComProduct = (ArrayList<ItemOrder>) request.getSession().getAttribute("arrayComProduct");
@@ -42,43 +42,10 @@
     
     <%String titolo = "I miei ordini"; %>
     
-     <!-- Codice search -->
-   <% 
-   String search= request.getParameter("search");
-   if(search!=null && composizioneOrdini!= null){
-	   
-   titolo ="Risultati della ricerca";
    
-  
-
-   Collection<ItemComp> searchList =  new LinkedList<ItemComp>();
-   Collection<Composizione> listCompos =null;
-   Iterator<?> c = composizioneOrdini.iterator();
-   boolean flag;
-	while (c.hasNext()) 
-	{
-		flag= false;
-		ItemComp b = (ItemComp) c.next();
-		listCompos = b.getCompOrdine();
-		Iterator<?> c1 = listCompos.iterator();
-		Composizione comp= new Composizione();
-		  while(c1.hasNext() && flag==false)
-		  {
-			  Composizione cp = (Composizione) c1.next();
-			  if((cp.getNomeGioco().indexOf(search))!=-1){
-				  searchList.add(b);
-				   flag=true;
-			  }
-		  }
-	}
-	
-	composizioneOrdini= searchList;
-	
-   
-	} %> 
  
     
- <%if(composizioneOrdini!= null && composizioneOrdini.size()!=0){ %> 
+ <%if(searchResult!= null && searchResult.size()!=0){ %> 
  
 	 <div class="intestazione">
 		<h1 class="display-5"><%=titolo %></h1>
@@ -91,7 +58,7 @@
 		</div>
 	
 		
-		<% Iterator<?> it = composizioneOrdini.iterator();
+		<% Iterator<?> it = searchResult.iterator();
 		  Collection<Composizione> listComp =null;
 		  ItemComp z=null;
 		  while (it.hasNext()) {
@@ -114,11 +81,9 @@
     <tr>
       <th scope="col">Ordine effettuato il:</th>
       <th scope="col">Totale</th>
-      <th scope="col">Indirizzo:</th>
+      <th scope="col">Invia a:</th>
       <th scope="col">Ordine #</th>
-       <th scope="col">Stato</th>
-          <th scope="col">Traking ID</th>
-            </tr>
+    </tr>
   </thead>
   <tbody>
   
@@ -128,12 +93,6 @@
       <td><%=ordine.getImporto()%> €</td>
       <td><%=user.getIndirizzoSpedizione() %></td>
       <td><%=ordine.getIdOrdine()%></td>
-       <td><%=ordine.getStato()%></td>
-       <%if (ordine.getTrackingId()!=null){%>
-        <td><%=ordine.getTrackingId()%></td>
-        <%}else{ %>
-         <td>Non ancora disponibile</td>
-           <%}%>
     </tr>
    
     
@@ -189,8 +148,7 @@
       <td></td>
       <td></td>
       <td></td>
-       <td><button type="button" class="btn btn-danger "  onclick="window.open('order?action=visualizzaFattura&id=<%=ordine.getIdOrdine()%>');">
-                             <span class="fa fa-trash-alt "></span> Annulla ordine </button></td>
+       <td></td>
       <td style=" display: block;"><button type="button" class="btn btn-primary "  onclick="window.open('order?action=visualizzaFattura&id=<%=ordine.getIdOrdine()%>');">
                              <span class="fa fa-file-invoice-dollar"></span> Visualizza fattura </button></td>
       
@@ -202,15 +160,18 @@
 </div>
 <% } }  %>
 
-<% if(composizioneOrdini==null || composizioneOrdini.size()==0){ %>
-          
-            <p class="lead">Non hai effettuato nessun ordine.</p>
-            <hr class="my-4">
-            <p>Inizia a fare shopping e cerca il pulsante "Aggiungi al carrello".</p>
-             
-            <button type="button" class="btn btn-default" id="home" onclick="location.href='ButtonHomeControl';">
-                             <span class="fa fa-cart-plus"></span> Continue Shopping  </button>
+<% if(searchResult==null || searchResult.size()==0){ %>
+           <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+            <h1 class="display-4"><%=titolo %></h1>
            
+             <p class="lead">Nessun risultato trovato. Esegui un'altra ricerca.</p>
+             <p class="lead">Puoi ricercare il titolo del prodotto.</p>
+              <form class="form-inline my-2 my-lg-0" action="CercaOrdineUtenteControl" method="post" >
+          <input class="form-control mr-sm-2" type="search" placeholder="Ricerca per titolo" aria-label="Search" name="search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+             
              </div>
            </div>
 <%} %>

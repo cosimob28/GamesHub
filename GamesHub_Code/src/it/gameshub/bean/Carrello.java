@@ -73,6 +73,10 @@ public class Carrello {
 		else
 			return false;
 	}
+	
+	public void svuotaCarrello() {
+		products = new ArrayList<ItemOrder>();
+	}
 
 	public float getTotale() {
 		double imponibile = 0;
@@ -82,5 +86,6 @@ public class Carrello {
 		float totale = (float) (imponibile + ((22 * imponibile) / 100));
 		return (float) (Math.ceil(totale * Math.pow(10, 2)) / Math.pow(10, 2));
 	}
+	
 
 }

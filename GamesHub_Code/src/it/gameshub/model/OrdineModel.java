@@ -24,7 +24,8 @@ public class OrdineModel {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		String insertSQL = "INSERT INTO " + OrdineModel.TABLE_NAME + " (Importo,DataOrdine,Stato,Utente) VALUES (?, ?, ?, ?)";
+		String insertSQL = "INSERT INTO " + OrdineModel.TABLE_NAME
+				+ " (Importo,DataOrdine,Stato,Indirizzo,Utente) VALUES (?, ?, ?, ?, ?)";
 
 		try {
 			connection = Manager.getConnection();
@@ -32,7 +33,8 @@ public class OrdineModel {
 			preparedStatement.setFloat(1, ordine.getImporto());
 			preparedStatement.setDate(2, ordine.getDataOrdine());
 			preparedStatement.setString(3, ordine.getStato());
-			preparedStatement.setString(4, ordine.getUtente());
+			preparedStatement.setString(4, ordine.getIndirizzo());
+			preparedStatement.setString(5, ordine.getUtente());
 			preparedStatement.executeUpdate();
 
 		} finally {
@@ -247,28 +249,36 @@ public class OrdineModel {
 
 	}
 
-	/*
-	 * public int doMaxIdOrder() throws SQLException { Connection connection = null;
-	 * PreparedStatement preparedStatement = null; int maxIdOrder = 0;
-	 * 
-	 * String selectSQL = "SELECT max(IdOrdine) as max FROM " +
-	 * OrdineModel.TABLE_NAME;
-	 * 
-	 * try { connection = Manager.getConnection(); preparedStatement =
-	 * connection.prepareStatement(selectSQL); ResultSet rs =
-	 * preparedStatement.executeQuery();
-	 * 
-	 * if (rs.next()) { maxIdOrder= rs.getInt("max");
-	 * 
-	 * }
-	 * 
-	 * } finally { try { if (preparedStatement != null) preparedStatement.close(); }
-	 * finally { if (connection != null) connection.close(); } }
-	 * 
-	 * return maxIdOrder;
-	 * 
-	 * }
-	 */
+	public int doMaxIdOrder() throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		int maxIdOrder = 0;
+
+		String selectSQL = "SELECT max(IdOrdine) as max FROM " + OrdineModel.TABLE_NAME;
+
+		try {
+			connection = Manager.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			ResultSet rs = preparedStatement.executeQuery();
+
+			if (rs.next()) {
+				maxIdOrder = rs.getInt("max");
+
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+
+		return maxIdOrder;
+
+	}
 
 	/*
 	 * public int getNumOrderByYear(int anno) throws SQLException { Connection

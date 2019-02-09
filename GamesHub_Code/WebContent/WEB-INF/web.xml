@@ -138,7 +138,7 @@
     <servlet-name>CercaGiocoUtenteControl</servlet-name>
     <servlet-class>it.gameshub.controller.CercaGiocoUtenteControl</servlet-class>
   </servlet>
-   <servlet>
+  <servlet>
     <servlet-name>ModificaDatiAreaPersonaleControl</servlet-name>
     <servlet-class>it.gameshub.controller.ModificaDatiAreaPersonaleControl</servlet-class>
   </servlet>
@@ -153,6 +153,10 @@
   <servlet>
     <servlet-name>OttieniCartaDiCreditoControl</servlet-name>
     <servlet-class>it.gameshub.controller.OttieniCartaDiCreditoControl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CercaOrdineUtenteControl</servlet-name>
+    <servlet-class>it.gameshub.controller.CercaOrdineUtenteControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>VisualizzaHomeControl</servlet-name>
