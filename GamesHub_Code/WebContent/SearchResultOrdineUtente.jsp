@@ -83,6 +83,8 @@
       <th scope="col">Totale</th>
       <th scope="col">Invia a:</th>
       <th scope="col">Ordine #</th>
+      <th scope="col">Stato</th>
+      <th scope="col">Traking ID</th>
     </tr>
   </thead>
   <tbody>
@@ -93,6 +95,12 @@
       <td><%=ordine.getImporto()%> €</td>
       <td><%=user.getIndirizzoSpedizione() %></td>
       <td><%=ordine.getIdOrdine()%></td>
+       <td><%=ordine.getStato()%></td>
+       <%if (ordine.getTrackingId()!=null){%>
+        <td><%=ordine.getTrackingId()%></td>
+        <%}else{ %>
+         <td>Non ancora disponibile</td>
+           <%}%>
     </tr>
    
     
@@ -148,9 +156,17 @@
       <td></td>
       <td></td>
       <td></td>
-       <td></td>
-      <td style=" display: block;"><button type="button" class="btn btn-primary "  onclick="window.open('order?action=visualizzaFattura&id=<%=ordine.getIdOrdine()%>');">
+       <%if (!ordine.getStato().equals("confermato")) {%>
+       <td><a  class="btn btn-secondary "  href="" disabled>
+                             <span class="fa fa-trash-alt "></span> Annulla ordine </a></td>
+      <td style=" display: block;"><button type="button" class="btn btn-primary " onclick="window.open('ButtonVisualizzaFatturaControl?id=<%=ordine.getIdOrdine()%>');">
                              <span class="fa fa-file-invoice-dollar"></span> Visualizza fattura </button></td>
+                             <%}else{ %>
+                   <td><a  class="btn btn-danger "  href="ButtonAnnullaOrdineControl?id=<%=ordine.getIdOrdine()%>">
+                             <span class="fa fa-trash-alt "></span> Annulla ordine </a></td>
+      <td style=" display: block;"><button type="button" class="btn btn-secondary "  >
+                             <span class="fa fa-file-invoice-dollar"></span> Visualizza fattura </button></td>           
+      <%} %>
       
     </tr>
   </tbody>

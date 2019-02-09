@@ -97,7 +97,7 @@ public class ComposizioneModel {
 
 		int result = 0;
 
-		String deleteSQL = "DELETE FROM " + ComposizioneModel.TABLE_NAME + " WHERE IdOrdine = '?'";
+		String deleteSQL = "DELETE FROM " + ComposizioneModel.TABLE_NAME + " WHERE Ordine = ?";
 
 		try {
 			connection = Manager.getConnection();

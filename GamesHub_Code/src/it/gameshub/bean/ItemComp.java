@@ -23,26 +23,15 @@ public class ItemComp {
 	}
 
 	public Collection<Composizione> getCompOrdine() {
-
 		return compOrdine;
 	}
 
 	public void setCompOrdine(Collection<Composizione> compOrdine) {
 		this.compOrdine = compOrdine;
-		Iterator<?> it = compOrdine.iterator();
-		Composizione comp = null;
-		if (iva == 0) {
-			comp = (Composizione) it.next();
-			setIva(22);
-		}
+		
+		
 	}
 
-	public int getIva() {
-		return iva;
-	}
-
-	public void setIva(int iva) {
-		this.iva = iva;
-	}
+	
 
 }

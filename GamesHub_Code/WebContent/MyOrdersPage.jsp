@@ -189,11 +189,17 @@
       <td></td>
       <td></td>
       <td></td>
-       <td><button type="button" class="btn btn-danger "  onclick="window.open('ButtonAnnullaOrdineControl?id=<%=ordine.getIdOrdine()%>');">
-                             <span class="fa fa-trash-alt "></span> Annulla ordine </button></td>
-      <td style=" display: block;"><button type="button" class="btn btn-primary "  onclick="window.open('ButtonVisualizzaFatturaControl?id=<%=ordine.getIdOrdine()%>');">
+       <%if (!ordine.getStato().equals("confermato")) {%>
+       <td><a  class="btn btn-secondary "  href="" disabled>
+                             <span class="fa fa-trash-alt "></span> Annulla ordine </a></td>
+      <td style=" display: block;"><button type="button" class="btn btn-primary " onclick="window.open('ButtonVisualizzaFatturaControl?id=<%=ordine.getIdOrdine()%>');">
                              <span class="fa fa-file-invoice-dollar"></span> Visualizza fattura </button></td>
-      
+                             <%}else{ %>
+                   <td><a  class="btn btn-danger "  href="ButtonAnnullaOrdineControl?id=<%=ordine.getIdOrdine()%>">
+                             <span class="fa fa-trash-alt "></span> Annulla ordine </a></td>
+      <td style=" display: block;"><button type="button" class="btn btn-secondary " onclick="window.open('ButtonVisualizzaFatturaControl?id=<%=ordine.getIdOrdine()%>');"  >
+                             <span class="fa fa-file-invoice-dollar"></span> Visualizza fattura </button></td>           
+      <%} %>
     </tr>
   </tbody>
 
@@ -203,7 +209,9 @@
 <% } }  %>
 
 <% if(composizioneOrdini==null || composizioneOrdini.size()==0){ %>
-          
+           <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+            <h1 class="display-4"><%=titolo %></h1>
             <p class="lead">Non hai effettuato nessun ordine.</p>
             <hr class="my-4">
             <p>Inizia a fare shopping e cerca il pulsante "Aggiungi al carrello".</p>

@@ -70,6 +70,7 @@ public class OrdineModel {
 				bean.setIdOrdine(rs.getInt("IdOrdine"));
 				bean.setImporto(rs.getFloat("Importo"));
 				bean.setStato(rs.getString("Stato"));
+				bean.setIndirizzo(rs.getString("Indirizzo"));
 				bean.setTrackingId(rs.getString("TrackingId"));
 				bean.setDataOrdine(rs.getDate("DataOrdine"));
 				bean.setUtente(rs.getString("Utente"));
@@ -110,6 +111,7 @@ public class OrdineModel {
 				bean.setIdOrdine(rs.getInt("IdOrdine"));
 				bean.setImporto(rs.getFloat("Importo"));
 				bean.setStato(rs.getString("Stato"));
+				bean.setIndirizzo(rs.getString("Indirizzo"));
 				bean.setTrackingId(rs.getString("TrackingId"));
 				bean.setDataOrdine(rs.getDate("DataOrdine"));
 				bean.setUtente(rs.getString("Utente"));
@@ -136,7 +138,7 @@ public class OrdineModel {
 
 		int result = 0;
 
-		String deleteSQL = "DELETE FROM " + OrdineModel.TABLE_NAME + " WHERE IdOrdine = '?'";
+		String deleteSQL = "DELETE FROM " + OrdineModel.TABLE_NAME + " WHERE IdOrdine = ?";
 
 		try {
 			connection = Manager.getConnection();
@@ -161,9 +163,9 @@ public class OrdineModel {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		Ordine bean = new Ordine();
-		String selectSQL = "SELECT * FROM " + OrdineModel.TABLE_NAME + " WHERE IdOrdine = ?";
+		String selectSQL = "SELECT * FROM " + OrdineModel.TABLE_NAME + " WHERE IdOrdine = ? ";
 		try {
-			connection = ds.getConnection();
+			connection = Manager.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setInt(1, idOrdine);
 
@@ -174,6 +176,7 @@ public class OrdineModel {
 				bean.setIdOrdine(rs.getInt("IdOrdine"));
 				bean.setImporto(rs.getFloat("Importo"));
 				bean.setStato(rs.getString("Stato"));
+				bean.setIndirizzo(rs.getString("Indirizzo"));
 				bean.setTrackingId(rs.getString("TrackingId"));
 				bean.setDataOrdine(rs.getDate("DataOrdine"));
 				bean.setUtente(rs.getString("Utente"));
