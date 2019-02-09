@@ -189,9 +189,9 @@
       <td></td>
       <td></td>
       <td></td>
-       <td><button type="button" class="btn btn-danger "  onclick="window.open('order?action=visualizzaFattura&id=<%=ordine.getIdOrdine()%>');">
+       <td><button type="button" class="btn btn-danger "  onclick="window.open('ButtonAnnullaOrdineControl?id=<%=ordine.getIdOrdine()%>');">
                              <span class="fa fa-trash-alt "></span> Annulla ordine </button></td>
-      <td style=" display: block;"><button type="button" class="btn btn-primary "  onclick="window.open('order?action=visualizzaFattura&id=<%=ordine.getIdOrdine()%>');">
+      <td style=" display: block;"><button type="button" class="btn btn-primary "  onclick="window.open('ButtonVisualizzaFatturaControl?id=<%=ordine.getIdOrdine()%>');">
                              <span class="fa fa-file-invoice-dollar"></span> Visualizza fattura </button></td>
       
     </tr>

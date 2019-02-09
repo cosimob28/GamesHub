@@ -158,6 +158,14 @@
     <servlet-name>CercaOrdineUtenteControl</servlet-name>
     <servlet-class>it.gameshub.controller.CercaOrdineUtenteControl</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ButtonAnnullaOrdineControl</servlet-name>
+    <servlet-class>it.gameshub.controller.ButtonAnnullaOrdineControl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ButtonVisualizzaFatturaControl</servlet-name>
+    <servlet-class>it.gameshub.controller.ButtonVisualizzaFatturaControl</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>VisualizzaHomeControl</servlet-name>
     <url-pattern>/home</url-pattern>

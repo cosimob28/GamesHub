@@ -31,11 +31,12 @@ public class ConcludiAcquistoControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static OrdineModel ordineModel;
 	static ComposizioneModel composizioneModel;
-
+	static GiocoModel giocoModel;
 	static {
 
 		ordineModel = new OrdineModel();
 		composizioneModel = new ComposizioneModel();
+		giocoModel = new GiocoModel();
 	}
 
 	public ConcludiAcquistoControl() {
@@ -45,90 +46,86 @@ public class ConcludiAcquistoControl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Utente user = (Utente) request.getSession().getAttribute("user");
-
+		Collection<Composizione> listaComp = null;
 		float totale = 0;
 		List<ItemOrder> prodcart = null;
 		Carrello cart = (Carrello) request.getSession().getAttribute("cart");
 		Ordine ordine = new Ordine();
-		if (cart != null) {
-
-			if (!cart.isEmpty()) {
-
-				/* il carrello è una lista di itemOrder */
-				/*
-				 * itemOrder è una classe utilizzata per rappresentare un ordine temporaneo(cioè
-				 * non ancora acquistato)
-				 */
-				prodcart = cart.getGamesInTheCart();
-				for (ItemOrder beancart : prodcart) {
-					/* fa il totale dei prodotti acquistati */
-					// Moltiplica il prezzo del prodotto per la sua quantità
-
-					totale += beancart.getGioco().getPrice() * beancart.getQuantità();
-					System.out.println(beancart.getGioco().getName());
-					System.out.println(totale);
-				}
-				totale = totale + ((totale * 22) / 100);
-				totale = (float) (Math.ceil(totale * Math.pow(10, 2)) / Math.pow(10, 2));
-				String spedizione = request.getParameter("spedizione");
-				totale += Integer.parseInt(spedizione);
-
-			}
-		}
-		if (request.getParameter("group1") != null) {
-			if (request.getParameter("group1").equals("currentAddress")) {
-				ordine.setIndirizzo(user.getIndirizzoSpedizione());
-			}
-		} else {
-			String addr = (String) request.getParameter("address");
-			String città = (String) request.getParameter("city");
-			ordine.setIndirizzo(addr + ", " + città);
-		}
-		ordine.setDataOrdine(new java.sql.Date(System.currentTimeMillis()));
-		ordine.setImporto(totale);
-		ordine.setUtente(user.getUsername());
 		try {
+			if (cart != null) {
+
+				if (!cart.isEmpty()) {
+
+					/* il carrello è una lista di itemOrder */
+					/*
+					 * itemOrder è una classe utilizzata per rappresentare un ordine temporaneo(cioè
+					 * non ancora acquistato)
+					 */
+					prodcart = cart.getGamesInTheCart();
+					for (ItemOrder beancart : prodcart) {
+						/* fa il totale dei prodotti acquistati */
+						// Moltiplica il prezzo del prodotto per la sua quantità
+						int qty = beancart.getGioco().getQuantity() - beancart.getQuantità();
+                        /*Aggiorna la quantità disponibile del gioco*/
+						giocoModel.updateQuantity(beancart.getGioco().getCode(), qty);
+						totale += beancart.getGioco().getPrice() * beancart.getQuantità();
+
+					}
+					totale = totale + ((totale * 22) / 100);
+					totale = (float) (Math.ceil(totale * Math.pow(10, 2)) / Math.pow(10, 2));
+					String spedizione = request.getParameter("spedizione");
+					totale += Integer.parseInt(spedizione);
+
+				}
+			}
+			if (request.getParameter("group1") != null) {
+				if (request.getParameter("group1").equals("currentAddress")) {
+					ordine.setIndirizzo(user.getIndirizzoSpedizione());
+				}
+			} else {
+				String addr = (String) request.getParameter("address");
+				String città = (String) request.getParameter("city");
+				ordine.setIndirizzo(addr + ", " + città);
+			}
+			ordine.setDataOrdine(new java.sql.Date(System.currentTimeMillis()));
+			ordine.setImporto(totale);
+			ordine.setUtente(user.getUsername());
+
 			// salva l'ordine nel DB
 			ordineModel.addOrdine(ordine);
 			ordine.setIdOrdine(ordineModel.doMaxIdOrder());
-		} catch (SQLException e) {
 
-			e.printStackTrace();
-		}
+			/*
+			 * Dopo aver salvato l'ordine nel DB creiamo e salviamo la composizione
+			 * dell'ordine
+			 */
 
-		/*
-		 * Dopo aver salvato l'ordine nel DB creiamo e salviamo la composizione
-		 * dell'ordine
-		 */
-		Collection<Composizione> listaComp = null;
-		Collection<Immagine> images = (Collection<Immagine>) request.getSession().getAttribute("ImageList");
-		// Crea composizione
-		Composizione comp = new Composizione();
+			Collection<Immagine> images = (Collection<Immagine>) request.getSession().getAttribute("ImageList");
+			// Crea composizione
+			Composizione comp = new Composizione();
 
-		for (ItemOrder beancart : prodcart) {
-			comp.setCosto((beancart.getGioco().getPrice() * beancart.getQuantità())/* +iva */);
-			comp.setQuantità(beancart.getQuantità());
-			comp.setOrdine(ordine.getIdOrdine());
-			comp.setGioco(beancart.getGioco().getCode());
-			comp.setNomeGioco(beancart.getGioco().getName());
-			Iterator<?> it = images.iterator();
-			Immagine image = null;
-			boolean trovato = false;
-			while (it.hasNext() && trovato == false) {
-				image = (Immagine) it.next();
-				if (image.getGame() == beancart.getGioco().getCode()) {
-					comp.setImmagine(image.getName());
-					trovato = true;
+			for (ItemOrder beancart : prodcart) {
+				comp.setCosto((beancart.getGioco().getPrice() * beancart.getQuantità())/* +iva */);
+				comp.setQuantità(beancart.getQuantità());
+				comp.setOrdine(ordine.getIdOrdine());
+				comp.setGioco(beancart.getGioco().getCode());
+				comp.setNomeGioco(beancart.getGioco().getName());
+				Iterator<?> it = images.iterator();
+				Immagine image = null;
+				boolean trovato = false;
+				while (it.hasNext() && trovato == false) {
+					image = (Immagine) it.next();
+					if (image.getGame() == beancart.getGioco().getCode()) {
+						comp.setImmagine(image.getName());
+						trovato = true;
+					}
+
 				}
 
-			}
-			try {
 				composizioneModel.addComposizione(comp);
-			} catch (SQLException e) {
-				e.printStackTrace();
+
 			}
-		}
-		try {
+
 			// listaComp conterrà tutte le composizioni di un ordine
 			listaComp = composizioneModel.searchComposizione(ordine.getIdOrdine());
 		} catch (SQLException e) {

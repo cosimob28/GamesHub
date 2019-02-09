@@ -18,20 +18,6 @@ public class GiocoModel {
 
 	private static DataSource ds;
 
-	// static {
-	// try {
-	// //Contesto iniziale JNDI
-	// Context initCtx = new InitialContext();
-	// Context envCtx = (Context) initCtx.lookup("java:comp/env");
-	//
-	// //Look up del data source
-	// ds = (DataSource) envCtx.lookup("jdbc/gameshub");
-	//
-	// } catch (NamingException e) {
-	// System.out.println("Error:" + e.getMessage());
-	// }
-	// }
-
 	private static final String TABLE_NAME = "Gioco";
 
 	// vecchio doSave
@@ -83,7 +69,7 @@ public class GiocoModel {
 		String selectSQL = "SELECT * FROM " + GiocoModel.TABLE_NAME + " WHERE SerialNumber = ?";
 
 		try {
-			//connection = ds.getConnection();
+			// connection = ds.getConnection();
 			connection = Manager.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setInt(1, code);
@@ -127,7 +113,7 @@ public class GiocoModel {
 		String deleteSQL = "DELETE FROM " + GiocoModel.TABLE_NAME + " WHERE SerialNumber = ?";
 
 		try {
-			//connection = ds.getConnection();
+			// connection = ds.getConnection();
 			connection = Manager.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setInt(1, code);
@@ -190,27 +176,33 @@ public class GiocoModel {
 	}
 
 	// Effettua l'update della quantità del gioco con SerialNumber = code
-	// vecchio doUpdate
-	/*
-	 * public synchronized void doUpdate(int code,int quantità) throws SQLException
-	 * { Connection connection = null; PreparedStatement preparedStatement = null;
-	 * 
-	 * int result = 0;
-	 * 
-	 * String deleteSQL = "update " + ProductModelDS.TABLE_NAME
-	 * +" set Quantità = ? "+" WHERE SerialNumber = ? ";
-	 * 
-	 * try { connection = ds.getConnection(); preparedStatement =
-	 * connection.prepareStatement(deleteSQL); preparedStatement.setInt(1,quantità);
-	 * preparedStatement.setInt(2, code);
-	 * 
-	 * result = preparedStatement.executeUpdate();
-	 * 
-	 * } finally { try { if (preparedStatement != null) preparedStatement.close(); }
-	 * finally { if (connection != null) connection.close(); } }
-	 * 
-	 * }
-	 */
+	public synchronized void updateQuantity(int code, int quantità) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		int result = 0;
+
+		String deleteSQL = "update " + GiocoModel.TABLE_NAME + " set Quantità = ? " + " WHERE SerialNumber = ? ";
+
+		try {
+			connection = Manager.getConnection();
+			preparedStatement = connection.prepareStatement(deleteSQL);
+			preparedStatement.setInt(1, quantità);
+			preparedStatement.setInt(2, code);
+
+			result = preparedStatement.executeUpdate();
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+
+	}
 
 	// vecchio doUpdate
 	public void updateGame(int code, String video, String descrizione, float prezzo, int qty) throws SQLException {
@@ -219,11 +211,11 @@ public class GiocoModel {
 
 		int result = 0;
 
-		String deleteSQL = "update " + GiocoModel.TABLE_NAME
-				+ " set Quantità = ?, Video= ?, Descrizione= ?, Prezzo= ? " + " WHERE SerialNumber = ? ";
+		String deleteSQL = "update " + GiocoModel.TABLE_NAME + " set Quantità = ?, Video= ?, Descrizione= ?, Prezzo= ? "
+				+ " WHERE SerialNumber = ? ";
 
 		try {
-			//connection = ds.getConnection();
+			// connection = ds.getConnection();
 			connection = Manager.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setInt(1, qty);
@@ -247,32 +239,32 @@ public class GiocoModel {
 
 	}
 
-//	public void updateIva(int iva) throws SQLException {
-//		Connection connection = null;
-//		PreparedStatement preparedStatement = null;
-//
-//		int result = 0;
-//
-//		String deleteSQL = "update " + GiocoModel.TABLE_NAME + " set Iva= ? ";
-//
-//		try {
-//			//connection = ds.getConnection();
-//			connection = Manager.getConnection();
-//			preparedStatement = connection.prepareStatement(deleteSQL);
-//			preparedStatement.setInt(1, iva);
-//
-//			result = preparedStatement.executeUpdate();
-//
-//		} finally {
-//			try {
-//				if (preparedStatement != null)
-//					preparedStatement.close();
-//			} finally {
-//				if (connection != null)
-//					connection.close();
-//			}
-//		}
-//
-//	}
+	// public void updateIva(int iva) throws SQLException {
+	// Connection connection = null;
+	// PreparedStatement preparedStatement = null;
+	//
+	// int result = 0;
+	//
+	// String deleteSQL = "update " + GiocoModel.TABLE_NAME + " set Iva= ? ";
+	//
+	// try {
+	// //connection = ds.getConnection();
+	// connection = Manager.getConnection();
+	// preparedStatement = connection.prepareStatement(deleteSQL);
+	// preparedStatement.setInt(1, iva);
+	//
+	// result = preparedStatement.executeUpdate();
+	//
+	// } finally {
+	// try {
+	// if (preparedStatement != null)
+	// preparedStatement.close();
+	// } finally {
+	// if (connection != null)
+	// connection.close();
+	// }
+	// }
+	//
+	// }
 
 }
