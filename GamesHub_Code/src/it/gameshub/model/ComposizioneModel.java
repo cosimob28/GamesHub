@@ -56,6 +56,8 @@ public class ComposizioneModel {
 	/**
 	 * Restituisce le composizioni di un ordine
 	 * 
+	 * @param int idOdine L'id dell'ordine
+	 * 
 	 * @return Collection<Composizione> Tutte le composizioni di un ordine
 	 */
 	public Collection<Composizione> searchComposizione(int idOrdine) throws SQLException {
@@ -102,7 +104,10 @@ public class ComposizioneModel {
 	/**
 	 * Elimina le composizioni di un ordine
 	 * 
+	 * @param int idOdine L'id dell'ordine
 	 * @param int idOrdine L'id dell'ordine 
+	 * 
+	 * @return boolean True se le composizioni sono state eliminate False altrimenti
 	 */
 	public boolean deleteComposizione(int idOrdine) throws SQLException {
 		Connection connection = null;

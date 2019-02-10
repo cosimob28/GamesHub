@@ -403,7 +403,7 @@ a#myBtn .arrow:before {
 						<form action="ButtonAggiungiAlCarrelloControl" method="POST" >
 							<button type="submit" name="id" value="<%=game.getCode()%>"
 								class="addToCart addCart btn btn-link" >Add to
-								Cart</button>
+								Cart</button></form>
 						</div>
 						<%
 							} else {

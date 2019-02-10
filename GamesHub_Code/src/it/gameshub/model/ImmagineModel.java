@@ -15,6 +15,12 @@ public class ImmagineModel {
 	private static DataSource ds;
 
 	private static final String TABLE_NAME = "immagine";
+	
+	/**
+	 * Inserisce un'immagine
+	 * 
+	 * @param Immagine image L'oggetto Immagine da aggiungere
+	 */
 
 	// Salva una immagine nel database
 	public void saveImage(Immagine image) throws SQLException {
@@ -43,7 +49,13 @@ public class ImmagineModel {
 		}
 	}
 
-	// Elimina un immagine dal DB
+	/**
+	 * Elimina immagine
+	 * 
+	 * @param String path Il percorso dell'immagine da eliminare
+	 * 
+	 * @return boolean True se l'immagine  è stata eliminata False altrimenti
+	 */
 	public boolean deleteImage(String path) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -71,7 +83,13 @@ public class ImmagineModel {
 		return (result != 0);
 	}
 
-	//vecchio doRetriveByKey
+	/**
+	 * Restituisce un'immagine 
+	 * 
+	 * @param String path Il percorso dell'immagine da prelevare
+	 * 
+	 * @return Immagine L'immagine prelevata
+	 */
 	public Immagine getImage(String path) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -106,6 +124,11 @@ public class ImmagineModel {
 
 	}
 
+	/**
+	 * Preleva tutte le immagini salvate
+	 * 
+	 * @return Collection<Immagine> Tutte le immagini salvate
+	 */
 	public Collection<Immagine> doRetrieveAll() throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;

@@ -20,7 +20,11 @@ public class GiocoModel {
 
 	private static final String TABLE_NAME = "Gioco";
 
-	// vecchio doSave
+	/**
+	 * Inserisce un gioco
+	 * 
+	 * @param Gioco gioco L'oggetto Gioco da aggiungere
+	 */
 	public synchronized void saveGame(Gioco gioco) throws SQLException {
 
 		Connection connection = null;
@@ -59,7 +63,13 @@ public class GiocoModel {
 		}
 	}
 
-	// vecchio doRetriveByKey
+	/**
+	 * Restituisce un gioco 
+	 * 
+	 * @param int code Il serial number del gioco da prelevare
+	 * 
+	 * @return Gioco Il gioco
+	 */
 	public synchronized Gioco getGioco(int code) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -103,7 +113,13 @@ public class GiocoModel {
 		return bean;
 	}
 
-	// vecchio doDelete
+	/**
+	 * Elimina gioco
+	 * 
+	 * @param int code Il codice del gioco da eliminare
+	 * 
+	 * @return boolean True se il gioco è stato eliminato False altrimenti
+	 */
 	public synchronized boolean deleteGame(int code) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -132,6 +148,11 @@ public class GiocoModel {
 		return (result != 0);
 	}
 
+	/**
+	 * Preleva tutti i giochi
+	 * 
+	 * @return Collection<Gioco> Tutti i giochi salvati
+	 */
 	public synchronized Collection<Gioco> doRetrieveAll() throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -175,7 +196,12 @@ public class GiocoModel {
 		return products;
 	}
 
-	// Effettua l'update della quantità del gioco con SerialNumber = code
+	/**
+	 * Aggiorna la quantità disponibile di un gioco
+	 * 
+	 * @param int code Il codice del gioco
+	 * @param int quantità La nuova quantità del gioco
+	 */
 	public synchronized void updateQuantity(int code, int quantità) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -204,7 +230,15 @@ public class GiocoModel {
 
 	}
 
-	// vecchio doUpdate
+	/**
+	 * Aggiorna le informazioni di un gioco
+	 * 
+	 * @param int code Il codice del gioco
+	 * @param String video Il nuovo link al video del gioco
+	 * @param String desricrizione La nuova decrizione del gioco
+	 * @param float prezzo Il nuovo prezzo del gioco
+	 * @param int qty La nuova quantità del gioco
+	 */
 	public void updateGame(int code, String video, String descrizione, float prezzo, int qty) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;

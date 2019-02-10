@@ -18,7 +18,11 @@ public class OrdineModel {
 
 	private static final String TABLE_NAME = "Ordine";
 
-	// vecchio doSave
+	/**
+	 * Inserisce un ordine
+	 * 
+	 * @param Ordine ordine L'oggetto Ordine da aggiungere
+	 */
 	public synchronized void addOrdine(Ordine ordine) throws SQLException {
 
 		Connection connection = null;
@@ -48,8 +52,13 @@ public class OrdineModel {
 		}
 	}
 
-	// Restituisce tutti gli ordini di un utente
-	// vecchio doRetrieveByKey
+	/**
+	 * Preleva tutti gli ordini effettuati da un utente
+	 * 
+	 * @param Utente user L'utente che ha effettuato gli ordini
+	 * 
+	 * @return Collection<Gioco> Tutti i giochi salvati
+	 */
 	public synchronized Collection<Ordine> getListaOrdiniUtente(Utente user) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -91,7 +100,11 @@ public class OrdineModel {
 		return ordiniCliente;
 	}
 
-	// Restituisce tutti gli ordini dei clienti
+	/**
+	 * Preleva tutti gli ordini effettuati dai clienti
+	 * 
+	 * @return Collection<Ordine> Tutti gli ordini effettuati
+	 */
 	public synchronized Collection<Ordine> getListaOrdini() throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -132,6 +145,13 @@ public class OrdineModel {
 		return ordiniClienti;
 	}
 
+	/**
+	 * Elimina ordine
+	 * 
+	 * @param int idOrdine Il codice dell'ordine da eliminare
+	 * 
+	 * @return boolean True se l'ordine è stato eliminato False altrimenti
+	 */
 	public boolean deleteOrdine(int idOrdine) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -159,6 +179,13 @@ public class OrdineModel {
 		return (result != 0);
 	}
 
+	/**
+	 * Restituisce un ordine 
+	 * 
+	 * @param int idOrdine Il codice dell'ordine da prelevare
+	 * 
+	 * @return Ordine L'ordine prelevato
+	 */
 	public Ordine getOrder(int idOrdine) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -196,6 +223,12 @@ public class OrdineModel {
 		return bean;
 	}
 
+	/**
+	 * Cambia lo stato di un ordine
+	 * 
+	 * @param int idOrdine Il codice dell'ordine
+	 * @param String stato Lo stato dell'ordine
+	 */
 	public void changeOrderState(int idOrdine, String stato) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -223,7 +256,12 @@ public class OrdineModel {
 		}
 
 	}
-
+	/**
+	 * Aggiunge il TrackingId a un ordine
+	 * 
+	 * @param int idOrdine Il codice dell'ordine
+	 * @param String trackingId Il trackingId da inserire
+	 */
 	public void addTrackingId(int idOrdine, String trackingId) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -251,7 +289,12 @@ public class OrdineModel {
 		}
 
 	}
-
+	
+	/**
+	 * Prelevare l'id dell'ultimo ordine effettuato
+	 * 
+	 * @return int L'id dell'ultimo ordine effettuato
+	 */
 	public int doMaxIdOrder() throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -283,24 +326,6 @@ public class OrdineModel {
 
 	}
 
-	/*
-	 * public int getNumOrderByYear(int anno) throws SQLException { Connection
-	 * connection = null; PreparedStatement preparedStatement = null; int ris=0;
-	 * Date inizioAnno = new Date(anno-1900,01-1,01); Date fineAnno = new
-	 * Date(anno-1900,12-1,31);
-	 * 
-	 * String selectSQL = "SELECT COUNT(*) as count FROM " + OrdineModel.TABLE_NAME
-	 * + " WHERE DataOrdine BETWEEN ? AND ? "; try { connection =
-	 * ds.getConnection(); preparedStatement =
-	 * connection.prepareStatement(selectSQL);
-	 * preparedStatement.setDate(1,inizioAnno);
-	 * preparedStatement.setDate(2,fineAnno); ResultSet rs =
-	 * preparedStatement.executeQuery();
-	 * 
-	 * if(!rs.next()) ris=0; else ris= rs.getInt("count");
-	 * 
-	 * } finally { try { if (preparedStatement != null) preparedStatement.close(); }
-	 * finally { if (connection != null) connection.close(); } } return ris; }
-	 */
+
 
 }

@@ -53,7 +53,9 @@ public class CartaModel {
 	/**
 	 * Restituisce la carta dell'utente
 	 * 
-	 * @return Carta La carta dell'utente
+	 * @param String username L'username dell'utente al quale la carta è associata
+	 * 
+	 * @return Carta La carta associata all'utente
 	 */
 	public Carta getCarta(String username) throws SQLException {
 		Connection connection = null;
@@ -94,6 +96,8 @@ public class CartaModel {
 	 * Elimina la carta
 	 * 
 	 * @param String user L'username dell'utente della carta da eliminare
+	 * 
+	 * @return boolean True se la carta è stata eliminata False altrimenti
 	 */
 	public synchronized boolean deleteCarta(String user) throws SQLException {
 		Connection connection = null;
@@ -125,6 +129,8 @@ public class CartaModel {
 	
 	/**
 	 * Verifica se esiste una carta
+	 * 
+	 * @param String username L'username dell'utente al quale la carta è associata
 	 * 
 	 * @return boolean True se la carta esiste False altrimenti
 	 */
