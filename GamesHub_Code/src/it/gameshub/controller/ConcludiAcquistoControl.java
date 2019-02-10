@@ -137,6 +137,13 @@ public class ConcludiAcquistoControl extends HttpServlet {
 		cart.svuotaCarrello();
 		request.getSession().setAttribute("cart", cart);
 
+		try {
+			request.getSession().setAttribute("products", giocoModel.doRetrieveAll());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Homepage.jsp");
 		dispatcher.forward(request, response);
 	}

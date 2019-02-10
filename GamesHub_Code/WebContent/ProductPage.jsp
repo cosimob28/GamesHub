@@ -512,7 +512,7 @@ img {
 	        	display:$('#display')
 	        	});
 	        
-	        $("#pegiHover").hover(function (){
+	       /*  $("#pegiHover").hover(function (){
 	        	    $(this).css("cursor", "context-menu");
 	        	    $(this).animate({
 	        	        width: "100px",
@@ -525,7 +525,7 @@ img {
 	        	        height: "50px"
 	        	    }, 'slow');
 
-	        	});
+	        	}); */
 	        	
 	        	
 	        

@@ -23,6 +23,11 @@
 	crossorigin="anonymous">
 <title>Risultati ricerca</title>
 <style>
+
+	.table td, .table th {
+    vertical-align: middle;
+	}
+
 	.pegi, .data{
 	font-size: x-small;
 	font-weight: bold;
@@ -37,6 +42,9 @@
 	.nameLink{
 	color: black;
 	font-weight: bold;
+	padding-left: 0;
+    background: transparent;
+    border: none;
 	}
 	
 	.nameLink:hover {

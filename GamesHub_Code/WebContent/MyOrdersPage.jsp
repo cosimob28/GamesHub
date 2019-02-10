@@ -117,7 +117,7 @@
       <th scope="col">Indirizzo:</th>
       <th scope="col">Ordine #</th>
        <th scope="col">Stato</th>
-          <th scope="col">Traking ID</th>
+          <th scope="col">Tracking ID</th>
             </tr>
   </thead>
   <tbody>
@@ -126,7 +126,7 @@
       <td scope="row"><%=ordine.getDataOrdine() %></td>
       
       <td><%=ordine.getImporto()%> €</td>
-      <td><%=user.getIndirizzoSpedizione() %></td>
+      <td><%=ordine.getIndirizzo() %></td>
       <td><%=ordine.getIdOrdine()%></td>
        <td><%=ordine.getStato()%></td>
        <%if (ordine.getTrackingId()!=null){%>

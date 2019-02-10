@@ -37,11 +37,11 @@
 	}
 	
 	#infoi {
-	  width: 10px;
-	  height: 20px;
+	  width: 0;
+	  height: 0;
 	  position: absolute;
-	  top: 1.8px;
-	  left: 26.8px;
+	  top: 2px;
+      left: 26.6px;
 	  color: graytext;
 	  
 	}

@@ -35,6 +35,23 @@ body {
     font-size: 16px !important;
     
 }
+
+#infoi {
+    
+    top: 5.3px !important;
+    left: 25.4px !important;
+    
+}
+
+#address-error{
+	padding-left:12.7px;
+	padding-top:7.6px;
+}
+
+#city-error{
+	padding-left:12.7px;
+	padding-top:7.6px;
+}
 .error{
 border-color: red !important;
 color: red !important;}
@@ -341,7 +358,7 @@ color: red !important;}
         
         
         	<div id="existingCard" style="display: none;">
-        		        		<h4>ESISTENTE</h4>
+        		        		<h4></h4>
         	
         	</div>    
             <!-- CREDIT CARD FORM STARTS HERE -->
@@ -525,7 +542,7 @@ color: red !important;}
 	        if(http.readyState == 4) {
 	        	var result = http.responseText;
 				var r = eval('('+ result + ')');
-				 alert(r.risposta); 
+				 /* alert(r.risposta);  */
 				if(r.risposta==="esistente"){
 					$form.find('.payment-errors').text('Carta già presente');
                     $form.find('.payment-errors').closest('.row').show(); 
@@ -652,8 +669,6 @@ color: red !important;}
 	paymentFormReady = function() {
 	    if ($form.find('[name=cardNumber]').hasClass("success") &&
 	        $form.find('[name=cardExpiry]').hasClass("success") &&
-	        $form.find('[name=address]').val().length > 1 &&
-	        $form.find('[name=city]').val().length > 1 &&
 	        $form.find('[name=cardCVC]').val().length > 1) {
 	        return true;
 	    } else {

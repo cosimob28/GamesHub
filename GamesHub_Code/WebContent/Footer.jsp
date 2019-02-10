@@ -24,7 +24,7 @@
 			<div class="col-sm-3 info">
 				<h5>Contacts</h5>
 				<ul>
-					<li><a href="mailto:GamesHub@gmail.com">Send mail</a></li>
+					<li><a href="mailto:gameshub2019@gmail.com">Send mail</a></li>
 					<li><p>Tel: 0975 251262</p></li>
 
 				</ul>

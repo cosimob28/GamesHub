@@ -23,7 +23,7 @@ public class SendingEmail {
             String host ="smtp.gmail.com" ;
             String user = "gameshub2019@gmail.com";
             String pass = "GamesHub19.";
-            String to = "domenico.trotta@live.it";
+            String to = email;
             String from = "gameshub2019@gmail.com";
             String subject = "Conferma E-mail";
             String messageText = "Il tuo link di verifica :: "+"http://localhost:8080/GamesHub_Code/AttivaAccountControl?key1="+email+"&key2="+myHash;
