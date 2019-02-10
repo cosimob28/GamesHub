@@ -2,31 +2,11 @@
 	pageEncoding="UTF-8"
 	import="java.util.*,it.gameshub.bean.Gioco,it.gameshub.model.GiocoModel,it.gameshub.bean.Carrello,it.gameshub.bean.Utente,it.gameshub.bean.Immagine,it.gameshub.bean.ItemOrder"%>
 <head>
-	<link href="css/nav.css" rel="stylesheet" type="text/css">
+	<link type="text/css" rel="stylesheet" href="css/nav.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 
-<style type="text/css">
 
-	#carrello {
-	  width: 100%;
-	  height: 100%;
-	  position: relative;
-	}
-	#infoi {
-	  width: 10px;
-	  height: 20px;
-	  position: absolute;
-	  top: 1.8px;
-	  left: 26.8px;
-	  color: graytext;
-	  
-	}
-	#infoi {
-	  z-index: 10;
-	}
-
-</style>
 
 </head>
 <body>

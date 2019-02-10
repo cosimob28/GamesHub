@@ -2,6 +2,8 @@
 		color: #020202;
     	text-decoration: none;
     	background-color: transparent;
+    	margin:0;
+    	padding:0;
 	}
 	.productLink:hover{
 		color: #000000ab;

@@ -1,15 +1,30 @@
-
-<!DOCTYPE html>
-<html>
-
-<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,it.gameshub.bean.Utente"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"
+	import="java.util.*,it.gameshub.bean.Gioco,it.gameshub.model.GiocoModel,it.gameshub.bean.Carrello,it.gameshub.bean.Utente,it.gameshub.bean.Immagine,it.gameshub.bean.ItemOrder"%>
 <head>
-	<link href="css/nav.css" rel="stylesheet" type="text/css">
+	<link type="text/css" rel="stylesheet" href="css/nav.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
 </head>
 <body>
 
-	<% Utente user = (Utente)request.getSession().getAttribute("user");%>
+	<% Utente user = (Utente)request.getSession().getAttribute("user");
+	
+	Carrello cart = (Carrello) request.getSession().getAttribute("cart");
+	List<ItemOrder> prodcart = cart.getGamesInTheCart();
+	int size = 0;
+	if(cart==null || prodcart==null){
+		size=0;
+	}
+	else{	
+		ArrayList<ItemOrder> arrayComProduct = (ArrayList<ItemOrder>) request.getSession().getAttribute("arrayComProduct");
+		   for(ItemOrder beancart: prodcart) {
+			   size+=beancart.getQuantità();
+		}
+	}
+
+%>
 	
 
 	
@@ -94,8 +109,7 @@
 							class="fa fa-user-circle"></span> I miei dati</a>
                           
 					</div></li>
-				<li class="nav-item"><a class="nav-link" href="ButtonCarrelloControl"><span
-						class="fa fa-shopping-basket"></span> Carrello</a></li>
+				<li class="nav-item"><a class="nav-link" href="ButtonCarrelloControl" id="carrello"><span><img src="img/website/cart.png"/><span id="infoi"><%=size %></span></span> Carrello</a></li>
 				<li class="nav-item"><a class="nav-link" href="ButtonMieiOrdiniControl"><span
 						class="fa fa-file-alt"></span> I Tuoi Ordini</a></li>
 			</ul> 
