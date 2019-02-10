@@ -1,8 +1,61 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"
+	import="java.util.*,it.gameshub.bean.Gioco,it.gameshub.model.GiocoModel,it.gameshub.bean.Carrello,it.gameshub.bean.Utente,it.gameshub.bean.Immagine,it.gameshub.bean.ItemOrder"%>
 <head>
-<link href="css/nav.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<link href="css/nav.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+
+<style type="text/css">
+
+	#carrello {
+	  width: 100%;
+	  height: 100%;
+	  position: relative;
+	}
+	#infoi {
+	  width: 10px;
+	  height: 20px;
+	  position: absolute;
+	  top: 1.8px;
+	  left: 26.8px;
+	  color: graytext;
+	  
+	}
+	#infoi {
+	  z-index: 10;
+	}
+
+</style>
+
 </head>
 <body>
+
+
+<% 
+	Carrello cart = (Carrello) request.getSession().getAttribute("cart");
+	List<ItemOrder> prodcart = cart.getGamesInTheCart();
+	int size = 0;
+	if(cart==null || prodcart==null){
+		size=0;
+	}
+	else{	
+		ArrayList<ItemOrder> arrayComProduct = (ArrayList<ItemOrder>) request.getSession().getAttribute("arrayComProduct");
+		   for(ItemOrder beancart: prodcart) {
+			   size+=beancart.getQuantità();
+		}
+	}
+
+%>
+
+
+
+
+
+
+
+
+
 	<!-- Barra di navigazione -->
 	<header id="myHeaderUser">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -96,14 +149,23 @@
 								class="fa fa-user-plus"></span> Sign Up</a> <a class="dropdown-item"
 								href="ButtonLoginControl"><span class="fa fa-user"></span>Login</a>
 						</div></li>
-					<li class="nav-item"><a class="nav-link"
-						href="ButtonCarrelloControl"><span
-							class="fa fa-shopping-basket"></span> Carrello</a></li>
-
+					<li class="nav-item">
+						<a class="nav-link" href="ButtonCarrelloControl" id="carrello"><span><img src="img/website/cart.png"/><span id="infoi"><%=size %></span></span> Carrello</a>
+					</li>
+					
 
 
 				</ul>
 			</div>
 		</nav>
 	</header>
+	<!-- <script type="text/javascript">
+	$(document).ready(
+			function() {
+				$('#infoi').text('');
+			});
+		
+	
+	</script> -->
 </body>
+
