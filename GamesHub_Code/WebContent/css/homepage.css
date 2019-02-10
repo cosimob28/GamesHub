@@ -199,7 +199,7 @@
 	            transition: all 200ms ease-out; 
 	}
 	.stats-container .product_name{
-		font-size:1.1em;
+		font-size:1 rem;
 		color:#393c45;	
 	}
 	.stats-container p{
