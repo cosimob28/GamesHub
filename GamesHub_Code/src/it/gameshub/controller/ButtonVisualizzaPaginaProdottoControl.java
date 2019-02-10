@@ -2,6 +2,9 @@ package it.gameshub.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.gameshub.bean.Gioco;
+import it.gameshub.bean.Immagine;
 import it.gameshub.model.GiocoModel;
 import it.gameshub.model.ImmagineModel;
 
@@ -38,8 +43,10 @@ public class ButtonVisualizzaPaginaProdottoControl extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ProductPage.jsp");
-		dispatcher.forward(request, response);
+		
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ProductPage.jsp");
+			dispatcher.forward(request, response);
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

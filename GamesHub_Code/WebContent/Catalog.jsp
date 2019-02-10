@@ -98,10 +98,13 @@
 					Gioco bean = (Gioco) listaGiochi.get(i);
 		%>
 		<tr>
-			
-			<td><img src= "img/games/<%=bean.getName()%>/1.jpg" width="110px" height="110px" class="rounded border border-dark"></td>  
-			<td><a class="nameLink" href="ProductPage.jsp?id=<%=bean.getCode()%>"><%=bean.getName()%></a>
+			<form action="ButtonVisualizzaPaginaProdottoControl" method="POST" >
+  <td><img src= "img/games/<%=bean.getName()%>/1.jpg" width="110px" height="110px" class="rounded border border-dark"></td>  
+			<td><button type="submit" class="nameLink btn btn-light" name="id" value="<%=bean.getCode()%>"><%=bean.getName()%></button>
 			<br/>
+
+</form>
+			
 			<%if(bean.getQuantity()>0) {%>
 				<span class="disponibile">Disponibile</span>
 		    <%}else{ %>
@@ -119,7 +122,8 @@
 			<td><img src="img/website/platform/<%=bean.getPiattaforma()%>.png" width="50px" height="50px"></td>
 			<td><span class="prezzo"><%=bean.getPrice()%> &#8364</span></td>
 		<%if(bean.getQuantity()>0) {%>
-				<td><a class="btn btn-danger" href="ButtonAggiungiAlCarrelloControl?id=<%=bean.getCode()%>" id="a" > Aggiungi al carrello </a>
+		<form action="ButtonAggiungiAlCarrelloControl" method="POST" >
+				<td><button type="submit" name="id" class="btn btn-danger" value="<%=bean.getCode()%>" id="a" > Aggiungi al carrello </button></form>
 		<%}else{ %>
 		        <td><a class="btn btn-secondary disabled" href="" id="a" disabled> Non disponibile </a>
 		<%} %>

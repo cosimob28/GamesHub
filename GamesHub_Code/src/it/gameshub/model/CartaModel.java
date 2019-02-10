@@ -15,6 +15,11 @@ public class CartaModel {
 
 	private static final String TABLE_NAME = "Carta";
 
+	/**
+	 * Inserisce una carta
+	 * 
+	 * @param Carta carta L'oggetto Carta da aggiungere
+	 */
 	public synchronized void addCarta(Carta carta) throws SQLException {
 
 		Connection connection = null;
@@ -44,7 +49,12 @@ public class CartaModel {
 			}
 		}
 	}
-
+	
+	/**
+	 * Restituisce la carta dell'utente
+	 * 
+	 * @return Carta La carta dell'utente
+	 */
 	public Carta getCarta(String username) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -80,6 +90,11 @@ public class CartaModel {
 		return bean;
 	}
 	
+	/**
+	 * Elimina la carta
+	 * 
+	 * @param String user L'username dell'utente della carta da eliminare
+	 */
 	public synchronized boolean deleteCarta(String user) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -108,6 +123,11 @@ public class CartaModel {
 		return (result != 0);
 	}
 	
+	/**
+	 * Verifica se esiste una carta
+	 * 
+	 * @return boolean True se la carta esiste False altrimenti
+	 */
 	public boolean existCarta(String username) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;

@@ -14,10 +14,9 @@ public class Utente implements Serializable {
 	private Date dataDiNascita;
 
 	public Utente() {
-		// amministratore = 0;
+
 		tipo = "cliente";
-		// di default un utente non è amministratore, lo status potrà essere cambiato in
-		// seguito con il metodo setAmministratore
+
 	}
 
 	public boolean isVerificato() {
@@ -123,15 +122,5 @@ public class Utente implements Serializable {
 	public void setSesso(String sesso) {
 		this.sesso = sesso;
 	}
-
-	/*
-	 * public int getAdmin() { return amministratore; }
-	 * 
-	 * public boolean isAmministratore() { if (amministratore == 1) return true;
-	 * else return false; }
-	 * 
-	 * public void setAmministratore(int amministratore) { this.amministratore =
-	 * amministratore; }
-	 */
 
 }

@@ -421,7 +421,9 @@ img {
                     <%if(game.getQuantity()==0){ %>
                        	<button class="btn btn-danger disabled"><span style="margin-right:20px" class="fas fa-shopping-cart" aria-hidden="true"></span> Non disponibile</button>
                     <%}else{ %>	
-                    	<a class="btn btn-success addCart" href="ButtonAggiungiAlCarrelloControl?id=<%=game.getCode()%>"><span style="margin-right:20px" class="fas fa-shopping-cart" aria-hidden="true" ></span> Add To Cart</a>
+                    <form action="ButtonAggiungiAlCarrelloControl" method="POST" >
+                    	<button type="submit" class="btn btn-success addCart" name="id" value="<%=game.getCode()%>"><span style="margin-right:20px" class="fas fa-shopping-cart" aria-hidden="true" ></span> Add To Cart</a>
+                    </form>
                     <%} %>
                     </div>                                        
                 </div>                              

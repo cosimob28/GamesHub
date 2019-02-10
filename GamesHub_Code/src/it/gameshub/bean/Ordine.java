@@ -11,6 +11,9 @@ public class Ordine {
 	private Date dataOrdine;
 	private String utente, stato, trackingId, indirizzo;
 
+	/**
+	 * Costruttore di Ordine
+	 */
 	public Ordine() {
 		/* setto la data odierna nel formato sql */
 		GregorianCalendar gc = new GregorianCalendar();
@@ -23,6 +26,7 @@ public class Ordine {
 
 	}
 
+	
 	public String getIndirizzo() {
 		return indirizzo;
 	}

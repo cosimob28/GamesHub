@@ -191,6 +191,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src ="js/bootstrap.min.js"></script>
 	<script src ="UpdateCart.js" ></script> 
+	<script src="js/custom.js"></script>
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	
 	<!-- Script utilizzato per ritornare alla home e aprire una nuova finestra con la fattura quando si acquista -->

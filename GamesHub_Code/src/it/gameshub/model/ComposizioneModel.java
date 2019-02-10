@@ -17,7 +17,12 @@ public class ComposizioneModel {
 	private static DataSource ds;
 
 	private static final String TABLE_NAME = "Composizione";
-
+	
+	/**
+	 * Inserisce una composizione
+	 * 
+	 * @param Composizione comp L'oggetto Composizione da aggiungere
+	 */
 	public void addComposizione(Composizione comp) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -36,7 +41,6 @@ public class ComposizioneModel {
 			preparedStatement.setString(6, comp.getImmagine());
 			preparedStatement.executeUpdate();
 
-			// connection.commit();
 		} finally {
 			try {
 				if (preparedStatement != null)
@@ -49,7 +53,11 @@ public class ComposizioneModel {
 
 	}
 
-	// Restituisce tutte le composizioni di un ordine
+	/**
+	 * Restituisce le composizioni di un ordine
+	 * 
+	 * @return Collection<Composizione> Tutte le composizioni di un ordine
+	 */
 	public Collection<Composizione> searchComposizione(int idOrdine) throws SQLException {
 
 		Connection connection = null;
@@ -91,6 +99,11 @@ public class ComposizioneModel {
 		return composizioneOrdine;
 	}
 
+	/**
+	 * Elimina le composizioni di un ordine
+	 * 
+	 * @param int idOrdine L'id dell'ordine 
+	 */
 	public boolean deleteComposizione(int idOrdine) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;

@@ -2,6 +2,7 @@ package it.gameshub.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Collection;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,7 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.gameshub.bean.ItemOrder;
 import it.gameshub.bean.Carrello;
+import it.gameshub.bean.Gioco;
+import it.gameshub.bean.Immagine;
 import it.gameshub.model.GiocoModel;
+import it.gameshub.utility.CreateArrayComProduct;
 
 @WebServlet("/ButtonAggiungiAlCarrelloControl")
 public class ButtonAggiungiAlCarrelloControl extends HttpServlet {
@@ -51,7 +55,11 @@ public class ButtonAggiungiAlCarrelloControl extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-              
+		Collection<Immagine> images = (Collection<Immagine>) request.getSession().getAttribute("ImageList");
+		Collection<Gioco> products = (Collection<Gioco>) request.getSession().getAttribute("products");
+		CreateArrayComProduct temp = new CreateArrayComProduct();
+		request.getSession().setAttribute("arrayComProduct", temp.createArray(images, products));
+		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/CartView.jsp");
 		dispatcher.forward(request, response);
 	}

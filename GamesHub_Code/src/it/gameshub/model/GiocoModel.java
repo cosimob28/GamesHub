@@ -44,7 +44,7 @@ public class GiocoModel {
 			preparedStatement.setString(8, gioco.getPiattaforma());
 			preparedStatement.setString(9, gioco.getVideo());
 			preparedStatement.setInt(10, gioco.getQuantity());
-			// preparedStatement.setInt(11,gioco.getIva());
+			
 
 			preparedStatement.executeUpdate();
 
@@ -69,7 +69,7 @@ public class GiocoModel {
 		String selectSQL = "SELECT * FROM " + GiocoModel.TABLE_NAME + " WHERE SerialNumber = ?";
 
 		try {
-			// connection = ds.getConnection();
+			
 			connection = Manager.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setInt(1, code);
@@ -87,7 +87,7 @@ public class GiocoModel {
 				bean.setPiattaforma(rs.getString("Piattaforma"));
 				bean.setVideo(rs.getString("Video"));
 				bean.setQuantity(rs.getInt("Quantità"));
-				// bean.setIva(rs.getInt("Iva"));
+				
 			}
 
 		} finally {
@@ -113,7 +113,7 @@ public class GiocoModel {
 		String deleteSQL = "DELETE FROM " + GiocoModel.TABLE_NAME + " WHERE SerialNumber = ?";
 
 		try {
-			// connection = ds.getConnection();
+			
 			connection = Manager.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setInt(1, code);
@@ -215,7 +215,7 @@ public class GiocoModel {
 				+ " WHERE SerialNumber = ? ";
 
 		try {
-			// connection = ds.getConnection();
+			
 			connection = Manager.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setInt(1, qty);
@@ -238,33 +238,5 @@ public class GiocoModel {
 		}
 
 	}
-
-	// public void updateIva(int iva) throws SQLException {
-	// Connection connection = null;
-	// PreparedStatement preparedStatement = null;
-	//
-	// int result = 0;
-	//
-	// String deleteSQL = "update " + GiocoModel.TABLE_NAME + " set Iva= ? ";
-	//
-	// try {
-	// //connection = ds.getConnection();
-	// connection = Manager.getConnection();
-	// preparedStatement = connection.prepareStatement(deleteSQL);
-	// preparedStatement.setInt(1, iva);
-	//
-	// result = preparedStatement.executeUpdate();
-	//
-	// } finally {
-	// try {
-	// if (preparedStatement != null)
-	// preparedStatement.close();
-	// } finally {
-	// if (connection != null)
-	// connection.close();
-	// }
-	// }
-	//
-	// }
 
 }

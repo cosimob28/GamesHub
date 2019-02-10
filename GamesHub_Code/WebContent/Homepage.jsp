@@ -400,9 +400,10 @@ a#myBtn .arrow:before {
 							if (game.getQuantity() > 0) {
 						%>
 						<div>
-							<a href="ButtonAggiungiAlCarrelloControl?id=<%=game.getCode()%>"
-								class="addToCart addCart" >Add to
-								Cart</a>
+						<form action="ButtonAggiungiAlCarrelloControl" method="POST" >
+							<button type="submit" name="id" value="<%=game.getCode()%>"
+								class="addToCart addCart btn btn-link" >Add to
+								Cart</button>
 						</div>
 						<%
 							} else {
@@ -419,9 +420,11 @@ a#myBtn .arrow:before {
 									float prezzo = game.getPrice() + ((game.getPrice() * iva) / 100);
 										prezzo = (float) (Math.ceil(prezzo * Math.pow(10, 2)) / Math.pow(10, 2));
 								%>
+								<form action="ButtonVisualizzaPaginaProdottoControl" method="POST" >
 								<span class="product_price"><%=prezzo%>€</span> <span
-									class="product_name"><a class="productLink"
-									href="ButtonVisualizzaPaginaProdottoControl?id=<%=game.getCode()%>"><%=game.getName()%></a></span>
+									class="product_name"><button type="submit" name="id" class="productLink btn btn-link" 
+									value="<%=game.getCode()%>"><%=game.getName()%></button></span>
+									</form>
 								<%
 									String s = game.getDescription();
 								%>
