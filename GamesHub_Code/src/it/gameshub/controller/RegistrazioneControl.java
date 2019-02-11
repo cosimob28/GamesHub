@@ -81,7 +81,7 @@ public class RegistrazioneControl extends HttpServlet {
 		Random random = new Random();
 		random.nextInt(999999);
 		myHash = DigestUtils.md5Hex("" + random);
-		nuovoUtente.setPin(password);
+		nuovoUtente.setPin(newPword);
 		nuovoUtente.setMyHash(myHash);
         try {
 			model.saveUser(nuovoUtente);

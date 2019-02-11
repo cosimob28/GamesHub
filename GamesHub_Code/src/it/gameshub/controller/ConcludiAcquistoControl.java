@@ -48,6 +48,7 @@ public class ConcludiAcquistoControl extends HttpServlet {
 		Utente user = (Utente) request.getSession().getAttribute("user");
 		Collection<Composizione> listaComp = null;
 		float totale = 0;
+		int spedizione = 0;
 		List<ItemOrder> prodcart = null;
 		Carrello cart = (Carrello) request.getSession().getAttribute("cart");
 		Ordine ordine = new Ordine();
@@ -73,8 +74,9 @@ public class ConcludiAcquistoControl extends HttpServlet {
 					}
 					totale = totale + ((totale * 22) / 100);
 					totale = (float) (Math.ceil(totale * Math.pow(10, 2)) / Math.pow(10, 2));
-					String spedizione = request.getParameter("spedizione");
-					totale += Integer.parseInt(spedizione);
+					String spedizioneS = request.getParameter("spedizione");
+					spedizione = Integer.parseInt(spedizioneS);
+					ordine.setSpedizione(spedizione);
 
 				}
 			}
@@ -88,7 +90,7 @@ public class ConcludiAcquistoControl extends HttpServlet {
 				ordine.setIndirizzo(addr + ", " + città);
 			}
 			ordine.setDataOrdine(new java.sql.Date(System.currentTimeMillis()));
-			ordine.setImporto(totale);
+			ordine.setImporto(totale+spedizione);
 			ordine.setUtente(user.getUsername());
 
 			// salva l'ordine nel DB

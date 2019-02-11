@@ -23,7 +23,7 @@ import it.gameshub.model.GiocoModel;
 import it.gameshub.model.OrdineModel;
 
 @WebServlet("/ButtonAnnullaOrdineControl")
-public class ButtonAnnullaOrdineContro extends HttpServlet {
+public class ButtonAnnullaOrdineControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static OrdineModel ordineModel;
 	static ComposizioneModel composizioneModel;
@@ -35,7 +35,7 @@ public class ButtonAnnullaOrdineContro extends HttpServlet {
 		giocoModel = new GiocoModel();
 	}
 
-	public ButtonAnnullaOrdineContro() {
+	public ButtonAnnullaOrdineControl() {
 		super();
 
 	}
@@ -87,7 +87,12 @@ public class ButtonAnnullaOrdineContro extends HttpServlet {
 
 			e.printStackTrace();
 		}
-		
+		try {
+			request.getSession().setAttribute("products", giocoModel.doRetrieveAll());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/MyOrdersPage.jsp");
 		dispatcher.forward(request, response);
 
