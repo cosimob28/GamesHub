@@ -67,15 +67,16 @@ public class ConcludiAcquistoControl extends HttpServlet {
 						/* fa il totale dei prodotti acquistati */
 						// Moltiplica il prezzo del prodotto per la sua quantità
 						int qty = beancart.getGioco().getQuantity() - beancart.getQuantità();
-                        /*Aggiorna la quantità disponibile del gioco*/
+                        /Aggiorna la quantità disponibile del gioco/
 						giocoModel.updateQuantity(beancart.getGioco().getCode(), qty);
 						totale += beancart.getGioco().getPrice() * beancart.getQuantità();
 
 					}
 					totale = totale + ((totale * 22) / 100);
 					totale = (float) (Math.ceil(totale * Math.pow(10, 2)) / Math.pow(10, 2));
-					String spedizione = request.getParameter("spedizione");
-					totale += Integer.parseInt(spedizione);
+					String spedizioneS = request.getParameter("spedizione");
+					spedizione = Integer.parseInt(spedizioneS);
+					ordine.setSpedizione(spedizione);
 
 				}
 			}
@@ -89,7 +90,7 @@ public class ConcludiAcquistoControl extends HttpServlet {
 				ordine.setIndirizzo(addr + ", " + città);
 			}
 			ordine.setDataOrdine(new java.sql.Date(System.currentTimeMillis()));
-			ordine.setImporto(totale);
+			ordine.setImporto(totale+spedizione);
 			ordine.setUtente(user.getUsername());
 
 			// salva l'ordine nel DB
