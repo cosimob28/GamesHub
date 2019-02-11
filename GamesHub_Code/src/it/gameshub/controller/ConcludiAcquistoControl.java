@@ -48,6 +48,7 @@ public class ConcludiAcquistoControl extends HttpServlet {
 		Utente user = (Utente) request.getSession().getAttribute("user");
 		Collection<Composizione> listaComp = null;
 		float totale = 0;
+		int spedizione = 0;
 		List<ItemOrder> prodcart = null;
 		Carrello cart = (Carrello) request.getSession().getAttribute("cart");
 		Ordine ordine = new Ordine();

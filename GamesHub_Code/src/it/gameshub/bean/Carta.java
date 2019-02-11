@@ -7,12 +7,12 @@ public class Carta {
 	private String numeroCarta, utente;
 	private String cvv;
 	private String scadenza;
-	private long saldo;
+	private float saldo;
 	
 	/**
 	 * Costruttore di Carta
 	 */
-	public Carta(String numeroCarta, String cvv, String scadenza,long saldo,String utente) {
+	public Carta(String numeroCarta, String cvv, String scadenza,float saldo,String utente) {
 		this.numeroCarta = numeroCarta;
 		this.cvv = cvv;
 		this.scadenza = scadenza;
@@ -79,7 +79,7 @@ public class Carta {
 	/**
 	 * @return long Il saldo della carta
 	 */
-	public long getSaldo() {
+	public float getSaldo() {
 		return saldo;
 	}
 	
@@ -88,7 +88,7 @@ public class Carta {
 	 * 
 	 * @param long saldo Il saldo della carta
 	 */
-	public void setSaldo(long saldo) {
+	public void setSaldo(float saldo) {
 		this.saldo = saldo;
 	}
 

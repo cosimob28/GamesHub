@@ -117,8 +117,23 @@ color: red !important;}
 			   
 		%>
 		
-		
+	<%
+							String alert = (String) request.getSession().getAttribute("alert");
+							if (alert != null) {
+						%>
 
+							<div style="margin-left: auto;margin-right: auto;" class="alert alert-danger" role="alert"><%=alert%></div>
+
+						<%
+							request.getSession().removeAttribute("alert");
+						%>
+						<%
+							}
+						%>
+
+					
+
+						
 		
 
 

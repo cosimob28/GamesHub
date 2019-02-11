@@ -29,16 +29,17 @@ public class OrdineModel {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + OrdineModel.TABLE_NAME
-				+ " (Importo,DataOrdine,Stato,Indirizzo,Utente) VALUES (?, ?, ?, ?, ?)";
+				+ " (Importo,Spedizione,DataOrdine,Stato,Indirizzo,Utente) VALUES (?, ?, ?, ?, ?, ?)";
 
 		try {
 			connection = Manager.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setFloat(1, ordine.getImporto());
-			preparedStatement.setDate(2, ordine.getDataOrdine());
-			preparedStatement.setString(3, ordine.getStato());
-			preparedStatement.setString(4, ordine.getIndirizzo());
-			preparedStatement.setString(5, ordine.getUtente());
+			preparedStatement.setFloat(2, ordine.getSpedizione());
+			preparedStatement.setDate(3, ordine.getDataOrdine());
+			preparedStatement.setString(4, ordine.getStato());
+			preparedStatement.setString(5, ordine.getIndirizzo());
+			preparedStatement.setString(6, ordine.getUtente());
 			preparedStatement.executeUpdate();
 
 		} finally {
@@ -78,6 +79,7 @@ public class OrdineModel {
 
 				bean.setIdOrdine(rs.getInt("IdOrdine"));
 				bean.setImporto(rs.getFloat("Importo"));
+				bean.setSpedizione(rs.getInt("Spedizione"));
 				bean.setStato(rs.getString("Stato"));
 				bean.setIndirizzo(rs.getString("Indirizzo"));
 				bean.setTrackingId(rs.getString("TrackingId"));
@@ -123,6 +125,7 @@ public class OrdineModel {
 
 				bean.setIdOrdine(rs.getInt("IdOrdine"));
 				bean.setImporto(rs.getFloat("Importo"));
+				bean.setSpedizione(rs.getInt("Spedizione"));
 				bean.setStato(rs.getString("Stato"));
 				bean.setIndirizzo(rs.getString("Indirizzo"));
 				bean.setTrackingId(rs.getString("TrackingId"));
@@ -202,6 +205,7 @@ public class OrdineModel {
 
 				bean.setIdOrdine(rs.getInt("IdOrdine"));
 				bean.setImporto(rs.getFloat("Importo"));
+				bean.setSpedizione(rs.getInt("Spedizione"));
 				bean.setStato(rs.getString("Stato"));
 				bean.setIndirizzo(rs.getString("Indirizzo"));
 				bean.setTrackingId(rs.getString("TrackingId"));

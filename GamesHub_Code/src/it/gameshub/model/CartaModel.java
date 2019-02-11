@@ -18,7 +18,8 @@ public class CartaModel {
 	/**
 	 * Inserisce una carta
 	 * 
-	 * @param Carta carta L'oggetto Carta da aggiungere
+	 * @param Carta
+	 *            carta L'oggetto Carta da aggiungere
 	 */
 	public synchronized void addCarta(Carta carta) throws SQLException {
 
@@ -34,7 +35,7 @@ public class CartaModel {
 			preparedStatement.setString(1, carta.getNumeroCarta());
 			preparedStatement.setString(2, carta.getCvv());
 			preparedStatement.setString(3, carta.getScadenza());
-			preparedStatement.setLong(4, carta.getSaldo());
+			preparedStatement.setFloat(4, carta.getSaldo());
 			preparedStatement.setString(5, carta.getUtente());
 
 			preparedStatement.executeUpdate();
@@ -49,11 +50,12 @@ public class CartaModel {
 			}
 		}
 	}
-	
+
 	/**
 	 * Restituisce la carta dell'utente
 	 * 
-	 * @param String username L'username dell'utente al quale la carta è associata
+	 * @param String
+	 *            username L'username dell'utente al quale la carta è associata
 	 * 
 	 * @return Carta La carta associata all'utente
 	 */
@@ -75,7 +77,7 @@ public class CartaModel {
 				bean.setCvv(rs.getString("Cvv"));
 				bean.setScadenza(rs.getString("Scadenza"));
 				bean.setUtente(rs.getString("Utente"));
-				bean.setSaldo(rs.getLong("Saldo"));
+				bean.setSaldo(rs.getFloat("Saldo"));
 
 			}
 
@@ -91,7 +93,7 @@ public class CartaModel {
 
 		return bean;
 	}
-	
+
 	/**
 	 * Elimina la carta
 	 * 
@@ -108,7 +110,7 @@ public class CartaModel {
 		String deleteSQL = "DELETE FROM " + CartaModel.TABLE_NAME + " WHERE Utente = ?";
 
 		try {
-			//connection = ds.getConnection();
+			// connection = ds.getConnection();
 			connection = Manager.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setString(1, user);
@@ -126,11 +128,12 @@ public class CartaModel {
 		}
 		return (result != 0);
 	}
-	
+
 	/**
 	 * Verifica se esiste una carta
 	 * 
-	 * @param String username L'username dell'utente al quale la carta è associata
+	 * @param String
+	 *            username L'username dell'utente al quale la carta è associata
 	 * 
 	 * @return boolean True se la carta esiste False altrimenti
 	 */
@@ -145,9 +148,9 @@ public class CartaModel {
 
 			ResultSet rs = preparedStatement.executeQuery();
 
-			if(rs.first())
+			if (rs.first())
 				return true;
-			else 
+			else
 				return false;
 
 		} finally {
@@ -160,6 +163,41 @@ public class CartaModel {
 			}
 		}
 	}
+
+	/**
+	 * Aggiorna il saldo della carta
+	 * 
+	 * @param long saldo Il nuovo saldo della carta
+	 * @param String numeroCarta Il numero della carta
+	 * 
+	 */
+	public void doUpdate(float saldo,String numeroCarta) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		int result = 0;
+
+		String deleteSQL = "update " + CartaModel.TABLE_NAME + " set Saldo = ? " + " WHERE NumeroCarta = ? ";
+
+		try {
+
+			connection = Manager.getConnection();
+			preparedStatement = connection.prepareStatement(deleteSQL);
+			preparedStatement.setFloat(1, saldo);
+			preparedStatement.setString(2, numeroCarta);
 	
+			result = preparedStatement.executeUpdate();
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+
+	}
 
 }

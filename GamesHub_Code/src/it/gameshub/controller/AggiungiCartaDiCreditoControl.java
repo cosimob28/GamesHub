@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 import it.gameshub.bean.Carta;
@@ -43,9 +45,17 @@ public class AggiungiCartaDiCreditoControl extends HttpServlet {
 		String risposta=null;
 		
 		cardNumber = request.getParameter("cardNumber");
+		
+		
 		cardExpiry = request.getParameter("cardExpiry");
-		CVC = request.getParameter("CVC");
 		cardExpiry = cardExpiry.replace(" / ", "");
+		
+		cardExpiry = DigestUtils.md5Hex(cardExpiry);
+		
+		CVC = request.getParameter("CVC");
+		
+		CVC = DigestUtils.md5Hex(CVC);
+		
 		username = request.getParameter("username");
 		
 		long saldo = ThreadLocalRandom.current().nextLong(1000, 5000);
