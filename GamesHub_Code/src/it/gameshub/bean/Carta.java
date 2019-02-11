@@ -20,6 +20,7 @@ public class Carta {
 		this.saldo = saldo;
 	}
 
+	
 	/**
 	 * Costruttore di Carta
 	 */

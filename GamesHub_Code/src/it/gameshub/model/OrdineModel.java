@@ -35,7 +35,7 @@ public class OrdineModel {
 			connection = Manager.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setFloat(1, ordine.getImporto());
-			preparedStatement.setFloat(2, ordine.getSpedizione());
+			preparedStatement.setInt(2, ordine.getSpedizione());
 			preparedStatement.setDate(3, ordine.getDataOrdine());
 			preparedStatement.setString(4, ordine.getStato());
 			preparedStatement.setString(5, ordine.getIndirizzo());

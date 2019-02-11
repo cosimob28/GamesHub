@@ -16,11 +16,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.gameshub.bean.ItemOrder;
 import it.gameshub.bean.Carrello;
+import it.gameshub.bean.Carta;
 import it.gameshub.bean.Composizione;
 import it.gameshub.bean.Gioco;
 import it.gameshub.bean.Immagine;
 import it.gameshub.bean.Ordine;
 import it.gameshub.bean.Utente;
+import it.gameshub.model.CartaModel;
 import it.gameshub.model.ComposizioneModel;
 import it.gameshub.model.GiocoModel;
 import it.gameshub.model.OrdineModel;
@@ -32,11 +34,13 @@ public class ConcludiAcquistoControl extends HttpServlet {
 	static OrdineModel ordineModel;
 	static ComposizioneModel composizioneModel;
 	static GiocoModel giocoModel;
+	static CartaModel cartaModel;
 	static {
 
 		ordineModel = new OrdineModel();
 		composizioneModel = new ComposizioneModel();
 		giocoModel = new GiocoModel();
+		cartaModel = new CartaModel();
 	}
 
 	public ConcludiAcquistoControl() {
@@ -57,20 +61,11 @@ public class ConcludiAcquistoControl extends HttpServlet {
 
 				if (!cart.isEmpty()) {
 
-					/* il carrello è una lista di itemOrder */
-					/*
-					 * itemOrder è una classe utilizzata per rappresentare un ordine temporaneo(cioè
-					 * non ancora acquistato)
-					 */
 					prodcart = cart.getGamesInTheCart();
+					/* Calcolo il totale */
 					for (ItemOrder beancart : prodcart) {
-						/* fa il totale dei prodotti acquistati */
-						// Moltiplica il prezzo del prodotto per la sua quantità
-						int qty = beancart.getGioco().getQuantity() - beancart.getQuantità();
-                        /Aggiorna la quantità disponibile del gioco/
-						giocoModel.updateQuantity(beancart.getGioco().getCode(), qty);
-						totale += beancart.getGioco().getPrice() * beancart.getQuantità();
 
+						totale += beancart.getGioco().getPrice() * beancart.getQuantità();
 					}
 					totale = totale + ((totale * 22) / 100);
 					totale = (float) (Math.ceil(totale * Math.pow(10, 2)) / Math.pow(10, 2));
@@ -78,76 +73,92 @@ public class ConcludiAcquistoControl extends HttpServlet {
 					spedizione = Integer.parseInt(spedizioneS);
 					ordine.setSpedizione(spedizione);
 
-				}
-			}
-			if (request.getParameter("group1") != null) {
-				if (request.getParameter("group1").equals("currentAddress")) {
-					ordine.setIndirizzo(user.getIndirizzoSpedizione());
-				}
-			} else {
-				String addr = (String) request.getParameter("address");
-				String città = (String) request.getParameter("city");
-				ordine.setIndirizzo(addr + ", " + città);
-			}
-			ordine.setDataOrdine(new java.sql.Date(System.currentTimeMillis()));
-			ordine.setImporto(totale+spedizione);
-			ordine.setUtente(user.getUsername());
+					/* Controllo se il saldo è sufficiente */
+					Carta carta = cartaModel.getCarta(user.getUsername());
+					if (carta.getSaldo() >= totale) {
 
-			// salva l'ordine nel DB
-			ordineModel.addOrdine(ordine);
-			ordine.setIdOrdine(ordineModel.doMaxIdOrder());
+						/* Sottraggo il totale dalla carta */
+						cartaModel.doUpdate(carta.getSaldo() - totale, carta.getNumeroCarta());
 
-			/*
-			 * Dopo aver salvato l'ordine nel DB creiamo e salviamo la composizione
-			 * dell'ordine
-			 */
+						for (ItemOrder beancart : prodcart) {
+							/* fa il totale dei prodotti acquistati */
+							// Moltiplica il prezzo del prodotto per la sua quantità
+							int qty = beancart.getGioco().getQuantity() - beancart.getQuantità();
+							/* Aggiorna la quantità disponibile del gioco */
+							giocoModel.updateQuantity(beancart.getGioco().getCode(), qty);
+						}
 
-			Collection<Immagine> images = (Collection<Immagine>) request.getSession().getAttribute("ImageList");
-			// Crea composizione
-			Composizione comp = new Composizione();
+						if (request.getParameter("group1") != null) {
+							if (request.getParameter("group1").equals("currentAddress")) {
+								ordine.setIndirizzo(user.getIndirizzoSpedizione());
+							}
+						} else {
+							String addr = (String) request.getParameter("address");
+							String città = (String) request.getParameter("city");
+							ordine.setIndirizzo(addr + ", " + città);
+						}
+						ordine.setDataOrdine(new java.sql.Date(System.currentTimeMillis()));
+						ordine.setImporto(totale);
+						ordine.setUtente(user.getUsername());
 
-			for (ItemOrder beancart : prodcart) {
-				comp.setCosto((beancart.getGioco().getPrice() * beancart.getQuantità())/* +iva */);
-				comp.setQuantità(beancart.getQuantità());
-				comp.setOrdine(ordine.getIdOrdine());
-				comp.setGioco(beancart.getGioco().getCode());
-				comp.setNomeGioco(beancart.getGioco().getName());
-				Iterator<?> it = images.iterator();
-				Immagine image = null;
-				boolean trovato = false;
-				while (it.hasNext() && trovato == false) {
-					image = (Immagine) it.next();
-					if (image.getGame() == beancart.getGioco().getCode()) {
-						comp.setImmagine(image.getName());
-						trovato = true;
+						// salva l'ordine nel DB
+						ordineModel.addOrdine(ordine);
+						ordine.setIdOrdine(ordineModel.doMaxIdOrder());
+
+						/*
+						 * Dopo aver salvato l'ordine nel DB creiamo e salviamo la composizione
+						 * dell'ordine
+						 */
+
+						Collection<Immagine> images = (Collection<Immagine>) request.getSession()
+								.getAttribute("ImageList");
+						// Crea composizione
+						Composizione comp = new Composizione();
+
+						for (ItemOrder beancart : prodcart) {
+							comp.setCosto((beancart.getGioco().getPrice() * beancart.getQuantità())/* +iva */);
+							comp.setQuantità(beancart.getQuantità());
+							comp.setOrdine(ordine.getIdOrdine());
+							comp.setGioco(beancart.getGioco().getCode());
+							comp.setNomeGioco(beancart.getGioco().getName());
+							Iterator<?> it = images.iterator();
+							Immagine image = null;
+							boolean trovato = false;
+							while (it.hasNext() && trovato == false) {
+								image = (Immagine) it.next();
+								if (image.getGame() == beancart.getGioco().getCode()) {
+									comp.setImmagine(image.getName());
+									trovato = true;
+								}
+
+							}
+
+							composizioneModel.addComposizione(comp);
+
+						}
+
+						// listaComp conterrà tutte le composizioni di un ordine
+						listaComp = composizioneModel.searchComposizione(ordine.getIdOrdine());
+						request.getSession().setAttribute("listaComp", listaComp);
+						// Svuoto il carrello
+						cart.svuotaCarrello();
+						request.getSession().setAttribute("cart", cart);
+
+						request.getSession().setAttribute("products", giocoModel.doRetrieveAll());
+
+						RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Homepage.jsp");
+						dispatcher.forward(request, response);
+					} else {
+						request.getSession().setAttribute("alert", "Saldo insufficiente");
+						RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/CheckoutPage.jsp");
+						dispatcher.forward(request, response);
 					}
-
 				}
-
-				composizioneModel.addComposizione(comp);
-
 			}
-
-			// listaComp conterrà tutte le composizioni di un ordine
-			listaComp = composizioneModel.searchComposizione(ordine.getIdOrdine());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		request.getSession().setAttribute("listaComp", listaComp);
-		// Svuoto il carrello
-		cart.svuotaCarrello();
-		request.getSession().setAttribute("cart", cart);
-
-		try {
-			request.getSession().setAttribute("products", giocoModel.doRetrieveAll());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Homepage.jsp");
-		dispatcher.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

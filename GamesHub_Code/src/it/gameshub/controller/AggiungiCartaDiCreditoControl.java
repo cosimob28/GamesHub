@@ -58,7 +58,7 @@ public class AggiungiCartaDiCreditoControl extends HttpServlet {
 		
 		username = request.getParameter("username");
 		
-		long saldo = ThreadLocalRandom.current().nextLong(1000, 5000);
+		float saldo = ThreadLocalRandom.current().nextInt(1000, 5000);
 		System.out.println(username+cardExpiry+cardNumber+CVC);
 		Carta x = new Carta(cardNumber, CVC, cardExpiry, saldo,username);
 		
