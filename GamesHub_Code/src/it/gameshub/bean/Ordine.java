@@ -8,6 +8,7 @@ public class Ordine {
 
 	private int idOrdine;
 	private float importo;
+	private int spedizione;
 	private Date dataOrdine;
 	private String utente, stato, trackingId, indirizzo;
 
@@ -27,6 +28,16 @@ public class Ordine {
 	}
 
 	
+	public int getSpedizione() {
+		return spedizione;
+	}
+
+
+	public void setSpedizione(int spedizione) {
+		this.spedizione = spedizione;
+	}
+
+
 	public String getIndirizzo() {
 		return indirizzo;
 	}

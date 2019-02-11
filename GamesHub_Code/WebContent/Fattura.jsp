@@ -45,7 +45,7 @@ if(!authUser){
         <div>GamesHub</div>
         <div>45 via Giovanni Paolo II,<br /> SA 84084, IT</div>
         <div>0975 251262</div>
-        <div>GamesHub@mail.com</div>
+        <div>Gameshub2019@gmail.com</div>
       </div>
       <div id="project">
         <div><span>CLIENTE</span><%=user.getNome()%> <%=user.getCognome() %></div>
@@ -82,8 +82,11 @@ if(!authUser){
             <td class="service"><%=comp.getNomeGioco()%></td>
             <td class="desc">Gioco per console/pc</td>
             <%float prezzoUnitario=comp.getCosto()/comp.getQuantità();
-            String x= String.format("%.2f",prezzoUnitario);%>
-            <td class="unit">€<%=x%></td>
+            System.out.println(prezzoUnitario);
+            prezzoUnitario = (float) (Math.ceil(prezzoUnitario*Math.pow(10,2))/Math.pow(10,2));
+            System.out.println(prezzoUnitario);
+            %>
+            <td class="unit">€<%=prezzoUnitario%></td>
             <td class="qty"><%=comp.getQuantità() %></td>
             <td class="total">€<%=comp.getCosto() %></td>
           </tr>
@@ -94,6 +97,11 @@ if(!authUser){
             <td colspan="4">IMPONIBILE</td>
              <% total = (float) (Math.ceil(total*Math.pow(10,2))/Math.pow(10,2));%>
             <td class="total">€<%=total%></td>
+          </tr> 
+          <tr>
+            <td colspan="4">SPEDIZIONE</td>
+             <% int spedizione = order.getSpedizione();%>
+            <td class="total">€<%=spedizione%></td>
           </tr> 
           <tr>
             <td colspan="4">IVA <%=iva%>%</td>

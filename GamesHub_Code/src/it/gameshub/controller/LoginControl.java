@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 import it.gameshub.bean.Utente;
 import it.gameshub.model.UtenteModel;
 
@@ -36,11 +38,14 @@ public class LoginControl extends HttpServlet {
 		Boolean isGestoreOrdini = null;
 		String username = request.getParameter("userid");
 		String password = request.getParameter("passid");
+		password = DigestUtils.md5Hex(password);
+//		System.out.println(password);
 		try {
 			// controllo se c'è un utente con l'username passato come parametro
 			if (model.isAnUser(username)) {
 				Utente user = model.getUser(username);
 				if (user.isVerificato()) {
+//					System.out.println(user.getPin());
 					if (user.getPin().equals(password)) { // Se la password è corretta
 						// Essendo che nome e password coincidono salvo l'utente nella sessione
 						request.getSession().setAttribute("user", user);
