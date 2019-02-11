@@ -109,13 +109,13 @@
 						<td><%=user.getTelefono()%></td>
 					</tr>
 					<tr>
-					<tr>
+					<%-- <tr>
 						<td>Password</td>
 						<td><input id="password-field" type="password"
 							class="form-control" name="password" value="<%=user.getPin()%>" disabled></input><span
 							toggle="#password-field"
 							class="fa fa-fw fa-eye field-icon toggle-password"></span></td>
-					</tr>
+					</tr> --%>
 					<tr>
 
 						<td colspan="2" align="center"><a

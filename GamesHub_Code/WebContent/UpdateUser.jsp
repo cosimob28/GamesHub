@@ -101,21 +101,23 @@
 						</tr>
 						<tr>
 							<td>Indirizzo:</td>
-							<td><input type="text" class="form-control"
+							<td><input type="text" class="form-control" id = "address"
 								name="inputIndirizzo"
-								value="<%=user.getIndirizzoSpedizione()%>"></td>
+								value="<%=user.getIndirizzoSpedizione()%>">
+								<p id="demo2"></p></td>
 						</tr>
 
 						<tr>
 							<td>Telefono</td>
 							<td><input type="text" class="form-control" id="phone"
 								name="inputTelefono" value="<%=user.getTelefono()%>">
+								<p id="demo3"></p>
 							</td>
 						</tr>
 						<tr>
 							<td>Password</td>
 							<td><input id="password-field" type="password" 
-								class="form-control" name="password" value="<%=user.getPin()%>"></input><span
+								class="form-control" name="password" value=""></input><span
 								toggle="#password-field"
 								class="fa fa-fw fa-eye field-icon toggle-password"></span>
 								<p id="demo4"></p></td>
@@ -139,6 +141,7 @@
 	<script>
 		var numberCorrect = true;
 		var passwordCorrect = true;
+		var addressCorrect = true;
 
 		function passwordValidator(password) {
 			var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{6,}$/;
@@ -162,6 +165,31 @@
 			}
 
 		}
+		
+		function addressValidation(address) {
+			var add = /^(([A-Z])([a-z]+)(\s))+(\d+)(,)(\s)(([A-Z])([a-z]+)(\s?))$/;
+			
+			if (address.value.match(add)) {
+				$("#address").css({
+					"border-color" : "#00fd00"
+				});
+				$("#demo2").text("");
+				return true;
+			} else {
+				
+				$("#address").css({
+					"border-color" : "red"
+				});
+				$("#demo2")
+						.text("L'indirizzo deve essere del formato es. 'Via Genova 24, Roma'");
+				$("#demo2").css({
+					'font-size' : '15px'
+				});
+				return false;
+			}
+
+		}
+		
 
 		$(".toggle-password").click(function() {
 
@@ -197,12 +225,20 @@
 
 			if (!passwordCorrect)
 				return false;
-
+			if(!addressCorrect)
+				return false;
 			return true;
 		}
 
 		$("#phone").change(function() {
 			numberCorrect = phonenumber(this);
+
+		});
+		
+		$("#address").change(function() {
+			
+			addressCorrect = addressValidation(this);
+			
 
 		});
 

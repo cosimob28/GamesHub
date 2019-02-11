@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 import it.gameshub.bean.Utente;
 import it.gameshub.model.UtenteModel;
 
@@ -42,6 +44,7 @@ public class ModificaDatiAreaPersonaleControl extends HttpServlet {
 
 		String password = request.getParameter("password");
 		if (password != null && !password.equals("")) {
+			password = DigestUtils.md5Hex(password);
 			user.setPin(password);
 		}
 
