@@ -13,11 +13,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.gameshub.bean.Carta;
 import it.gameshub.bean.Composizione;
 import it.gameshub.bean.Gioco;
 import it.gameshub.bean.ItemComp;
 import it.gameshub.bean.Ordine;
 import it.gameshub.bean.Utente;
+import it.gameshub.model.CartaModel;
 import it.gameshub.model.ComposizioneModel;
 import it.gameshub.model.GiocoModel;
 import it.gameshub.model.OrdineModel;
@@ -28,11 +30,13 @@ public class ButtonAnnullaOrdineControl extends HttpServlet {
 	static OrdineModel ordineModel;
 	static ComposizioneModel composizioneModel;
 	static GiocoModel giocoModel;
+	static CartaModel cartaModel;
 	static {
 
 		ordineModel = new OrdineModel();
 		composizioneModel = new ComposizioneModel();
 		giocoModel = new GiocoModel();
+		cartaModel = new CartaModel();
 	}
 
 	public ButtonAnnullaOrdineControl() {
@@ -45,9 +49,13 @@ public class ButtonAnnullaOrdineControl extends HttpServlet {
 		Utente user = (Utente) request.getSession().getAttribute("user");
 		try {
 
+			
 			int id = Integer.parseInt(request.getParameter("id"));
 			Ordine ordine = ordineModel.getOrder(id);
-
+			Carta carta = cartaModel.getCarta(user.getUsername());
+			/*Effettuo il rimborso al cliente*/
+			
+			cartaModel.doUpdate(carta.getSaldo() + ordine.getImporto(), carta.getNumeroCarta());
 			Collection<Composizione> compOrdine = composizioneModel.searchComposizione(ordine.getIdOrdine());
 			Iterator<?> it = compOrdine.iterator();
 			while (it.hasNext()) {
@@ -57,6 +65,7 @@ public class ButtonAnnullaOrdineControl extends HttpServlet {
 				giocoModel.updateQuantity(y.getCode(), qty);
 
 			}
+			
 			/* Elimino la composizione dell'ordine dal DB */
 			composizioneModel.deleteComposizione(ordine.getIdOrdine());
 			/* Elimino l'ordine dal DB */
@@ -80,6 +89,7 @@ public class ButtonAnnullaOrdineControl extends HttpServlet {
 				}
 			}
 			request.getSession().setAttribute("composizioneOrdini", composizioneOrdini);
+			request.getSession().setAttribute("products", giocoModel.doRetrieveAll());
 		} catch (NumberFormatException e) {
 
 			e.printStackTrace();
@@ -87,12 +97,7 @@ public class ButtonAnnullaOrdineControl extends HttpServlet {
 
 			e.printStackTrace();
 		}
-		try {
-			request.getSession().setAttribute("products", giocoModel.doRetrieveAll());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/MyOrdersPage.jsp");
 		dispatcher.forward(request, response);
 

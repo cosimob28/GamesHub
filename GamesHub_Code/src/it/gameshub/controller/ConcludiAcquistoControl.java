@@ -72,6 +72,7 @@ public class ConcludiAcquistoControl extends HttpServlet {
 					String spedizioneS = request.getParameter("spedizione");
 					spedizione = Integer.parseInt(spedizioneS);
 					ordine.setSpedizione(spedizione);
+					totale += spedizione;
 
 					/* Controllo se il saldo è sufficiente */
 					Carta carta = cartaModel.getCarta(user.getUsername());
