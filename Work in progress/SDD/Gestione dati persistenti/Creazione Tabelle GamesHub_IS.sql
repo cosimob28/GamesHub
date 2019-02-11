@@ -25,6 +25,7 @@ HashText varchar(250)
 create table Ordine(
 IdOrdine integer Primary key auto_increment,
 Importo float not null,
+Spedizione int not null,
 DataOrdine date not null,
 Stato varchar(20) not null,
 Indirizzo varchar(60) not null,
@@ -70,9 +71,9 @@ foreign key (Gioco)  references Gioco(SerialNumber) on delete cascade
 
 
 create table Carta(
-NumeroCarta varchar(50) Primary key,
-Cvv char(4) not null,
-Scadenza char(6) not null,
+NumeroCarta varchar(150) Primary key,
+Cvv varchar(150) not null,
+Scadenza varchar(150) not null,
 Saldo long not null,
 Utente varchar(30),
 foreign key (Utente)  references Utente(Username)
@@ -89,13 +90,13 @@ insert into Utente(Username,Pin,Nome,Cognome,DataNascita,codiceFiscale,Telefono,
 values('root','root','Admin','Admin','1990-01-10','ADM','0000000000','admin@gameshub.it','via Giovanni Paolo II, Fisciano','Uomo','Gestore catalogo','2018-02-10',1);
 
 insert into Utente(Username,Pin,Nome,Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso,Tipo,DataInvioMail,Verificato)
-values('Luca1988','Luca88','Luca','Marini','1988-01-10','MRNLCA25L18G856S','3425012563','lucaMarini@gmail.com','via Lauro 24, Napoli ','Uomo','cliente','2019-02-05',1);
+values('Luca1988','c971ff55c78282b514b8e90cd818400b','Luca','Marini','1988-01-10','MRNLCA25L18G856S','3425012563','lucaMarini@gmail.com','via Lauro 24, Napoli ','Uomo','cliente','2019-02-05',1);
 
 insert into Utente(Username,Pin,Nome,Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso,Tipo,DataInvioMail,Verificato)
-values('Franco1995','Franco95','Francesco','Bianchi','1995-05-24','RSSFRN97O25F789H','3882450821','francesco@live.it','via Matteotti 98, Roma','Uomo','cliente','2019-02-05',1);
+values('Franco1995','440cc7b643711a044bb78433a449028d','Francesco','Bianchi','1995-05-24','RSSFRN97O25F789H','3882450821','francesco@live.it','via Matteotti 98, Roma','Uomo','cliente','2019-02-05',1);
 
 insert into Utente(Username,Pin,Nome,Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso,Tipo,DataInvioMail,Verificato)
-values('Laura1980','Laura80','Laura','Verdi','1980-03-11','VRDLRA80C51F205B','3206576122','verlaura@live.it','via Rossini 22, Milano','Donna','cliente','2019-02-04',1);
+values('Laura1980','1b3c7ec16f9186923b9d943f6c7130ea','Laura','Verdi','1980-03-11','VRDLRA80C51F205B','3206576122','verlaura@live.it','via Rossini 22, Milano','Donna','cliente','2019-02-04',1);
 /*Giochi*/
 
 insert into Gioco(SerialNumber,Nome,Prezzo,Pegi,Genere,Descrizione,Anno,Piattaforma,Video,Quantità)
