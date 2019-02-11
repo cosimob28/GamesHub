@@ -180,7 +180,6 @@ public class GiocoModel {
 				bean.setPiattaforma(rs.getString("Piattaforma"));
 				bean.setVideo(rs.getString("Video"));
 				bean.setQuantity(rs.getInt("Quantità"));
-				// bean.setIva(rs.getInt("Iva"));
 				products.add(bean);
 			}
 

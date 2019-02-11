@@ -20,14 +20,14 @@ public class UtenteModel {
 
 	private static final String TABLE_NAME = "Utente";
 
-	// Salva un utente nel database
-	// vecchio doSave
+	/**
+	 * Inserisce un utente
+	 * 
+	 * @param Utente user L'oggetto Utente da aggiungere
+	 */
 	public void saveUser(Utente user) throws SQLException {
 		Connection connection = null;
 
-		/*
-		 * Date dataInvio = new Date(0,0,0); System.out.println(dataInvio.getDay());
-		 */
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + UtenteModel.TABLE_NAME
@@ -35,7 +35,7 @@ public class UtenteModel {
 				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
-			// connection = ds.getConnection();
+		
 			connection = Manager.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setString(1, user.getUsername());
@@ -65,7 +65,14 @@ public class UtenteModel {
 		}
 	}
 
-	// Vecchio doDelete
+	
+	/**
+	 * Elimina utente
+	 * 
+	 * @param String username L'username dell'utente da eliminare
+	 * 
+	 * @return boolean True se l'utente è stato eliminato False altrimenti
+	 */
 	public boolean deleteUser(String username) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -75,8 +82,7 @@ public class UtenteModel {
 		String deleteSQL = "DELETE FROM " + UtenteModel.TABLE_NAME + " WHERE Username = '?'";
 
 		try {
-			// connection = ds.getConnection();
-
+			
 			connection = Manager.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setString(1, username);
@@ -95,7 +101,13 @@ public class UtenteModel {
 		return (result != 0);
 	}
 
-	// vecchio doRetrieveByKey
+	/**
+	 * Restituisce un utente
+	 * 
+	 * @param String username L'username dell'utente da prelevare
+	 * 
+	 * @return Utente L'utente prelevato
+	 */
 	public Utente getUser(String username) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -105,7 +117,7 @@ public class UtenteModel {
 		String selectSQL = "SELECT * FROM " + UtenteModel.TABLE_NAME + " WHERE Username = ? ";
 
 		try {
-			// connection = ds.getConnection();
+
 			connection = Manager.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setString(1, username);
@@ -123,7 +135,6 @@ public class UtenteModel {
 				bean.setEmail(rs.getString("Email"));
 				bean.setIndirizzoSpedizione(rs.getString("IndirizzoSpedizione"));
 				bean.setSesso(rs.getString("Sesso"));
-				// bean.setAmministratore(rs.getInt("Amministratore"));
 				bean.setTipo(rs.getString("Tipo"));
 				bean.setVerificato(rs.getBoolean("Verificato"));
 
@@ -143,7 +154,12 @@ public class UtenteModel {
 
 	}
 
-	// vecchio doRetrieveAll
+	
+	/**
+	 * Preleva tutti gli utenti
+	 * 
+	 * @return Collection<Utente> Tutti gli utenti salvati
+	 */
 	public Collection<Utente> getAllUsers(String order) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -157,7 +173,7 @@ public class UtenteModel {
 		}
 
 		try {
-			// connection = ds.getConnection();
+
 			connection = Manager.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 
@@ -176,7 +192,6 @@ public class UtenteModel {
 				bean.setEmail(rs.getString("Email"));
 				bean.setIndirizzoSpedizione(rs.getString("IndirizzoSpedizione"));
 				bean.setSesso(rs.getString("Sesso"));
-				// bean.setAmministratore(rs.getInt("Amministratore"));
 				bean.setTipo(rs.getString("Tipo"));
 				users.add(bean);
 			}
@@ -194,54 +209,20 @@ public class UtenteModel {
 
 	}
 
-	// public UserBean getUser(String username) throws SQLException {
-	//
-	// Connection connection = null;
-	// PreparedStatement preparedStatement = null;
-	// UserBean bean = new UserBean();
-	//
-	// String selectSQL = "SELECT * FROM " + UserModelDS.TABLE_NAME + " WHERE
-	// Username = ? ";
-	// try {
-	// connection = ds.getConnection();
-	// preparedStatement = connection.prepareStatement(selectSQL);
-	// preparedStatement.setString(1, username);
-	// ResultSet rs = preparedStatement.executeQuery();
-	//
-	// while (rs.next()) {
-	// bean.setUsername(rs.getString("Username"));
-	// bean.setPin(rs.getString("Pin"));
-	// bean.setNome(rs.getString("Nome"));
-	// bean.setCognome(rs.getString("Cognome"));
-	// bean.setDataDiNascita(rs.getDate("DataNascita"));
-	// bean.setCodiceFiscale(rs.getString("codiceFiscale"));
-	// bean.setTelefono(rs.getString("Telefono"));
-	// bean.setEmail(rs.getString("Email"));
-	// bean.setIndirizzoSpedizione(rs.getString("IndirizzoSpedizione"));
-	// bean.setSesso(rs.getString("Sesso"));
-	// bean.setAmministratore(rs.getInt("Amministratore"));
-	//
-	// }
-	//
-	// } finally {
-	// try {
-	// if (preparedStatement != null)
-	// preparedStatement.close();
-	// } finally {
-	// if (connection != null)
-	// connection.close();
-	// }
-	// }
-	// return bean;
-	// }
-
+	/**
+	 * Controlla se esiste un utente con username uguale alla stringa passata come parametro
+	 * 
+	 * @param String username Un username da verificare
+	 * 
+	 * @return boolean True se esiste un utente con quell'username False altrimenti
+	 */
 	public boolean isAnUser(String username) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		boolean v;
 		String selectSQL = "SELECT *  FROM " + UtenteModel.TABLE_NAME + " WHERE Username = ? ";
 		try {
-			// connection = ds.getConnection();
+		
 			connection = Manager.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setString(1, username);
@@ -264,6 +245,15 @@ public class UtenteModel {
 		return v;
 	}
 
+	
+	/**
+	 * Permette di completare la registrazione di un utente 
+	 * 
+	 * @param String mail L'email dell'utente
+	 * @param String hash Un codice associato all'utente
+	 * 
+	 * @return boolean True se l'utente è stato attivato False altrimenti
+	 */
 	public boolean activateUser(String email, String hash) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -273,7 +263,6 @@ public class UtenteModel {
 				+ " WHERE Email = ? and HashText = ? and Verificato = ? ";
 		try {
 
-			// connection = ds.getConnection();
 			connection = Manager.getConnection();
 
 			preparedStatement = connection.prepareStatement(selectSQL);
@@ -315,7 +304,16 @@ public class UtenteModel {
 
 		return v;
 	}
-
+	
+	/**
+	 * Aggiorna alcune informazioni di un utente
+	 * 
+	 * @param String username L'username dell'utente
+	 * @param String password La password dell'utente
+	 * @param String telefono Il numero di telefono dell'utente
+	 * @param String indirizzo L'indirizzo dell'utente
+	 * 
+	 */
 	public void doUpdate(String username, String password, String telefono, String indirizzo) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -326,7 +324,7 @@ public class UtenteModel {
 				+ " set Telefono = ?, IndirizzoSpedizione = ?, Pin = ? " + " WHERE Username = ? ";
 
 		try {
-			// connection = ds.getConnection();
+			
 			connection = Manager.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setString(1, telefono);
