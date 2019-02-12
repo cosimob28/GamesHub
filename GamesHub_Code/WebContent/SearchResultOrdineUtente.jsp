@@ -142,8 +142,11 @@
       <td class="nome"><%=comp.getNomeGioco()%></td>
       <td></td>
       <%if (trovato==true && quantity!=0) {%>
-       <td style=" display: block;"><a href="ButtonAggiungiAlCarrelloControl?id=<%=comp.getGioco()%>" class="btn btn-warning addCart " >
-                             <span class="fa fa-shopping-cart"></span> Compralo di nuovo </a></td> 
+       <form action="ButtonAggiungiAlCarrelloControl" method="POST" >
+       <td style=" display: block;">
+       <button type="submit" name="id" value="<%=comp.getGioco()%>" class="btn btn-warning addCart " >
+                             <span class="fa fa-shopping-cart"></span> Compralo di nuovo </button></td> 
+           </form>              
                          
                              
       <%}else {%>
@@ -157,14 +160,16 @@
       <td></td>
       <td></td>
        <%if (!ordine.getStato().equals("confermato")) {%>
-       <td><a  class="btn btn-secondary "  href="" disabled>
-                             <span class="fa fa-trash-alt "></span> Annulla ordine </a></td>
+       <td><button type="button" class="btn btn-secondary ">
+                             <span class="fa fa-trash-alt "></span> Annulla ordine </button></td>
       <td style=" display: block;"><button type="button" class="btn btn-primary " onclick="window.open('ButtonVisualizzaFatturaControl?id=<%=ordine.getIdOrdine()%>');">
                              <span class="fa fa-file-invoice-dollar"></span> Visualizza fattura </button></td>
                              <%}else{ %>
-                   <td><a  class="btn btn-danger "  href="ButtonAnnullaOrdineControl?id=<%=ordine.getIdOrdine()%>">
-                             <span class="fa fa-trash-alt "></span> Annulla ordine </a></td>
-      <td style=" display: block;"><button type="button" class="btn btn-secondary "  >
+                             <form action="ButtonAnnullaOrdineControl" method="POST" >
+                   <td><button type="submit" name="id"  class="btn btn-danger "  value="<%=ordine.getIdOrdine()%>">
+                             <span class="fa fa-trash-alt "></span> Annulla ordine </button></td>
+                             </form>
+      <td style=" display: block;"><button type="button" class="btn btn-secondary ">
                              <span class="fa fa-file-invoice-dollar"></span> Visualizza fattura </button></td>           
       <%} %>
       
