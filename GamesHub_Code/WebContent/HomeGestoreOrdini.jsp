@@ -207,7 +207,7 @@ font-style: oblique;
 			<td><span class="spanDate"> <%=bean.getDataOrdine()%></span></td>
 			<td>
 			
-<form ACTION="ButtonSalvaModificheGestoreOrdiniControl" name="salvaModificheForm" id="salvaModificheForm" method="post">			
+<form action="ButtonSalvaModificheGestoreOrdiniControl" name="salvaModificheForm" id="salvaModificheForm" method="post">			
     <select name="cambiaStatoOrdine" class="custom-select" >
     <option><%=bean.getStato()%></option>
      <%
@@ -226,8 +226,10 @@ font-style: oblique;
 			</td>
 			
 			<td><%=bean.getUtente()%></td>
+			
 			<td>
-			<% if(bean.getTrackingId().equalsIgnoreCase(" ")|| bean.getTrackingId()==null){%>
+			<% if(bean.getTrackingId()==null || bean.getTrackingId().equalsIgnoreCase(" ")){%>
+			
             <input type="text" id="fname" name="trackingID" value="<%=bean.getTrackingId()%>" placeholder="">
             <%}else {%>
              <input type="text" id="fname" name="trackingID" value="<%=bean.getTrackingId()%>" placeholder="Inserisci Tracking ID">
