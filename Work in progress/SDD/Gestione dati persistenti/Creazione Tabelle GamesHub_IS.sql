@@ -87,7 +87,7 @@ foreign key (Utente)  references Utente(Username)
 
 /*Utenti*/
 insert into Utente(Username,Pin,Nome,Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso,Tipo,DataInvioMail,Verificato)
-values('root','root','Admin','Admin','1990-01-10','ADM','0000000000','admin@gameshub.it','via Giovanni Paolo II, Fisciano','Uomo','Gestore catalogo','2018-02-10',1);
+values('root','63a9f0ea7bb98050796b649e85481845','Admin','Admin','1990-01-10','ADM','0000000000','admin@gameshub.it','via Giovanni Paolo II, Fisciano','Uomo','Gestore catalogo','2018-02-10',1);
 
 insert into Utente(Username,Pin,Nome,Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso,Tipo,DataInvioMail,Verificato)
 values('Luca1988','c971ff55c78282b514b8e90cd818400b','Luca','Marini','1988-01-10','MRNLCA25L18G856S','3425012563','lucaMarini@gmail.com','via Lauro 24, Napoli ','Uomo','cliente','2019-02-05',1);
@@ -97,6 +97,10 @@ values('Franco1995','440cc7b643711a044bb78433a449028d','Francesco','Bianchi','19
 
 insert into Utente(Username,Pin,Nome,Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso,Tipo,DataInvioMail,Verificato)
 values('Laura1980','1b3c7ec16f9186923b9d943f6c7130ea','Laura','Verdi','1980-03-11','VRDLRA80C51F205B','3206576122','verlaura@live.it','via Rossini 22, Milano','Donna','cliente','2019-02-04',1);
+
+insert into Utente(Username,Pin,Nome,Cognome,DataNascita,codiceFiscale,Telefono,Email,IndirizzoSpedizione,Sesso,Tipo,DataInvioMail,Verificato)
+values('root1','e5d9dee0892c9f474a174d3bfffb7810','Admin','Admin','1990-01-10','ADM','0000000000','admin-ordini@gameshub.it','via Giovanni Paolo II, Fisciano','Uomo','Gestore ordini','2018-02-10',1);
+
 /*Giochi*/
 
 insert into Gioco(SerialNumber,Nome,Prezzo,Pegi,Genere,Descrizione,Anno,Piattaforma,Video,Quantità)
