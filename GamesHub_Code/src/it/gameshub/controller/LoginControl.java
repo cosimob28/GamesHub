@@ -54,12 +54,12 @@ public class LoginControl extends HttpServlet {
 							request.getSession().setAttribute("isGestoreCatalogo", isGestoreCatalogo);
 							option = 1;
 						} else if (user.getTipo().equals("Gestore ordini")) {
-							isGestoreCatalogo = true;
+							isGestoreOrdini = true;
 							request.getSession().setAttribute("isGestoreOrdini", isGestoreOrdini);
 							option = 2;
 						} else {
 							isGestoreCatalogo = false;
-							isGestoreCatalogo = false;
+							isGestoreOrdini = false;
 							request.getSession().setAttribute("isGestoreCatalogo", isGestoreCatalogo);
 							request.getSession().setAttribute("isGestoreOrdini", isGestoreOrdini);
 							option = 3; // Vado alla home page per l'utente normale
