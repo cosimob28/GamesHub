@@ -148,6 +148,64 @@ public class OrdineModel {
 		return ordiniClienti;
 	}
 
+	
+public synchronized Collection<Ordine> getListaOrdini(String idOrdine, String annoOrdine, String statoOrdine) throws SQLException {
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		Collection<Ordine> ordiniClienti = new LinkedList<Ordine>();
+		
+		String selectSQL = "SELECT * FROM " + OrdineModel.TABLE_NAME + " WHERE ";
+		
+		boolean done=false;
+		
+		if(idOrdine !=null) { selectSQL+= "idOrdine LIKE '%" + idOrdine + "%' "; 
+		                      done=true;}
+		if(annoOrdine!=null && !annoOrdine.equalsIgnoreCase("Anno")) {
+			if(done==true) selectSQL += " and ";
+			selectSQL+= "YEAR(dataOrdine) >= " + annoOrdine + " ";
+					};
+		if(statoOrdine!=null && !statoOrdine.equalsIgnoreCase("Stato")) { 
+			if(done==true) selectSQL += " and ";
+			selectSQL+= "stato = '" + statoOrdine + "' ";
+			}
+		selectSQL+=" ;";
+		
+
+		try {
+			connection = Manager.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				Ordine bean = new Ordine();
+
+				bean.setIdOrdine(rs.getInt("IdOrdine"));
+				bean.setImporto(rs.getFloat("Importo"));
+				bean.setStato(rs.getString("Stato"));
+				bean.setTrackingId(rs.getString("TrackingId"));
+				bean.setDataOrdine(rs.getDate("DataOrdine"));
+				bean.setUtente(rs.getString("Utente"));
+				ordiniClienti.add(bean);
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+
+		return ordiniClienti;
+	}
+	
+	
+	
+	
 	/**
 	 * Elimina ordine
 	 * 
@@ -239,7 +297,7 @@ public class OrdineModel {
 
 		int result = 0;
 
-		String deleteSQL = "update " + OrdineModel.TABLE_NAME + " set Stato = ?";
+		String deleteSQL = "update " + OrdineModel.TABLE_NAME  + "  set Stato = ? " + " WHERE IdOrdine="+ idOrdine;
 
 		try {
 			// connection = ds.getConnection();
@@ -272,7 +330,7 @@ public class OrdineModel {
 
 		int result = 0;
 
-		String deleteSQL = "update " + OrdineModel.TABLE_NAME + " set TrackingId = ?";
+		String deleteSQL = "update " + OrdineModel.TABLE_NAME + " set TrackingId = ? " + " WHERE IdOrdine="+ idOrdine ;
 
 		try {
 			// connection = ds.getConnection();

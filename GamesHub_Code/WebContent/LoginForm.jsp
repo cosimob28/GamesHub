@@ -48,6 +48,11 @@ body {
 label {
 	color: black;
 }
+
+.error{
+	color:red;
+}
+
 </style>
 
 
@@ -66,7 +71,7 @@ label {
 					<h2>Accedi a GamesHub</h2>
 					<br>
 					<form ACTION="LoginControl" name="loginForm" id="login-form"
-						role="form" autocomplete="off" onSubmit="return formValidation();"
+						role="form" autocomplete="off" onsubmit="return validate(this)"
 						method="post">
 
 						<%
@@ -89,8 +94,8 @@ label {
 								data-val-required='Username richiesto.' required /> <span
 								id="UserError"></span>
 							<!-- spazio per scrivere in caso di user non valido -->
-
-
+						<p id="AuthUserError" class="error">
+	
 						</div>
 						<div class="form-group">
 							<label for="AuthPassword">Password:</label> <input
@@ -139,7 +144,40 @@ label {
 		</div>
 	</div>
 
+<script type="text/javascript">
 
+var userCorrect = false;
+
+function ValidateUser(AuthUser)
+{
+   var userFormat = /^.*\\s+.*$/;
+   if(AuthUser.value.match(userFormat))
+   {
+	   $("#AuthUser").css({"border-color":"#00fd00"});
+	   $("#AuthUserError").text("");
+     return true;
+   }
+   else
+   {
+	   $("#AuthUser").css({"border-color":"red"});
+      $("#AuthUserError").text("Il nome utente non può contenere spazi.");
+      return false;
+   }
+}
+
+$("#AuthUser").change(function(){
+	 alert("f"); 
+	 userCorrect = ValidateUser(this);
+	 
+    });
+    
+function validate(form){
+	  
+
+	if(!userCorrect)
+	return false;
+}
+</script>
 </body>
 </html>
 

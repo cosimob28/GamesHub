@@ -95,7 +95,7 @@ public class LoginControl extends HttpServlet {
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/HomeGestoreCatalogo.jsp");
 			dispatcher.forward(request, response);
 		} else if (option == 2) { // caso in cui l'utente è un Gestore ordini
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/HomeGestoreOrdini.jsp");
 			dispatcher.forward(request, response);
 		} else if (option == 3) { // caso in cui l'utente è registrato ma non è un gestore
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Homepage.jsp");

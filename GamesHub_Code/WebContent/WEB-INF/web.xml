@@ -166,6 +166,14 @@
     <servlet-name>ButtonVisualizzaFatturaControl</servlet-name>
     <servlet-class>it.gameshub.controller.ButtonVisualizzaFatturaControl</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ButtonSalvaModificheGestoreOrdiniControl</servlet-name>
+    <servlet-class>it.gameshub.controller.ButtonSalvaModificheGestoreOrdiniControl</servlet-class>
+  </servlet>
+   <servlet>
+    <servlet-name>CercaGestioneOrdiniControl</servlet-name>
+    <servlet-class>it.gameshub.controller.CercaGestioneOrdiniControl</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>VisualizzaHomeControl</servlet-name>
     <url-pattern>/home</url-pattern>

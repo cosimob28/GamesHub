@@ -16,17 +16,20 @@ import it.gameshub.bean.Carrello;
 import it.gameshub.bean.Gioco;
 import it.gameshub.model.GiocoModel;
 import it.gameshub.model.ImmagineModel;
+import it.gameshub.model.OrdineModel;
 
 public class VisualizzaHomeControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static GiocoModel giocoModel;
+	static OrdineModel ordineModel;
 	static ImmagineModel immagineModel;
 
 	static {
 
 		immagineModel = new ImmagineModel();
 		giocoModel = new GiocoModel();
-	}
+		ordineModel= new OrdineModel();
+		}
 
 	public VisualizzaHomeControl() {
 		super();
@@ -50,6 +53,9 @@ public class VisualizzaHomeControl extends HttpServlet {
 			
 			 /*setta l'attributo ImageList che conterrà tutte le immagini dei giochi contenuti nel DB*/
 			request.getSession().setAttribute("ImageList", immagineModel.doRetrieveAll());
+			
+			/* setta l'attributo ordini che conterrà tutti gli ordini contenuti nel DB */
+			request.getSession().setAttribute("ordini", ordineModel.getListaOrdini());
 			
 		} catch (SQLException e) {
 			System.out.println("Error:" + e.getMessage());
