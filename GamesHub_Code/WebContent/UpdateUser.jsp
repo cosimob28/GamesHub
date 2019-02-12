@@ -36,6 +36,10 @@
 	position: relative;
 	z-index: 2;
 }
+
+.error{
+color: red;
+}
 </style>
 </head>
 
@@ -104,14 +108,14 @@
 							<td><input type="text" class="form-control" id = "address"
 								name="inputIndirizzo"
 								value="<%=user.getIndirizzoSpedizione()%>">
-								<p id="demo2"></p></td>
+								<p id="demo2" class="error"></p></td>
 						</tr>
 
 						<tr>
 							<td>Telefono</td>
 							<td><input type="text" class="form-control" id="phone"
 								name="inputTelefono" value="<%=user.getTelefono()%>">
-								<p id="demo3"></p>
+								<p id="demo3" class="error"></p>
 							</td>
 						</tr>
 						<tr>
@@ -120,7 +124,7 @@
 								class="form-control" name="password" value=""></input><span
 								toggle="#password-field"
 								class="fa fa-fw fa-eye field-icon toggle-password"></span>
-								<p id="demo4"></p></td>
+								<p id="demo4" class="error"></p></td>
 						</tr>
 						<tr>
 							<td align="center"><a class="btn btn-outline-primary"
