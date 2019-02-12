@@ -167,7 +167,7 @@
 		}
 		
 		function addressValidation(address) {
-			var add = /^(([A-Z])([a-z]+)(\s))+(\d+)(,)(\s)(([A-Z])([a-z]+)(\s?))$/;
+			var add = /^(([A-Z])([a-z]+)(\s))+(\d+)(,)(\s?)(([A-Z])([a-z]+)(\s?))$/;
 			
 			if (address.value.match(add)) {
 				$("#address").css({
