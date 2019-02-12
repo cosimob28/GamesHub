@@ -70,8 +70,8 @@ label {
 				<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
 					<h2>Accedi a GamesHub</h2>
 					<br>
-					<form ACTION="LoginControl" name="loginForm" id="login-form"
-						role="form" autocomplete="off" onsubmit="return validate(this)"
+					<form ACTION="LoginControl" name="loginForm" id="login-form" onsubmit="return validate(this)"
+						role="form" autocomplete="off" 
 						method="post">
 
 						<%
@@ -143,14 +143,14 @@ label {
 
 		</div>
 	</div>
-
+<script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript">
 
 var userCorrect = false;
 
 function ValidateUser(AuthUser)
 {
-   var userFormat = /^.*\\s+.*$/;
+   var userFormat = /^\S*$/;
    if(AuthUser.value.match(userFormat))
    {
 	   $("#AuthUser").css({"border-color":"#00fd00"});
@@ -166,14 +166,11 @@ function ValidateUser(AuthUser)
 }
 
 $("#AuthUser").change(function(){
-	 alert("f"); 
 	 userCorrect = ValidateUser(this);
-	 
     });
     
 function validate(form){
 	  
-
 	if(!userCorrect)
 	return false;
 }
