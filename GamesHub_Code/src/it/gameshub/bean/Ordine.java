@@ -22,7 +22,7 @@ public class Ordine {
 		int mese = gc.get(Calendar.MONTH);
 		int anno = gc.get(Calendar.YEAR);
 		dataOrdine = new Date(anno - 1900, mese, giorno);
-		stato = "confermato"; // Lo stato iniziale dell'ordine è 'confermato'.
+		stato = "Accettato"; // Lo stato iniziale dell'ordine è 'Accettato'.
 		trackingId = "";
 
 	}

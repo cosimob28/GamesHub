@@ -159,7 +159,7 @@
       <td></td>
       <td></td>
       <td></td>
-       <%if (!ordine.getStato().equals("confermato")) {%>
+       <%if (!ordine.getStato().equalsIgnoreCase("Accettato")) {%>
        <td><button type="button" class="btn btn-secondary ">
                              <span class="fa fa-trash-alt "></span> Annulla ordine </button></td>
       <td style=" display: block;"><button type="button" class="btn btn-primary " onclick="window.open('ButtonVisualizzaFatturaControl?id=<%=ordine.getIdOrdine()%>');">
