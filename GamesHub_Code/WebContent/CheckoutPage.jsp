@@ -269,11 +269,13 @@ color: red !important;}
         if (document.getElementById('addressCheck').checked) {
             document.getElementById('newAddress').style.display='none';
             document.getElementById('existingAddress').style.display='block';
-            $("#address").text("");
-            $("#city").text("");
+           	addressCorrect = true;
+       	 	cityCorrect = true;
         } else {
         	document.getElementById('existingAddress').style.display='none';
         	document.getElementById('newAddress').style.display='block';
+        	addressCorrect = false;
+       	 	cityCorrect = false;
         }
     }
     </script>
