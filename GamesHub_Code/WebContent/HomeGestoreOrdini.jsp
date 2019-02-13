@@ -140,12 +140,13 @@ font-style: oblique;
 	
 
 
-<form ACTION="CercaGestioneOrdiniControl" name="cercaOrdiniForm" id="cercaOrdiniForm" method="post"class="form-inline">
+<form ACTION="CercaGestioneOrdiniControl" name="cercaOrdiniForm" id="cercaOrdiniForm" method="post"class="form-inline" onsubmit="return validateSearch(this)">
   
     <div class="form-group mx-sm-3 mb-2">
     <span></span>
-    <label for="inputPassword2" class="sr-only">Cerca ID... </label>
-    <input name="idOrdine" type="text" class="form-control" id="inputPassword2" placeholder="Cerca ID..">
+    <label for="inputSearch" class="sr-only">Cerca ID... </label>
+    <input name="idOrdine" type="text" class="form-control" id="inputSearch" placeholder="Cerca ID..">
+    
   </div>
   
  
@@ -175,7 +176,7 @@ font-style: oblique;
 
   <button type="submit" class="btn btn-success mb-2">Ricerca</button>
 </form>
-
+<p id="inputSearchError" class="error"></p>
 <br/>
 	
 	
@@ -280,7 +281,7 @@ font-style: oblique;
  
 
  var trackingIDCorrect = false;
- 
+ var inputSearchCorrect = false;
 
  function ValidateTrackingID(trackingID)
  {
@@ -302,9 +303,33 @@ font-style: oblique;
     }
  }
 
+ function ValidateInputSearch(inputSearch)
+ {
+ 	
+    var inputSearchFormat = /^([0-9]){0,6}$/;
+   
+    
+    if(inputSearch.value.match(inputSearchFormat))
+    {
+ 	   $("#inputSearch").css({"border-color":"#00fd00"});
+ 	   $("#inputSearchError").text("");
+      return true;
+    }
+    else
+    {
+ 	   $("#inputSearch").css({"border-color":"red"});
+       $("#inputSearchError").text("L'id dell'ordine è un numero (max 6 cifre)");
+       return false;
+    }
+ }
+ 
 
  $(".track").change(function(){	 
 	 trackingIDCorrect = ValidateTrackingID(this);
+    });
+ 
+ $("#inputSearch").change(function(){	 
+	 inputSearchCorrect = ValidateInputSearch(this);
     });
 
  
@@ -314,6 +339,12 @@ font-style: oblique;
  	if(!trackingIDCorrect)
  		return false;
  }
+ 
+ function validateSearch(form){
+	  
+	 	if(!inputSearchCorrect)
+	 		return false;
+	 }
  
  </script>  
 </body>
