@@ -22,6 +22,11 @@
 	<title> Catalogo </title>
 	<style>
 	
+	.error{
+	color:red;
+	}
+	
+	
 	.form-control{
 	width: 50px;
 	}
@@ -197,6 +202,7 @@ font-style: oblique;
   </thead>
   <tbody>
     <%
+    			int counter=0;
 				Iterator<?> it = ordini.iterator();
 				while (it.hasNext()) {
 					Ordine bean = (Ordine) it.next();
@@ -207,7 +213,7 @@ font-style: oblique;
 			<td><span class="spanDate"> <%=bean.getDataOrdine()%></span></td>
 			<td>
 			
-<form action="ButtonSalvaModificheGestoreOrdiniControl" name="salvaModificheForm" id="salvaModificheForm" method="post">			
+<form action="ButtonSalvaModificheGestoreOrdiniControl" name="salvaModificheForm" id="salvaModificheForm" method="post" onsubmit="return validate(this)">			
     <select name="cambiaStatoOrdine" class="custom-select" >
     <option><%=bean.getStato()%></option>
      <%
@@ -230,11 +236,11 @@ font-style: oblique;
 			<td>
 			<% if(bean.getTrackingId()==null || bean.getTrackingId().equalsIgnoreCase(" ")){%>
 			
-            <input type="text" id="fname" name="trackingID" value="<%=bean.getTrackingId()%>" placeholder="">
+            <input type="text" id="trackingID<%=counter%>" class="track" name="trackingID" value="<%=bean.getTrackingId()%>" placeholder="">
             <%}else {%>
-             <input type="text" id="fname" name="trackingID" value="<%=bean.getTrackingId()%>" placeholder="Inserisci Tracking ID">
+             <input type="text" id="trackingID<%=counter%>" class="track" name="trackingID" value="<%=bean.getTrackingId()%>" placeholder="Inserisci Tracking ID">
             <%} %>
-            
+            <p id="trackingID<%=counter%>Error" class="error"></p>
 		    </td>
 		   <input type="hidden" name="idOrdine" value="<%=bean.getIdOrdine()%>" />
 			
@@ -246,6 +252,7 @@ font-style: oblique;
 	
 
 		<%
+		counter++;
 				}
 			}%>     
 			
@@ -268,5 +275,46 @@ font-style: oblique;
              </div>
              <% } %>
    
+   
+ <script type="text/javascript">
+ 
+
+ var trackingIDCorrect = false;
+ 
+
+ function ValidateTrackingID(trackingID)
+ {
+ 	
+    var trackingIDFormat = /^([A-Z]){3}([0-9]){2}([A-Z]){2}$/;
+    var name = trackingID.id;
+    
+    if(trackingID.value.match(trackingIDFormat))
+    {
+ 	   $("#"+name).css({"border-color":"#00fd00"});
+ 	   $("#"+name+"Error").text("");
+      return true;
+    }
+    else
+    {
+ 	   $("#"+name).css({"border-color":"red"});
+       $("#"+name+"Error").text("Il tracking ID deve essere del formato AAA11BB.");
+       return false;
+    }
+ }
+
+
+ $(".track").change(function(){	 
+	 trackingIDCorrect = ValidateTrackingID(this);
+    });
+
+ 
+     
+ function validate(form){
+ 	  
+ 	if(!trackingIDCorrect)
+ 		return false;
+ }
+ 
+ </script>  
 </body>
 </html>
