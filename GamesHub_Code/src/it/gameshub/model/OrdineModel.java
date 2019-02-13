@@ -387,6 +387,42 @@ public synchronized Collection<Ordine> getListaOrdini(String idOrdine, String an
 		return maxIdOrder;
 
 	}
+	
+	/**
+	 * Controlla se esiste un ordine con id uguale all'intero passato come parametro
+	 * 
+	 * @param int idOrdine Un id da verificare
+	 * 
+	 * @return boolean True se esiste un ordine con quell'id False altrimenti
+	 */
+	public boolean isAnOrder(int idOrdine) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		boolean v;
+		String selectSQL = "SELECT *  FROM " + OrdineModel.TABLE_NAME + " WHERE IdOrdine = ? ";
+		try {
+		
+			connection = Manager.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setInt(1, idOrdine);
+			ResultSet rs = preparedStatement.executeQuery();
+
+			if (rs.next())
+				v = true;
+			else
+				v = false;
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return v;
+	}
 
 
 
