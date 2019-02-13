@@ -72,19 +72,21 @@ if(isGestoreCatalogo == null || isGestoreCatalogo==false){
    <div class="form-group col-md-2">
      <label for="inputPrezzo">Prezzo €</label>
      <input type="text" class="form-control" name="inputPrezzo" id="inputPrezzo" placeholder="Prezzo" required>
+   	<p id="inputPrezzoError" class="error"></p>
    </div>
-	<p id="inputPrezzoError" class="error"></p>
+	
 
 
    <div class="form-group col-md-2">
      <label for="inputQuantità">Quantità</label>
-     <input type="number" class="form-control" name="inputQuantity" id="inputQuantity" min= 1 max=100 required >
+     <input type="number" class="form-control" name="inputQuantity" id="inputQuantity" min= 1 max=999 required >
+   <p id="inputQuantityError" class="error"></p>
    </div>
-	<p id="inputQuantityError" class="error"></p>
+	
  <div class="form-group col-md-2">
      <label for="inputPegi">Pegi</label>
      <select name="inputPegi" class="form-control" required>
-       <option selected>Pegi...</option>
+       
        <option>3</option>
        <option>7</option>
        <option>12</option>
@@ -101,14 +103,16 @@ if(isGestoreCatalogo == null || isGestoreCatalogo==false){
   <div class="form-group col-md-4">
     <label for="inputVideo">LinkVideo</label>
     <input type="text" class="form-control" name="inputVideo" id="inputVideo" required>
-  </div>
   <p id="inputVideoError" class="error"></p>
+  </div>
+  
 
  <div class="form-group col-md-2">
    <label for="inputAnno">Anno</label>
    <input type="text" class="form-control" name="inputAnno" id="inputAnno" required>
+ <p id="inputAnnoError" class="error"></p>
  </div>
-<p id="inputAnnoError" class="error"></p>
+
 </div>
 
 
@@ -117,7 +121,7 @@ if(isGestoreCatalogo == null || isGestoreCatalogo==false){
    <div class="form-group col-md-4">
      <label for="inputGenere">Genere</label>
      <select name="inputGenere" class="form-control" required>
-       <option selected>Genere...</option>
+       
        <option>Picchiaduro</option>
        <option>Azione</option>
        <option>Strategia</option>
@@ -130,7 +134,7 @@ if(isGestoreCatalogo == null || isGestoreCatalogo==false){
    <div class="form-group col-md-4">
      <label for="inputPiattaforma">Piattaforma</label>
      <select name="inputPiattaforma" class="form-control" required>
-       <option selected>Piattaforma...</option>
+       
        <option>PS4</option>
        <option>PS3</option>
        <option>XBOX ONE</option>
@@ -144,11 +148,12 @@ if(isGestoreCatalogo == null || isGestoreCatalogo==false){
     <div class="form-group col-md-6">
       <label for="inputDescrizione">Descrizione</label>
       <input type="text" class="form-control" name="inputDescrizione" id="inputDescrizione" required >
+    <p id="inputDescrizioneError" class="error"></p>
     </div>
     
    
   </div>
-<p id="inputDescrizioneError" class="error"></p>
+
 
   
  <button type="submit" class="btn btn-primary">Inserisci</button>
@@ -168,7 +173,7 @@ var descrizioneCorrect = false;
 
 function ValidateSerial(InputSerial)
 {
-   var SerialFormat = /^([0-9]){18}$/;
+   var SerialFormat = /^([0-9]){6}$/;
    if(InputSerial.value.match(SerialFormat))
    {
 	 
