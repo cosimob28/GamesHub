@@ -140,7 +140,7 @@ color: red !important;}
 <div id="usernameToSend" style="display: none;"><%=user.getUsername() %></div>
 <div class="container wrapper" id = "checkoutPage">    
             <div class="row cart-body">
-                <form class="form-horizontal" role="form" id="payment-form" method="POST" action="ConcludiAcquistoControl">
+                <form class="form-horizontal" role="form" id="payment-form" method="POST" action="ConcludiAcquistoControl" onsubmit="return validateAddress(this)">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-push-6 col-sm-push-6">
                     
                     
@@ -269,6 +269,8 @@ color: red !important;}
         if (document.getElementById('addressCheck').checked) {
             document.getElementById('newAddress').style.display='none';
             document.getElementById('existingAddress').style.display='block';
+            $("#address").text("");
+            $("#city").text("");
         } else {
         	document.getElementById('existingAddress').style.display='none';
         	document.getElementById('newAddress').style.display='block';
@@ -312,14 +314,16 @@ color: red !important;}
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Address:</strong></div>
                                 <div class="col-md-12">
-                                    <input type="text" name="address" class="form-control" value="" required />
+                                    <input type="text" name="address" id="address" class="form-control" value="" required />
+                                    <p id="address-error" class="error"></p>
                                 </div>
                             </div>
                             
                             <div class="form-group">
                                 <div class="col-md-12"><strong>City:</strong></div>
                                 <div class="col-md-12">
-                                    <input type="text" name="city" class="form-control" value="" required />
+                                    <input type="text" name="city" id="city"class="form-control" value="" required />
+                                    <p id="city-error" class="error"></p>
                                 </div>
                             </div>
                             
@@ -728,12 +732,76 @@ color: red !important;}
 	
 	
 	
-	/* $("#confermaAcquisto").click(function(event){
-    	event.preventDefault(); // evita che venga aperto il link dell'href
-   
-    		 
-    	
-    }); */
+	 var addressCorrect = false;
+	 var cityCorrect = false;
+	
+	    /* Funzioni di validazione campi*/	 
+		 
+	
+			
+	function addressValidator(address)
+	{
+		var ind= /^(([A-Z])([a-z]+)(\s?))+(\d+)$/;
+		if(address.value.match(ind)) 
+		{ 
+			$("#address").css({"border-color":"#00fd00"});
+			$("#address-error").text("");
+			return true;
+		}
+		else
+		{ 
+			$("#address").css({"border-color":"red"});
+			$("#address-error").text("Formato dell' indirizzo scorretto. Es: 'Via Roma 24'");
+			return false;
+		}
+				    	
+	}
+			
+			function cityValidator(city)
+			{
+				var cityReg= /^(([A-Z])([a-z]+)(\s?))+$/;
+				if(city.value.match(cityReg)) 
+				{ 
+					$("#city").css({"border-color":"#00fd00"});
+					$("#city-error").text("");
+				    return true;
+				}
+				else
+				{ 
+					$("#city").css({"border-color":"red"});
+				   $("#city-error").text("Formato Città errato");
+					
+				     return false;
+				}
+				    	
+			}
+			
+		
+		/* Funzione chiamata al submit */
+		 function validateAddress(form){
+			  
+
+				if(!addressCorrect)
+				return false;
+				
+				if(!cityCorrect)
+			    return false;
+				
+				return true;
+		    }
+		  
+		
+		 $("#address").change(function(){
+			 addressCorrect = addressValidator(this);
+			 
+		     });
+		 
+		 $("#city").change(function(){
+			 cityCorrect = cityValidator(this);
+			 
+		     });
+		
+		 
 
 </script>
     

@@ -193,7 +193,7 @@
 		
 		function addressValidator(indirizzo)
 		{
-			var ind= /^(([A-Z])([a-z]+)(\s))+(\d+)(,)(\s?)(([A-Z])([a-z]+)(\s?))$/;
+			var ind= /^(([A-Z])([a-z]+)(\s))+(\d+)(,)(\s?)(([A-Z])([a-z]+)(\s?))+$/;
 			if(indirizzo.value.match(ind)) 
 			{ 
 				$("#indirizzo").css({"border-color":"#00fd00"});
