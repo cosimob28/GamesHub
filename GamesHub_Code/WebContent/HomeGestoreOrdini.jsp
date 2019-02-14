@@ -140,7 +140,7 @@ font-style: oblique;
 	
 
 
-<form ACTION="CercaGestioneOrdiniControl" name="cercaOrdiniForm" id="cercaOrdiniForm" method="post"class="form-inline" >
+<form ACTION="CercaGestioneOrdiniControl" name="cercaOrdiniForm" id="cercaOrdiniForm" method="post"class="form-inline" onsubmit="return validateSearch(this)">
   
     <div class="form-group mx-sm-3 mb-2 fa-lg">
     <span></span> <i class="fas fa-search"></i> &nbsp; &nbsp;
@@ -210,7 +210,7 @@ font-style: oblique;
 			<td><span class="spanDate"> <%=bean.getDataOrdine()%></span></td>
 			<td>
 			
-    <form action="ButtonSalvaModificheGestoreOrdiniControl" name="salvaModificheForm" id="salvaModificheForm" method="post" onsubmit="return validateSearch(this)">			
+<form action="ButtonSalvaModificheGestoreOrdiniControl" name="salvaModificheForm" id="salvaModificheForm" method="post" onsubmit="return validate(this)">			
     <select name="cambiaStatoOrdine" class="custom-select" >
     <option><%=bean.getStato()%></option>
      <%
@@ -277,7 +277,7 @@ font-style: oblique;
  
 
  var trackingIDCorrect = false;
- var inputSearchCorrect = false;
+ var inputSearchCorrect = true;
 
  function ValidateTrackingID(trackingID)
  {
