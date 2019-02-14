@@ -120,10 +120,10 @@ if(isGestoreCatalogo == null || isGestoreCatalogo==false){
 
 
 
-var prezzoCorrect = false;
-var quantityCorrect = false;
-var videoCorrect = false;
-var descrizioneCorrect = false;
+var prezzoCorrect = true;
+var quantityCorrect = true;
+var videoCorrect = true;
+var descrizioneCorrect = true;
 
 
 function ValidatePrezzo(InputPrezzo)
