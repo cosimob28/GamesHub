@@ -18,6 +18,29 @@ public class Utente implements Serializable {
 		tipo = "cliente";
 
 	}
+	
+	
+
+	public Utente(String username, String pin, String nome, String cognome, String codiceFiscale, String email,
+			String indirizzoSpedizione, String telefono, String sesso, String tipo, String myHash, boolean verificato,
+			Date dataDiNascita) {
+		super();
+		this.Username = username;
+		this.pin = pin;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.codiceFiscale = codiceFiscale;
+		this.email = email;
+		this.indirizzoSpedizione = indirizzoSpedizione;
+		this.telefono = telefono;
+		this.sesso = sesso;
+		this.tipo = tipo;
+		this.myHash = myHash;
+		this.verificato = verificato;
+		this.dataDiNascita = dataDiNascita;
+	}
+
+
 
 	public boolean isVerificato() {
 		return verificato;
