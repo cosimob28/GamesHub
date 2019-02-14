@@ -9,6 +9,17 @@ public class Composizione {
 
 	}
 
+
+	public Composizione(float costo, int ordine, int quantità, int gioco, String nomeGioco, String immagine) {
+		super();
+		this.costo = costo;
+		this.ordine = ordine;
+		this.quantità = quantità;
+		this.gioco = gioco;
+		this.nomeGioco = nomeGioco;
+		this.immagine = immagine;
+	}
+
 	public String getNomeGioco() {
 		return nomeGioco;
 	}
