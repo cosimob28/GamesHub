@@ -19,7 +19,7 @@
 	<link rel="stylesheet" href="css/StileCatalogoAdmin.css" >
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-	<title> Catalogo </title>
+	<title> Lista ordini </title>
 	<style>
 	
 	.error{
@@ -140,18 +140,18 @@ font-style: oblique;
 	
 
 
-<form ACTION="CercaGestioneOrdiniControl" name="cercaOrdiniForm" id="cercaOrdiniForm" method="post"class="form-inline" onsubmit="return validateSearch(this)">
+<form ACTION="CercaGestioneOrdiniControl" name="cercaOrdiniForm" id="cercaOrdiniForm" method="post"class="form-inline" >
   
-    <div class="form-group mx-sm-3 mb-2">
-    <input name="idOrdine" type="text" class="" id="inputSearch" placeholder="Cerca ID.." value="">
+    <div class="form-group mx-sm-3 mb-2 fa-lg">
+    <span></span> <i class="fas fa-search"></i> &nbsp; &nbsp;
+    <input name="idOrdine" type="text" class="form-control" id="inputSearch" placeholder="Cerca ID..">
   </div>
   
 <div class="form-group mx-sm-3 mb-2">
-<i class="fas fa-table fa-lg"></i> &nbsp; &nbsp;
-    <select name="annoOrdine" class="" id="exampleFormControlSelect1">
-      <option >Anno </option>
+<i class="fas fa-table fa-lg"></i> &nbsp; &nbsp; 
+    <select name="annoOrdine" class="form-control" id="annoOrdine">
+      <option >Anno</option>
       <%
-      
       for(int i=19; i>10; i--){ %>
       <option ><%="20" + i %></option>
       <%} %>
@@ -160,7 +160,7 @@ font-style: oblique;
   
   
   <div class="form-group mx-sm-3 mb-2">
-    <select name="statoOrdine" class="" id="exampleFormControlSelect1">
+    <select name="statoOrdine" class="form-control" id="statoOrdine">
       <option >Stato</option>
       <option>Accettato</option>
       <option>In preparazione</option>
@@ -171,12 +171,13 @@ font-style: oblique;
   
 
   <button type="submit" class="btn btn-success mb-2">Ricerca</button>
-  </form>
-  <p id="inputSearchError" class="error"></p>
-  
-
-
+</form>
+<p id="inputSearchError" class="error"></p>
 <br/>
+	
+	
+	
+	
 	
 	
 	
@@ -209,7 +210,7 @@ font-style: oblique;
 			<td><span class="spanDate"> <%=bean.getDataOrdine()%></span></td>
 			<td>
 			
-    <form action="ButtonSalvaModificheGestoreOrdiniControl" name="salvaModificheForm" id="salvaModificheForm" method="post" onsubmit="return validate(this)">			
+    <form action="ButtonSalvaModificheGestoreOrdiniControl" name="salvaModificheForm" id="salvaModificheForm" method="post" onsubmit="return validateSearch(this)">			
     <select name="cambiaStatoOrdine" class="custom-select" >
     <option><%=bean.getStato()%></option>
      <%

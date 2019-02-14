@@ -1,6 +1,7 @@
 package it.gameshub.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import it.gameshub.bean.Utente;
+import it.gameshub.model.OrdineModel;
 import it.gameshub.model.UtenteModel;
 
 @WebServlet("/LoginControl")
@@ -19,11 +21,12 @@ public class LoginControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	static UtenteModel model;
+	static OrdineModel ordineModel;
 
 	static {
 
 		model = new UtenteModel();
-
+		ordineModel = new OrdineModel();
 	}
 
 	public LoginControl() {
@@ -95,6 +98,12 @@ public class LoginControl extends HttpServlet {
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/HomeGestoreCatalogo.jsp");
 			dispatcher.forward(request, response);
 		} else if (option == 2) { // caso in cui l'utente è un Gestore ordini
+			try {
+				request.getSession().setAttribute("ordini", ordineModel.getListaOrdini());
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/HomeGestoreOrdini.jsp");
 			dispatcher.forward(request, response);
 		} else if (option == 3) { // caso in cui l'utente è registrato ma non è un gestore

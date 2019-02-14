@@ -105,7 +105,7 @@
 </div>
 </div>
 
-			v
+			
 <% if(products==null || products.size()==0){ %>
            <div class="jumbotron jumbotron-fluid">
             <div class="container">

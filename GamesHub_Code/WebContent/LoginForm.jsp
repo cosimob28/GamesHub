@@ -114,18 +114,7 @@ label {
 
 						</div>
 
-						<div class="checkbox" id="AdminDiv">
-							<label class="qtip2"
-								title="Spuntando questa casella, entrerai nella pagina amministratore.">
-								<input name="Amministratore" id="Amministratore" type="checkbox"
-								value=1 /> Accedi come Amministratore
-							</label>
-						</div>
-
-
-
-
-
+			
 					</form>
 
 
