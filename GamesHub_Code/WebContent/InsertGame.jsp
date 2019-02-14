@@ -86,7 +86,7 @@ if(isGestoreCatalogo == null || isGestoreCatalogo==false){
  <div class="form-group col-md-2">
      <label for="inputPegi">Pegi</label>
      <select name="inputPegi" class="form-control" required>
-       
+      <option value="" disabled="disabled" selected="selected">PEGI</option>
        <option>3</option>
        <option>7</option>
        <option>12</option>
@@ -121,7 +121,7 @@ if(isGestoreCatalogo == null || isGestoreCatalogo==false){
    <div class="form-group col-md-4">
      <label for="inputGenere">Genere</label>
      <select name="inputGenere" class="form-control" required>
-       
+       <option value="" disabled="disabled" selected="selected">Seleziona genere</option>
        <option>Picchiaduro</option>
        <option>Azione</option>
        <option>Strategia</option>
@@ -134,7 +134,7 @@ if(isGestoreCatalogo == null || isGestoreCatalogo==false){
    <div class="form-group col-md-4">
      <label for="inputPiattaforma">Piattaforma</label>
      <select name="inputPiattaforma" class="form-control" required>
-       
+       <option value="" disabled="disabled" selected="selected">Seleziona piattaforma</option>
        <option>PS4</option>
        <option>PS3</option>
        <option>XBOX ONE</option>
