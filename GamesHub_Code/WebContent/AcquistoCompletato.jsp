@@ -16,7 +16,6 @@
 	<title>Acquisto Completato</title>
 	
 	
-	
 </head>
 
 <body> 
