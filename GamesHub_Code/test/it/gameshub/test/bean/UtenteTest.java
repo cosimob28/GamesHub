@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.apache.catalina.User;
+import org.junit.Before;
 import org.junit.Test;
 
 import it.gameshub.bean.Utente;
@@ -16,8 +17,8 @@ public class UtenteTest{
 
 	protected Utente utente;
 	
-	
-	protected void setUp(){
+	@Before
+	public void setUp(){
 		Date data = new Date(1974 - 1900, 2 - 1, 1);
         utente = new Utente("Paolo1974","Paolo74","Paolo","Rossi","RSSPLA74A05H501I","paolo.rossi@gmail.com","Via Grumento 24, Roma","3332211222","M","cliente","prova",false,data);
     }
