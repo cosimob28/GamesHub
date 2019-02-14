@@ -19,7 +19,7 @@
 	<link rel="stylesheet" href="css/StileCatalogoAdmin.css" >
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-	<title> Catalogo </title>
+	<title> Homepage Gestore ordini </title>
 	<style>
 	
 	.error{
@@ -124,7 +124,7 @@ font-style: oblique;
  <script src="js/jquery.min.js"></script>
     <script src ="js/bootstrap.min.js"></script>
     
-    <jsp:include page="HeaderGestoreCatalogo.jsp"/>
+    <jsp:include page="HeaderGestoreOrdini.jsp"/>
     
     <!-- codice search -->
     

@@ -147,7 +147,7 @@ public class ConcludiAcquistoControl extends HttpServlet {
 
 						request.getSession().setAttribute("products", giocoModel.doRetrieveAll());
 
-						RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Homepage.jsp");
+						RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/AcquistoCompletato.jsp");
 						dispatcher.forward(request, response);
 					} else {
 						request.getSession().setAttribute("alert", "Saldo insufficiente");

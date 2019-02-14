@@ -142,14 +142,14 @@
          </table><br>
                    </div>
         </div>
-      
+       <form action="ButtonCheckoutControl" method="POST" >
         <div class="col mb-2">
             <%
              if(user!=null){ %> <!-- Se l'utente ha effettuato il login il tasto acquista è disponibile  -->
                
-                <button type="button" class="btn btn-success" id="acq">
+                <button type="submit" class="btn btn-success" id="acq" >
                             Checkout  <span class="fa fa-caret-right"></span>
-                        </button>
+                        </button></form>
                         
                         <%} else{%><!-- Altrimenti non si visualizza acquista ma 'procedi con l'acquisto' che rimanda l'utente al login/registrazione -->
 		  <button type="button" class="btn btn-success" id="ProAcq" onclick="location.href='ButtonLoginControl';">Procedi con l'acquisto <span class="fa fa-sign-in-alt"></span></button>
@@ -212,10 +212,10 @@
 	    }); */
 	    
 	    
-	    $("#acq").click(function(event){
+	  /*  $("#acq").click(function(event){
 	    	event.preventDefault();
-	    	window.open('CheckoutPage.jsp',"_self");
-	    });
+	    	window.open('ButtonChekoutControl',"_self");
+	    });*/
 	    
 	    $(".qty").on("keyup click change mousemove",function (e){
 	    	var codice= $(this).attr('id');

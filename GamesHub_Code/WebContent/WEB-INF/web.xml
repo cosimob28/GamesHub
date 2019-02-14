@@ -170,9 +170,17 @@
     <servlet-name>ButtonSalvaModificheGestoreOrdiniControl</servlet-name>
     <servlet-class>it.gameshub.controller.ButtonSalvaModificheGestoreOrdiniControl</servlet-class>
   </servlet>
-   <servlet>
+  <servlet>
     <servlet-name>CercaGestioneOrdiniControl</servlet-name>
     <servlet-class>it.gameshub.controller.CercaGestioneOrdiniControl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ButtonHomepageGestoreOrdiniControl</servlet-name>
+    <servlet-class>it.gameshub.controller.ButtonHomepageGestoreOrdiniControl</servlet-class>
+  </servlet>
+    <servlet>
+    <servlet-name>ButtonCheckoutControl</servlet-name>
+    <servlet-class>it.gameshub.controller.ButtonCheckoutControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>VisualizzaHomeControl</servlet-name>
