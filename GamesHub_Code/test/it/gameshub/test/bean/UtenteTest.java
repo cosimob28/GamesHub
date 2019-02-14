@@ -12,7 +12,7 @@ import org.junit.Test;
 import it.gameshub.bean.Utente;
 import junit.framework.TestCase;
 
-public class UtenteTest extends TestCase{
+public class UtenteTest{
 
 	protected Utente utente;
 	
