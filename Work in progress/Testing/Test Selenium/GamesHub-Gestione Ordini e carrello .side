@@ -1,0 +1,1229 @@
+{
+  "id": "cf208b0e-ff7f-4285-adc3-bfadfe78ef3c",
+  "version": "2.0",
+  "name": "GamesHub-Gestione Ordini e carrello ",
+  "url": "http://localhost:8080/GamesHub_Code/ButtonHomeControl",
+  "tests": [{
+    "id": "8075f042-a6d6-4184-9ea2-cf04f7260c86",
+    "name": "TC_6.1_1",
+    "commands": [{
+      "id": "227c2b25-d9ac-44fc-b540-54f4f86e42b1",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/GamesHub_Code/ButtonHomepageGestoreOrdiniControl",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "54de0beb-58fb-4c66-a7b4-7d3908ffc8f8",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1059x737",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1102eada-5ea5-490b-9aed-b68c40ac23da",
+      "comment": "",
+      "command": "verifyTitle",
+      "target": "Homepage Gestore ordini",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c720c2e4-fd6f-417c-8088-ad42e6315654",
+      "comment": "",
+      "command": "click",
+      "target": "id=trackingID2",
+      "targets": [
+        ["id=trackingID2", "id"],
+        ["css=#trackingID2", "css:finder"],
+        ["xpath=//input[@id='trackingID2']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[6]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[143]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0834b493-4f21-414d-b598-b1781055d7e3",
+      "comment": "",
+      "command": "type",
+      "target": "id=trackingID2",
+      "targets": [
+        ["id=trackingID2", "id"],
+        ["css=#trackingID2", "css:finder"],
+        ["xpath=//input[@id='trackingID2']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[6]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[143]", "xpath:innerText"]
+      ],
+      "value": "AA"
+    }, {
+      "id": "3cd7cbc3-4440-476e-bf1c-a04d2fa03e70",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(3) #a",
+      "targets": [
+        ["css=tr:nth-child(3) #a", "css:finder"],
+        ["xpath=(//button[@id='a'])[3]", "xpath:attributes"],
+        ["xpath=//tr[3]/td[7]/button", "xpath:position"],
+        ["xpath=(//*[contains(.,'Salva modifiche')])[16]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f5883deb-f398-456e-8cb5-2544542d3f4e",
+      "comment": "",
+      "command": "assertTitle",
+      "target": "Homepage Gestore ordini",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "9653466b-bb57-4d0f-a9b0-01da56433758",
+    "name": "TC_6.1_2",
+    "commands": [{
+      "id": "30843213-6b76-4642-a162-377849520a7a",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/GamesHub_Code/ButtonHomepageGestoreOrdiniControl",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fc23d1ba-6e8c-49c8-aa82-2098c91b0d84",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1059x737",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "860f4c1b-93b1-4dce-be2b-4485da6303d5",
+      "comment": "",
+      "command": "verifyTitle",
+      "target": "Homepage Gestore ordini",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "41dda5b0-7f7e-4aa5-b99b-b45ccf161d1c",
+      "comment": "",
+      "command": "click",
+      "target": "id=trackingID2",
+      "targets": [
+        ["id=trackingID2", "id"],
+        ["css=#trackingID2", "css:finder"],
+        ["xpath=//input[@id='trackingID2']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[6]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[143]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5046f3bf-5623-4981-b880-e8ffa6c6f13d",
+      "comment": "",
+      "command": "type",
+      "target": "id=trackingID2",
+      "targets": [
+        ["id=trackingID2", "id"],
+        ["css=#trackingID2", "css:finder"],
+        ["xpath=//input[@id='trackingID2']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[6]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[143]", "xpath:innerText"]
+      ],
+      "value": "AAA1BBB"
+    }, {
+      "id": "0837a20c-0a79-4105-84df-9ca53a4ecf1e",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(3) #a",
+      "targets": [
+        ["css=tr:nth-child(3) #a", "css:finder"],
+        ["xpath=(//button[@id='a'])[3]", "xpath:attributes"],
+        ["xpath=//tr[3]/td[7]/button", "xpath:position"],
+        ["xpath=(//*[contains(.,'Salva modifiche')])[16]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ba4bc4a8-738a-42ac-973b-5238bdcef385",
+      "comment": "",
+      "command": "assertTitle",
+      "target": "Homepage Gestore ordini",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "f4e63ad0-e160-4016-ab6c-f03221820ea9",
+    "name": "TC_6.1_3",
+    "commands": [{
+      "id": "097f4e80-43c2-4b4c-9af0-50def04386a9",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/GamesHub_Code/ButtonHomepageGestoreOrdiniControl",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8014db24-b8e9-4f2a-88de-b940129d2cf0",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1059x737",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ee9a5802-9c40-4673-82ea-7a4bf25c54bd",
+      "comment": "",
+      "command": "verifyTitle",
+      "target": "Homepage Gestore ordini",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d71d9133-5172-4317-bea7-84f97500ea05",
+      "comment": "",
+      "command": "click",
+      "target": "id=trackingID2",
+      "targets": [
+        ["id=trackingID2", "id"],
+        ["css=#trackingID2", "css:finder"],
+        ["xpath=//input[@id='trackingID2']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[6]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[143]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "432ecdf7-108b-400d-8e10-31fd7c351013",
+      "comment": "",
+      "command": "type",
+      "target": "id=trackingID2",
+      "targets": [
+        ["id=trackingID2", "id"],
+        ["css=#trackingID2", "css:finder"],
+        ["xpath=//input[@id='trackingID2']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[6]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[143]", "xpath:innerText"]
+      ],
+      "value": "AFR51TY"
+    }, {
+      "id": "0af532dd-7383-486a-8959-4017395d5551",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(3) > td:nth-child(6)",
+      "targets": [
+        ["css=tr:nth-child(3) > td:nth-child(6)", "css:finder"],
+        ["xpath=//tr[3]/td[6]", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[142]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8fbc35bb-5644-457b-b4c6-6e51769a5211",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(3) #a",
+      "targets": [
+        ["css=tr:nth-child(3) #a", "css:finder"],
+        ["xpath=(//button[@id='a'])[3]", "xpath:attributes"],
+        ["xpath=//tr[3]/td[7]/button", "xpath:position"],
+        ["xpath=(//*[contains(.,'Salva modifiche')])[16]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "09e15a14-30fe-4bff-8baf-ffd3a795ea3a",
+      "comment": "",
+      "command": "assertTitle",
+      "target": "Homepage Gestore ordini",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "2c05e171-9e3f-408b-a7a8-3ad9bfc7fe95",
+    "name": "TC_7.1_1",
+    "commands": [{
+      "id": "023babac-a82c-404d-ad06-dd67a4f18fe0",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/GamesHub_Code/ButtonHomepageGestoreOrdiniControl",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "55c79097-3208-4fcb-a382-b31473972645",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1059x738",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "670cdde4-ef1e-4d9d-9f3d-5eb1e329a6a5",
+      "comment": "",
+      "command": "verifyTitle",
+      "target": "Homepage Gestore ordini",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8b3b86a4-4c4b-441b-bff0-636d1dade924",
+      "comment": "",
+      "command": "click",
+      "target": "id=inputSearch",
+      "targets": [
+        ["id=inputSearch", "id"],
+        ["name=idOrdine", "name"],
+        ["css=#inputSearch", "css:finder"],
+        ["xpath=//input[@id='inputSearch']", "xpath:attributes"],
+        ["xpath=//form[@id='cercaOrdiniForm']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[49]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a80355c0-550b-40f2-a2f1-f766c9efe4ce",
+      "comment": "",
+      "command": "type",
+      "target": "id=inputSearch",
+      "targets": [
+        ["id=inputSearch", "id"],
+        ["name=idOrdine", "name"],
+        ["css=#inputSearch", "css:finder"],
+        ["xpath=//input[@id='inputSearch']", "xpath:attributes"],
+        ["xpath=//form[@id='cercaOrdiniForm']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[49]", "xpath:innerText"]
+      ],
+      "value": "1234567"
+    }, {
+      "id": "023d2782-2ce8-436a-ace2-bf38f9e25ee1",
+      "comment": "",
+      "command": "assertTitle",
+      "target": "Homepage Gestore ordini",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "6bd32b4a-5edc-4970-8d85-d6686b804c32",
+    "name": "TC_7.1_2",
+    "commands": [{
+      "id": "8d4a0e3a-8400-46f7-8a6d-4d7f8b6ab7a5",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/GamesHub_Code/ButtonHomepageGestoreOrdiniControl",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "24e511e8-a177-4774-a7d8-2d36e30bbac2",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1059x738",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f0f3849c-a557-4541-bb1f-036ff63b2153",
+      "comment": "",
+      "command": "verifyTitle",
+      "target": "Homepage Gestore ordini",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "148b1dd2-a62d-4ef0-a8dc-35172bb059fa",
+      "comment": "",
+      "command": "click",
+      "target": "id=inputSearch",
+      "targets": [
+        ["id=inputSearch", "id"],
+        ["name=idOrdine", "name"],
+        ["css=#inputSearch", "css:finder"],
+        ["xpath=//input[@id='inputSearch']", "xpath:attributes"],
+        ["xpath=//form[@id='cercaOrdiniForm']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[49]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a1678a08-7a40-4629-915f-1d2f68cac185",
+      "comment": "",
+      "command": "type",
+      "target": "id=inputSearch",
+      "targets": [
+        ["id=inputSearch", "id"],
+        ["name=idOrdine", "name"],
+        ["css=#inputSearch", "css:finder"],
+        ["xpath=//input[@id='inputSearch']", "xpath:attributes"],
+        ["xpath=//form[@id='cercaOrdiniForm']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[49]", "xpath:innerText"]
+      ],
+      "value": "123456A"
+    }, {
+      "id": "eeaa0a7c-a758-4ea9-b00f-812225e3c6d9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-success",
+      "targets": [
+        ["css=.btn-success", "css:finder"],
+        ["xpath=(//button[@type='submit'])[2]", "xpath:attributes"],
+        ["xpath=//form[@id='cercaOrdiniForm']/button", "xpath:idRelative"],
+        ["xpath=//div[2]/div/form/button", "xpath:position"],
+        ["xpath=(//*[contains(.,'Ricerca')])[6]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "95ac2345-5c7e-4e57-aae0-ee2f8413c1af",
+      "comment": "",
+      "command": "assertTitle",
+      "target": "Homepage Gestore ordini",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "8e8a421e-cc7e-4f45-8a51-7cb382e7c008",
+    "name": "TC_7.1_3",
+    "commands": [{
+      "id": "b058a8e5-b877-4919-8d3c-fbe49a933d2f",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/GamesHub_Code/ButtonHomepageGestoreOrdiniControl",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1cfa3d3f-2468-4e24-8951-37d80b2c0583",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1059x738",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7b4bc765-2cd3-42ac-945c-bf3b5535a333",
+      "comment": "",
+      "command": "verifyTitle",
+      "target": "Homepage Gestore ordini",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4a476a5e-197e-41ad-82f6-da9d78b9bd69",
+      "comment": "",
+      "command": "click",
+      "target": "id=inputSearch",
+      "targets": [
+        ["id=inputSearch", "id"],
+        ["name=idOrdine", "name"],
+        ["css=#inputSearch", "css:finder"],
+        ["xpath=//input[@id='inputSearch']", "xpath:attributes"],
+        ["xpath=//form[@id='cercaOrdiniForm']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[49]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a7c2a6a6-ef2d-4ef4-8862-4ff270de2076",
+      "comment": "",
+      "command": "type",
+      "target": "id=inputSearch",
+      "targets": [
+        ["id=inputSearch", "id"],
+        ["name=idOrdine", "name"],
+        ["css=#inputSearch", "css:finder"],
+        ["xpath=//input[@id='inputSearch']", "xpath:attributes"],
+        ["xpath=//form[@id='cercaOrdiniForm']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[49]", "xpath:innerText"]
+      ],
+      "value": "123456"
+    }, {
+      "id": "5cb6c1a4-23f5-43cf-ae7c-bf9fcfbd00d4",
+      "comment": "",
+      "command": "click",
+      "target": "id=cercaOrdiniForm",
+      "targets": [
+        ["id=cercaOrdiniForm", "id"],
+        ["name=cercaOrdiniForm", "name"],
+        ["css=#cercaOrdiniForm", "css:finder"],
+        ["xpath=//form[@id='cercaOrdiniForm']", "xpath:attributes"],
+        ["xpath=//div[2]/div/form", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6c061ad7-09c7-4031-8bde-b047e702e882",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-success",
+      "targets": [
+        ["css=.btn-success", "css:finder"],
+        ["xpath=(//button[@type='submit'])[2]", "xpath:attributes"],
+        ["xpath=//form[@id='cercaOrdiniForm']/button", "xpath:idRelative"],
+        ["xpath=//div[2]/div/form/button", "xpath:position"],
+        ["xpath=(//*[contains(.,'Ricerca')])[6]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "dbf00712-4096-4103-89b2-3e1f5333e505",
+      "comment": "",
+      "command": "assertTitle",
+      "target": "Homepage Gestore ordini",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "56c7f7a9-6efa-4454-92e5-f2194fea4d21",
+    "name": "TC_8.1_1",
+    "commands": [{
+      "id": "5cc3342a-809d-4ee6-9014-43b3e367d852",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/GamesHub_Code/CheckoutPage.jsp",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "238a6be8-ca85-41c4-8228-8341a01e1359",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1382x754",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9708ae4e-8d84-4b6d-a673-f4cd0117ac49",
+      "comment": "",
+      "command": "verifyTitle",
+      "target": "Checkout",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "71827645-5ade-436a-9463-a464a8449935",
+      "comment": "",
+      "command": "click",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//div[@id='newAddress']/div[2]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[176]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "352becac-fffc-4e25-85df-7ac4f011ea3d",
+      "comment": "",
+      "command": "type",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//div[@id='newAddress']/div[2]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[176]", "xpath:innerText"]
+      ],
+      "value": " "
+    }, {
+      "id": "092d9a33-424f-4b58-9946-5b9d35970546",
+      "comment": "",
+      "command": "mouseDown",
+      "target": "id=newAddress",
+      "targets": [
+        ["id=newAddress", "id"],
+        ["css=#newAddress", "css:finder"],
+        ["xpath=//div[@id='newAddress']", "xpath:attributes"],
+        ["xpath=//form[@id='payment-form']/div[2]/div/div[2]/div[3]", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cf345a48-ee8e-4d6f-ac26-fab512030c97",
+      "comment": "",
+      "command": "click",
+      "target": "css=.container > .row:nth-child(2)",
+      "targets": [
+        ["css=.container > .row:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='payment-form']/div[2]/div[2]/div[2]/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div[2]/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3d4f4441-404b-408e-8592-720d5cf34a83",
+      "comment": "",
+      "command": "assertTitle",
+      "target": "Checkout",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "e5310d50-3d5c-4790-b723-44d073301b59",
+    "name": "TC_8.1_2",
+    "commands": [{
+      "id": "f2a82fd3-29a5-4009-91e1-8481d670a1c9",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/GamesHub_Code/CheckoutPage.jsp",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ee12cec1-346e-41e3-b0e2-e2eaaa5d71fe",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1382x754",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "90288c4d-8173-4161-bc0d-775e59acd4b6",
+      "comment": "",
+      "command": "verifyTitle",
+      "target": "Checkout",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6735025e-92cf-45e2-88be-3822f0812a34",
+      "comment": "",
+      "command": "click",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//div[@id='newAddress']/div[2]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[176]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "538c569e-e739-4911-bb6e-a71735b69126",
+      "comment": "",
+      "command": "type",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//div[@id='newAddress']/div[2]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[176]", "xpath:innerText"]
+      ],
+      "value": "Via AAA"
+    }, {
+      "id": "764912d3-714a-48bc-a263-cc640c8d4681",
+      "comment": "",
+      "command": "click",
+      "target": "id=newAddress",
+      "targets": [
+        ["id=newAddress", "id"],
+        ["css=#newAddress", "css:finder"],
+        ["xpath=//div[@id='newAddress']", "xpath:attributes"],
+        ["xpath=//form[@id='payment-form']/div[2]/div/div[2]/div[3]", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "27018820-28bc-4324-bfa3-0cd6de06a704",
+      "comment": "",
+      "command": "click",
+      "target": "css=.container > .row:nth-child(2)",
+      "targets": [
+        ["css=.container > .row:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='payment-form']/div[2]/div[2]/div[2]/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div[2]/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f747c18e-2757-47ce-85ff-51523a3c61b6",
+      "comment": "",
+      "command": "assertTitle",
+      "target": "Checkout",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "bacbca10-55f0-485a-9e50-e5cae4aacd5f",
+    "name": "TC_8.1_3",
+    "commands": [{
+      "id": "73f666ff-22d3-426f-8b01-9de2638e77cd",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/GamesHub_Code/CheckoutPage.jsp",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3ff42ac0-2dfb-4c5a-9c84-6a3485f6a529",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1382x754",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b00df35c-a934-4566-95cb-59248b29eb3e",
+      "comment": "",
+      "command": "verifyTitle",
+      "target": "Checkout",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2a0e70f7-514e-444b-9e3a-cd598956ffd3",
+      "comment": "",
+      "command": "click",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//div[@id='newAddress']/div[2]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[176]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "78c561eb-25e5-4b2a-8fbc-fe61520bfa3c",
+      "comment": "",
+      "command": "type",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//div[@id='newAddress']/div[2]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[176]", "xpath:innerText"]
+      ],
+      "value": "Via Roma 25"
+    }, {
+      "id": "2e961a25-2ca6-42f2-944a-b910ff6a0c85",
+      "comment": "",
+      "command": "click",
+      "target": "id=newAddress",
+      "targets": [
+        ["id=newAddress", "id"],
+        ["css=#newAddress", "css:finder"],
+        ["xpath=//div[@id='newAddress']", "xpath:attributes"],
+        ["xpath=//form[@id='payment-form']/div[2]/div/div[2]/div[3]", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9bdf75fb-e364-40a7-b294-47dd1687e53c",
+      "comment": "",
+      "command": "click",
+      "target": "id=newAddress",
+      "targets": [
+        ["id=newAddress", "id"],
+        ["css=#newAddress", "css:finder"],
+        ["xpath=//div[@id='newAddress']", "xpath:attributes"],
+        ["xpath=//form[@id='payment-form']/div[2]/div/div[2]/div[3]", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "483e4fca-e2f9-498c-9d8b-2c36baa42cf7",
+      "comment": "",
+      "command": "click",
+      "target": "id=city",
+      "targets": [
+        ["id=city", "id"],
+        ["name=city", "name"],
+        ["css=#city", "css:finder"],
+        ["xpath=//input[@id='city']", "xpath:attributes"],
+        ["xpath=//div[@id='newAddress']/div[3]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[182]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f7f826d5-3d11-4a56-b2a7-ec2db8a84a9a",
+      "comment": "",
+      "command": "type",
+      "target": "id=city",
+      "targets": [
+        ["id=city", "id"],
+        ["name=city", "name"],
+        ["css=#city", "css:finder"],
+        ["xpath=//input[@id='city']", "xpath:attributes"],
+        ["xpath=//div[@id='newAddress']/div[3]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[182]", "xpath:innerText"]
+      ],
+      "value": " "
+    }, {
+      "id": "c22c5d1e-92dd-44af-96f9-886af3b7e6c6",
+      "comment": "",
+      "command": "mouseDown",
+      "target": "css=.col-md-pull-6 > .panel:nth-child(1) > .panel-body",
+      "targets": [
+        ["css=.col-md-pull-6 > .panel:nth-child(1) > .panel-body", "css:finder"],
+        ["xpath=//form[@id='payment-form']/div[2]/div/div[2]", "xpath:idRelative"],
+        ["xpath=//form/div[2]/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "725297de-b1b2-4f2c-b697-abe33aea8299",
+      "comment": "",
+      "command": "assertTitle",
+      "target": "Checkout",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "582ebdbe-b5b0-4248-848a-c696eded6cc4",
+    "name": "TC_8.1_4",
+    "commands": [{
+      "id": "1a6bcf33-fe3e-405d-a15e-0077b95d6d99",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/GamesHub_Code/CheckoutPage.jsp",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "eb182f5b-0727-4c9a-b23f-b0f76624e7d5",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1382x754",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "48cbb85b-68c7-464d-a5c7-75811e25176c",
+      "comment": "",
+      "command": "type",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//div[@id='newAddress']/div[2]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[176]", "xpath:innerText"]
+      ],
+      "value": "Via Roma 25"
+    }, {
+      "id": "4c28f0d5-c985-46a8-8494-592e0f18ce8a",
+      "comment": "",
+      "command": "click",
+      "target": "id=city",
+      "targets": [
+        ["id=city", "id"],
+        ["name=city", "name"],
+        ["css=#city", "css:finder"],
+        ["xpath=//input[@id='city']", "xpath:attributes"],
+        ["xpath=//div[@id='newAddress']/div[3]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[182]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9f2c7c62-96d7-4715-af28-0fe2a05efc8b",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "id=city",
+      "targets": [
+        ["id=city", "id"],
+        ["name=city", "name"],
+        ["css=#city", "css:finder"],
+        ["xpath=//input[@id='city']", "xpath:attributes"],
+        ["xpath=//div[@id='newAddress']/div[3]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[182]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "33b54d47-a61d-4f21-b988-5c97e50aa2f9",
+      "comment": "",
+      "command": "click",
+      "target": "id=city",
+      "targets": [
+        ["id=city", "id"],
+        ["name=city", "name"],
+        ["css=#city", "css:finder"],
+        ["xpath=//input[@id='city']", "xpath:attributes"],
+        ["xpath=//div[@id='newAddress']/div[3]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[182]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d70f5feb-39c6-4a22-b06e-4329065bd2f9",
+      "comment": "",
+      "command": "type",
+      "target": "id=city",
+      "targets": [
+        ["id=city", "id"],
+        ["name=city", "name"],
+        ["css=#city", "css:finder"],
+        ["xpath=//input[@id='city']", "xpath:attributes"],
+        ["xpath=//div[@id='newAddress']/div[3]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[182]", "xpath:innerText"]
+      ],
+      "value": "Napol7"
+    }, {
+      "id": "321fa467-43d2-41ca-82cf-c51d418ee03a",
+      "comment": "",
+      "command": "mouseDown",
+      "target": "css=.form-group:nth-child(3) > .col-md-12:nth-child(2)",
+      "targets": [
+        ["css=.form-group:nth-child(3) > .col-md-12:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='newAddress']/div[3]/div[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/div[3]/div[2]", "xpath:position"],
+        ["xpath=(//*[contains(.,'Formato Città errato')])[11]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d1cd382a-6aff-4b1a-bfc3-1a6a93dc1740",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-md-pull-6 > .panel:nth-child(1) > .panel-body",
+      "targets": [
+        ["css=.col-md-pull-6 > .panel:nth-child(1) > .panel-body", "css:finder"],
+        ["xpath=//form[@id='payment-form']/div[2]/div/div[2]", "xpath:idRelative"],
+        ["xpath=//form/div[2]/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "01bbab58-9657-44a7-8bd3-672c229af48b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.container > .row:nth-child(2)",
+      "targets": [
+        ["css=.container > .row:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='payment-form']/div[2]/div[2]/div[2]/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div[2]/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "871013b8-773a-41de-a433-8b3058623e21",
+      "comment": "",
+      "command": "assertTitle",
+      "target": "Checkout",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "3b3263fd-ef7a-4b92-b92b-24ec689ba6e5",
+    "name": "TC_8.1_5",
+    "commands": [{
+      "id": "a04660fb-c488-472e-8792-ab0f4e2f9048",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/GamesHub_Code/ButtonHomeControl",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "411a3a70-84d3-40c9-9381-1cd9a4e2e1ec",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1382x754",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2ef7b8a8-d032-4a5b-9375-0f75f49b8629",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Ciao, Luca",
+      "targets": [
+        ["linkText=Ciao, Luca", "linkText"],
+        ["css=.nav-item:nth-child(1) > #navbarDropdown", "css:finder"],
+        ["xpath=//a[contains(text(),'Ciao, Luca')]", "xpath:link"],
+        ["xpath=(//a[@id='navbarDropdown'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul[2]/li/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[4]", "xpath:href"],
+        ["xpath=//ul[2]/li/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "58791cbd-e428-4fea-8f4b-48ee6c90a853",
+      "comment": "",
+      "command": "click",
+      "target": "css=#carrello img",
+      "targets": [
+        ["css=#carrello img", "css:finder"],
+        ["xpath=//a[@id='carrello']/span/img", "xpath:idRelative"],
+        ["xpath=//span/img", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[87]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "61408f6f-58e7-495c-a797-00c00c211571",
+      "comment": "",
+      "command": "click",
+      "target": "id=acq",
+      "targets": [
+        ["id=acq", "id"],
+        ["css=#acq", "css:finder"],
+        ["xpath=//button[@id='acq']", "xpath:attributes"],
+        ["xpath=//form/div/button", "xpath:position"],
+        ["xpath=(//*[contains(.,'Checkout ')])[7]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "cdf9083e-8b51-4017-86a8-065368c91e0e",
+      "comment": "",
+      "command": "click",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//div[@id='newAddress']/div[2]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[176]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e6b31228-2272-4e87-8191-af798ea6f548",
+      "comment": "",
+      "command": "type",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//div[@id='newAddress']/div[2]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[176]", "xpath:innerText"]
+      ],
+      "value": "Via Roma 25"
+    }, {
+      "id": "6a3db096-e159-420b-b9ac-b864110beb84",
+      "comment": "",
+      "command": "click",
+      "target": "id=city",
+      "targets": [
+        ["id=city", "id"],
+        ["name=city", "name"],
+        ["css=#city", "css:finder"],
+        ["xpath=//input[@id='city']", "xpath:attributes"],
+        ["xpath=//div[@id='newAddress']/div[3]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[182]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c136cb16-d363-45da-b215-b2d2cf99671e",
+      "comment": "",
+      "command": "type",
+      "target": "id=city",
+      "targets": [
+        ["id=city", "id"],
+        ["name=city", "name"],
+        ["css=#city", "css:finder"],
+        ["xpath=//input[@id='city']", "xpath:attributes"],
+        ["xpath=//div[@id='newAddress']/div[3]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[182]", "xpath:innerText"]
+      ],
+      "value": "Napoli"
+    }, {
+      "id": "7bd686c8-38ea-438c-a33c-7ee092ea5033",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-md-12 > h4",
+      "targets": [
+        ["css=.col-md-12 > h4", "css:finder"],
+        ["xpath=//div[@id='newAddress']/div/div/h4", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/h4", "xpath:position"],
+        ["xpath=(//*[contains(.,'Shipping Address')])[12]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2a362a6a-6483-4ed7-a86b-a9f07eea4f0e",
+      "comment": "",
+      "command": "click",
+      "target": "id=cardCheck",
+      "targets": [
+        ["id=cardCheck", "id"],
+        ["name=group2", "name"],
+        ["css=#cardCheck", "css:finder"],
+        ["xpath=//input[@id='cardCheck']", "xpath:attributes"],
+        ["xpath=//div[@id='checkboxWrapper']/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div/div/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[192]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a63907f6-ecc2-466f-9b7b-11b70bafa205",
+      "comment": "",
+      "command": "click",
+      "target": "id=confermaAcquisto",
+      "targets": [
+        ["id=confermaAcquisto", "id"],
+        ["css=#confermaAcquisto", "css:finder"],
+        ["xpath=//button[@id='confermaAcquisto']", "xpath:attributes"],
+        ["xpath=//form[@id='payment-form']/div/div[3]/div[2]/div/div/div/button", "xpath:idRelative"],
+        ["xpath=//div/div/div/button", "xpath:position"],
+        ["xpath=(//*[contains(.,'Conferma')])[13]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9cc2cd37-dedf-4e2a-b290-0725753df167",
+      "comment": "",
+      "command": "assertTitle",
+      "target": "AcquistoCompletato",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "5bc41452-ee0a-4018-9363-0af64b5ca08a",
+    "name": "TC_9.1_1",
+    "commands": [{
+      "id": "50f4df05-ba83-435e-9e04-02a01c8d260c",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/GamesHub_Code/ButtonHomeControl",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "55133d9e-7e00-4167-bc0c-0934c5ac43ec",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1382x754",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "94bef9f5-f555-4d35-a409-558196845655",
+      "comment": "",
+      "command": "click",
+      "target": "css=.animate .addToCart",
+      "targets": [
+        ["css=.animate .addToCart", "css:finder"],
+        ["xpath=(//button[@name='id'])[5]", "xpath:attributes"],
+        ["xpath=//div[@id='productContainer']/div/div[3]/div/div/div[3]/form/button", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/div[3]/form/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "92af62b7-3b07-449d-9883-e7b6f15d2cac",
+      "comment": "",
+      "command": "click",
+      "target": "id=4",
+      "targets": [
+        ["id=4", "id"],
+        ["css=#\\34", "css:finder"],
+        ["xpath=//input[@id='4']", "xpath:attributes"],
+        ["xpath=//td[3]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[113]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "86b417a2-3f5d-40a8-bafd-c2b93e784825",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(2) > td:nth-child(3)",
+      "targets": [
+        ["css=tr:nth-child(2) > td:nth-child(3)", "css:finder"],
+        ["xpath=//td[3]", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[112]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4acb7e4d-0409-4214-906b-8e7bc562469f",
+      "comment": "",
+      "command": "assertTitle",
+      "target": "Carrello",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "0dd390db-a9bf-47ad-9b49-e4b50fa2adc7",
+    "name": "TC_9.1_2",
+    "commands": [{
+      "id": "b432dca1-cd17-4a7d-9abe-4b0a2047adbd",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/GamesHub_Code/ButtonHomeControl",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "64fc91cf-ec1e-4c0d-b18a-b3da25f4083b",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1382x754",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b7fcde95-5e81-48c7-8dc1-71d8b2a43955",
+      "comment": "",
+      "command": "click",
+      "target": "id=carrello",
+      "targets": [
+        ["id=carrello", "id"],
+        ["css=#carrello", "css:finder"],
+        ["xpath=//a[@id='carrello']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul[2]/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'ButtonCarrelloControl')]", "xpath:href"],
+        ["xpath=//ul[2]/li[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8206eb6c-d34a-4e33-bbaa-9cf4907ea4b8",
+      "comment": "",
+      "command": "type",
+      "target": "id=4",
+      "targets": [
+        ["id=4", "id"],
+        ["css=#\\34", "css:finder"],
+        ["xpath=//input[@id='4']", "xpath:attributes"],
+        ["xpath=//td[3]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[113]", "xpath:innerText"]
+      ],
+      "value": "2"
+    }, {
+      "id": "478f21aa-1c34-44f1-ad48-a674b0f16b73",
+      "comment": "",
+      "command": "click",
+      "target": "id=4",
+      "targets": [
+        ["id=4", "id"],
+        ["css=#\\34", "css:finder"],
+        ["xpath=//input[@id='4']", "xpath:attributes"],
+        ["xpath=//td[3]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[113]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0687c60b-5871-4b7b-b3c0-cd7b276a73f6",
+      "comment": "",
+      "command": "type",
+      "target": "id=4",
+      "targets": [
+        ["id=4", "id"],
+        ["css=#\\34", "css:finder"],
+        ["xpath=//input[@id='4']", "xpath:attributes"],
+        ["xpath=//td[3]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[113]", "xpath:innerText"]
+      ],
+      "value": "3"
+    }, {
+      "id": "ee0339e8-37b9-4742-9fa3-8503ed815f3a",
+      "comment": "",
+      "command": "click",
+      "target": "id=4",
+      "targets": [
+        ["id=4", "id"],
+        ["css=#\\34", "css:finder"],
+        ["xpath=//input[@id='4']", "xpath:attributes"],
+        ["xpath=//td[3]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[113]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "58fefc64-92c9-43e2-89b2-e5e8a01edae6",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "id=4",
+      "targets": [
+        ["id=4", "id"],
+        ["css=#\\34", "css:finder"],
+        ["xpath=//input[@id='4']", "xpath:attributes"],
+        ["xpath=//td[3]/input", "xpath:position"],
+        ["xpath=(//*[contains(.,'')])[113]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fc4c3bad-c3d6-46e5-990e-4ae7ede29440",
+      "comment": "",
+      "command": "assertTitle",
+      "target": "Carrello",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "f386526c-54d5-42c4-aa99-a7784cb1ad55",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["8075f042-a6d6-4184-9ea2-cf04f7260c86"]
+  }],
+  "urls": ["http://localhost:8080/", "http://localhost:8080/GamesHub_Code", "http://localhost:8080/GamesHub_Code/ButtonHomepageGestoreOrdiniControl", "http://localhost:8080/GamesHub_Code/CheckoutPage.jsp", "http://localhost:8080/GamesHub_Code/ButtonCheckoutControl", "http://localhost:8080/GamesHub_Code/ButtonHomeControl"],
+  "plugins": []
+}
