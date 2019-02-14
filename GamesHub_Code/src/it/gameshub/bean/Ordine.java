@@ -27,16 +27,28 @@ public class Ordine {
 
 	}
 
-	
+	/**
+	 * Costruttore di Ordine
+	 */
+	public Ordine(int idOrdine, float importo, int spedizione, Date dataOrdine, String utente, String stato,
+			String trackingId, String indirizzo) {
+		this.idOrdine = idOrdine;
+		this.importo = importo;
+		this.spedizione = spedizione;
+		this.dataOrdine = dataOrdine;
+		this.utente = utente;
+		this.stato = stato;
+		this.trackingId = trackingId;
+		this.indirizzo = indirizzo;
+	}
+
 	public int getSpedizione() {
 		return spedizione;
 	}
 
-
 	public void setSpedizione(int spedizione) {
 		this.spedizione = spedizione;
 	}
-
 
 	public String getIndirizzo() {
 		return indirizzo;
