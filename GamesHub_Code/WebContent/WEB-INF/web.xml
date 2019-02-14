@@ -178,9 +178,13 @@
     <servlet-name>ButtonHomepageGestoreOrdiniControl</servlet-name>
     <servlet-class>it.gameshub.controller.ButtonHomepageGestoreOrdiniControl</servlet-class>
   </servlet>
-    <servlet>
+  <servlet>
     <servlet-name>ButtonCheckoutControl</servlet-name>
     <servlet-class>it.gameshub.controller.ButtonCheckoutControl</servlet-class>
+  </servlet>
+   <servlet>
+    <servlet-name>ButtonCatalogControl</servlet-name>
+    <servlet-class>it.gameshub.controller.ButtonCatalogControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>VisualizzaHomeControl</servlet-name>

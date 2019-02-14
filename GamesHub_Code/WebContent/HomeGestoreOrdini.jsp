@@ -19,7 +19,7 @@
 	<link rel="stylesheet" href="css/StileCatalogoAdmin.css" >
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-	<title> Homepage Gestore ordini </title>
+	<title> Catalogo </title>
 	<style>
 	
 	.error{
@@ -143,16 +143,12 @@ font-style: oblique;
 <form ACTION="CercaGestioneOrdiniControl" name="cercaOrdiniForm" id="cercaOrdiniForm" method="post"class="form-inline" onsubmit="return validateSearch(this)">
   
     <div class="form-group mx-sm-3 mb-2">
-    <span></span>
-    <label for="inputSearch" class="sr-only">Cerca ID... </label>
-    <input name="idOrdine" type="text" class="form-control" id="inputSearch" placeholder="Cerca ID..">
-    
+    <input name="idOrdine" type="text" class="" id="inputSearch" placeholder="Cerca ID.." value="">
   </div>
   
- 
 <div class="form-group mx-sm-3 mb-2">
 <i class="fas fa-table fa-lg"></i> &nbsp; &nbsp;
-    <select name="annoOrdine" class="form-control" id="exampleFormControlSelect1">
+    <select name="annoOrdine" class="" id="exampleFormControlSelect1">
       <option >Anno </option>
       <%
       
@@ -164,7 +160,7 @@ font-style: oblique;
   
   
   <div class="form-group mx-sm-3 mb-2">
-    <select name="statoOrdine" class="form-control" id="exampleFormControlSelect1">
+    <select name="statoOrdine" class="" id="exampleFormControlSelect1">
       <option >Stato</option>
       <option>Accettato</option>
       <option>In preparazione</option>
@@ -175,13 +171,12 @@ font-style: oblique;
   
 
   <button type="submit" class="btn btn-success mb-2">Ricerca</button>
-</form>
-<p id="inputSearchError" class="error"></p>
+  </form>
+  <p id="inputSearchError" class="error"></p>
+  
+
+
 <br/>
-	
-	
-	
-	
 	
 	
 	
@@ -214,7 +209,7 @@ font-style: oblique;
 			<td><span class="spanDate"> <%=bean.getDataOrdine()%></span></td>
 			<td>
 			
-<form action="ButtonSalvaModificheGestoreOrdiniControl" name="salvaModificheForm" id="salvaModificheForm" method="post" onsubmit="return validate(this)">			
+    <form action="ButtonSalvaModificheGestoreOrdiniControl" name="salvaModificheForm" id="salvaModificheForm" method="post" onsubmit="return validate(this)">			
     <select name="cambiaStatoOrdine" class="custom-select" >
     <option><%=bean.getStato()%></option>
      <%
