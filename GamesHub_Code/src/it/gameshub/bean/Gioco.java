@@ -21,6 +21,24 @@ public class Gioco implements Serializable {
 	}
 
 	/**
+	 * Costruttore di Gioco
+	 */
+	public Gioco(int code, int pegi, int quantity, int anno, String name, String piattaforma, String description,
+			String video, String genere, float price) {
+		this.code = code;
+		this.anno = anno;
+		this.description = description;
+		this.genere = genere;
+		this.quantity = quantity;
+		this.name = name;
+		this.pegi = pegi;
+		this.piattaforma = piattaforma;
+		this.video = video;
+		this.price = price;
+
+	}
+
+	/**
 	 * @return int Il serial number del Gioco
 	 */
 	public int getCode() {
@@ -30,7 +48,8 @@ public class Gioco implements Serializable {
 	/**
 	 * Setta il serial number del Gioco
 	 * 
-	 * @param int code Il serial number del Gioco
+	 * @param int
+	 *            code Il serial number del Gioco
 	 */
 
 	public void setCode(int code) {
@@ -47,7 +66,8 @@ public class Gioco implements Serializable {
 	/**
 	 * Setta il nome del Gioco
 	 * 
-	 * @param string name Il nome number del Gioco
+	 * @param string
+	 *            name Il nome number del Gioco
 	 */
 
 	public void setName(String name) {
@@ -64,7 +84,8 @@ public class Gioco implements Serializable {
 	/**
 	 * Setta la descrizione del Gioco
 	 * 
-	 * @param string description La descrizione del Gioco
+	 * @param string
+	 *            description La descrizione del Gioco
 	 */
 	public void setDescription(String description) {
 		this.description = description;
@@ -76,11 +97,12 @@ public class Gioco implements Serializable {
 	public float getPrice() {
 		return price;
 	}
-	
+
 	/**
 	 * Setta il prezzo del Gioco
 	 * 
-	 * @param float price Il prezzo del Gioco
+	 * @param float
+	 *            price Il prezzo del Gioco
 	 */
 	public void setPrice(float price) {
 		this.price = price;
@@ -96,7 +118,8 @@ public class Gioco implements Serializable {
 	/**
 	 * Setta la quantità del Gioco
 	 * 
-	 * @param int quantity La quantità del Gioco
+	 * @param int
+	 *            quantity La quantità del Gioco
 	 */
 
 	public void setQuantity(int quantity) {
@@ -113,7 +136,8 @@ public class Gioco implements Serializable {
 	/**
 	 * Setta la piattaforma del Gioco
 	 * 
-	 * @param String piattaforma La piattaforma del Gioco
+	 * @param String
+	 *            piattaforma La piattaforma del Gioco
 	 */
 	public void setPiattaforma(String piattaforma) {
 		this.piattaforma = piattaforma;
@@ -129,7 +153,8 @@ public class Gioco implements Serializable {
 	/**
 	 * Setta l'anno del Gioco
 	 * 
-	 * @param int anno L'anno del Gioco
+	 * @param int
+	 *            anno L'anno del Gioco
 	 */
 	public void setAnno(int anno) {
 		this.anno = anno;
@@ -145,7 +170,8 @@ public class Gioco implements Serializable {
 	/**
 	 * Setta il link del video del Gioco
 	 * 
-	 * @param String video Il link del video del Gioco
+	 * @param String
+	 *            video Il link del video del Gioco
 	 */
 	public void setVideo(String video) {
 		this.video = video;
@@ -161,7 +187,8 @@ public class Gioco implements Serializable {
 	/**
 	 * Setta il genere del Gioco
 	 * 
-	 * @param String genere Il genere del Gioco
+	 * @param String
+	 *            genere Il genere del Gioco
 	 */
 	public void setGenere(String genere) {
 		this.genere = genere;
@@ -174,11 +201,11 @@ public class Gioco implements Serializable {
 		return pegi;
 	}
 
-	
 	/**
 	 * Setta il PEGI del Gioco
 	 * 
-	 * @param int pegi Il PEGI del Gioco
+	 * @param int
+	 *            pegi Il PEGI del Gioco
 	 */
 	public void setPegi(int pegi) {
 		this.pegi = pegi;

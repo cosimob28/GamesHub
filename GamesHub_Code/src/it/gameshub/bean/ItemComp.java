@@ -14,6 +14,12 @@ public class ItemComp {
 		iva = 0;
 	}
 
+	public ItemComp(Ordine ordine, Collection<Composizione> compOrdine) {
+		this.ordine = ordine;
+		this.compOrdine = compOrdine;
+
+	}
+
 	public Ordine getOrdine() {
 		return ordine;
 	}
@@ -28,10 +34,7 @@ public class ItemComp {
 
 	public void setCompOrdine(Collection<Composizione> compOrdine) {
 		this.compOrdine = compOrdine;
-		
-		
-	}
 
-	
+	}
 
 }

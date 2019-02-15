@@ -19,6 +19,12 @@ public class ItemOrder {
 		this.image = null;
 	}
 
+	public ItemOrder(Gioco gioco, Immagine image, int quantità) {
+		this.gioco = gioco;
+		this.quantità = quantità;
+		this.image = image;
+	}
+
 	public ItemOrder(Gioco gioco) {
 		this.gioco = gioco;
 		quantità = 1;

@@ -12,11 +12,12 @@ public class Immagine implements Serializable {
 		name = "";
 		game = -1;
 	}
-
-	public Immagine(String name, int game) {
-		this.name = name;
-		this.game = game;
+	
+	public Immagine(String name,int game) {
+		this.name= name;
+		this.game= game;
 	}
+
 
 	public String getName() {
 		return name;

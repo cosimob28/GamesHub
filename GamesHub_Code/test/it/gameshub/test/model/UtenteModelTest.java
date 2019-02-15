@@ -20,7 +20,7 @@ import it.gameshub.model.UtenteModel;
 
 public class UtenteModelTest {
 
-	InitialContext ctx = new InitialContext();
+
 	
 	protected UtenteModel utenteModel;
 	protected Connection connection;
