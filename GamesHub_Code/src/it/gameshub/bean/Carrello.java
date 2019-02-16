@@ -15,6 +15,10 @@ public class Carrello {
 		products = new ArrayList<ItemOrder>();
 	}
 
+	public Carrello(ArrayList<ItemOrder> products) {
+		this.products = products;
+	}
+
 	public void addProduct(ItemOrder ordine) throws SQLException {
 		int trovato = 0;
 		if (products.size() == 0)
@@ -73,7 +77,7 @@ public class Carrello {
 		else
 			return false;
 	}
-	
+
 	public void svuotaCarrello() {
 		products = new ArrayList<ItemOrder>();
 	}
@@ -86,6 +90,5 @@ public class Carrello {
 		float totale = (float) (imponibile + ((22 * imponibile) / 100));
 		return (float) (Math.ceil(totale * Math.pow(10, 2)) / Math.pow(10, 2));
 	}
-	
 
 }

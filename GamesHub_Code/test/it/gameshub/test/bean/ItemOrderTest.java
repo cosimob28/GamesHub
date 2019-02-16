@@ -26,7 +26,7 @@ public class ItemOrderTest {
 
 	@Test
 	public void testSetGioco() {
-		gioco = new Gioco(187, 6, 25, 2017, "PES 2018", "PS3", "OKOKOKOKOKOKOKOKOK",
+		gioco1 = new Gioco(187, 6, 25, 2017, "PES 2018", "PS3", "OKOKOKOKOKOKOKOKOK",
 				"https://www.youtube.com/watch?v=gLcJtkaIaRe", "sport", (float) 19.99);
 		item.setGioco(gioco1);
 		assertEquals(gioco1, item.getGioco());
