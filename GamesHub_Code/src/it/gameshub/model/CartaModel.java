@@ -1,6 +1,7 @@
 package it.gameshub.model;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,6 +16,11 @@ public class CartaModel {
 
 	private static final String TABLE_NAME = "Carta";
 
+	private Connection getConnection() throws SQLException {
+		return DriverManager.getConnection(
+				"jdbc:mysql://localhost:3306/gameshub?useSSL=false", "root", "root");
+	}
+	
 	/**
 	 * Inserisce una carta
 	 * 
@@ -30,7 +36,7 @@ public class CartaModel {
 				+ " (NumeroCarta,Cvv,Scadenza,Saldo,Utente) VALUES (?, ?, ?, ?, ?)";
 
 		try {
-			connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setString(1, carta.getNumeroCarta());
 			preparedStatement.setString(2, carta.getCvv());
@@ -65,7 +71,7 @@ public class CartaModel {
 		Carta bean = new Carta();
 		String selectSQL = "SELECT * FROM " + CartaModel.TABLE_NAME + " WHERE Utente = ?";
 		try {
-			connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setString(1, username);
 
@@ -111,7 +117,7 @@ public class CartaModel {
 
 		try {
 			// connection = ds.getConnection();
-			connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setString(1, user);
 
@@ -142,7 +148,7 @@ public class CartaModel {
 		PreparedStatement preparedStatement = null;
 		String selectSQL = "SELECT * FROM " + CartaModel.TABLE_NAME + " WHERE Utente = ?";
 		try {
-			connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setString(1, username);
 
@@ -181,7 +187,7 @@ public class CartaModel {
 
 		try {
 
-			connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setFloat(1, saldo);
 			preparedStatement.setString(2, numeroCarta);
