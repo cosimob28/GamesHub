@@ -2,6 +2,7 @@ package it.gameshub.model;
 
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,6 +20,12 @@ public class UtenteModel {
 	private static DataSource ds;
 
 	private static final String TABLE_NAME = "Utente";
+	
+	private Connection getConnection() throws SQLException {
+		return DriverManager.getConnection(
+				"jdbc:mysql://localhost:3306/gameshub?useSSL=false", "root", "root");
+	}
+	
 
 	/**
 	 * Inserisce un utente
@@ -36,7 +43,7 @@ public class UtenteModel {
 
 		try {
 		
-			connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setString(1, user.getUsername());
 			preparedStatement.setString(2, user.getPin());
@@ -79,11 +86,11 @@ public class UtenteModel {
 
 		int result = 0;
 
-		String deleteSQL = "DELETE FROM " + UtenteModel.TABLE_NAME + " WHERE Username = '?'";
+		String deleteSQL = "DELETE FROM " + UtenteModel.TABLE_NAME + " WHERE Username = ?";
 
 		try {
 			
-			connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setString(1, username);
 
@@ -118,7 +125,7 @@ public class UtenteModel {
 
 		try {
 
-			connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setString(1, username);
 
@@ -137,6 +144,7 @@ public class UtenteModel {
 				bean.setSesso(rs.getString("Sesso"));
 				bean.setTipo(rs.getString("Tipo"));
 				bean.setVerificato(rs.getBoolean("Verificato"));
+				bean.setMyHash(rs.getString("HashText"));
 
 			}
 
@@ -174,7 +182,7 @@ public class UtenteModel {
 
 		try {
 
-			connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 
 			ResultSet rs = preparedStatement.executeQuery();
@@ -193,6 +201,8 @@ public class UtenteModel {
 				bean.setIndirizzoSpedizione(rs.getString("IndirizzoSpedizione"));
 				bean.setSesso(rs.getString("Sesso"));
 				bean.setTipo(rs.getString("Tipo"));
+				bean.setMyHash(rs.getString("HashText"));
+				bean.setVerificato(rs.getBoolean("Verificato"));
 				users.add(bean);
 			}
 
@@ -223,7 +233,7 @@ public class UtenteModel {
 		String selectSQL = "SELECT *  FROM " + UtenteModel.TABLE_NAME + " WHERE Username = ? ";
 		try {
 		
-			connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setString(1, username);
 			ResultSet rs = preparedStatement.executeQuery();
@@ -263,7 +273,7 @@ public class UtenteModel {
 				+ " WHERE Email = ? and HashText = ? and Verificato = ? ";
 		try {
 
-			connection = Manager.getConnection();
+			connection = getConnection();
 
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setString(1, email);
@@ -325,7 +335,7 @@ public class UtenteModel {
 
 		try {
 			
-			connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setString(1, telefono);
 			preparedStatement.setString(2, indirizzo);

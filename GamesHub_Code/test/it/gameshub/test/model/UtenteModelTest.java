@@ -3,6 +3,8 @@ package it.gameshub.test.model;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
 import javax.naming.InitialContext;
 
@@ -45,119 +47,152 @@ import it.gameshub.bean.Utente;
 import it.gameshub.model.Manager;
 import it.gameshub.model.UtenteModel;
 
-public class UtenteModelTest extends DatabaseTestCase{
+public class UtenteModelTest{
 
 	private Connection jdbcConnection;
 	private IDatabaseTester databaseTester;
 	private FlatXmlDataSet loadedDataSet;
-	private UtenteModel utenteModel;
+	private UtenteModel utenteModel = null;
 	
-	protected IDatabaseConnection getConnection() throws Exception {
-		
-		Class.forName("com.mysql.jdbc.Driver");
-		jdbcConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/gameshub?useSSL=false", "root", "root");
-		return new DatabaseConnection(jdbcConnection);
+	
+	private Connection getConnection() throws SQLException {
+		return DriverManager.getConnection(
+				"jdbc:mysql://localhost:3306/gameshub?useSSL=false", "root", "root");
 	}
 
-	protected IDataSet getDataSet() throws Exception
-    {
-		
-        return new FlatXmlDataSetBuilder().build(new FileInputStream("test/full.xml"));
-    }
+
 	
-	@BeforeClass
-	public void setUp() throws ClassNotFoundException {
+	@Test
+	public void testGetAllUsers() throws SQLException {
+		
 		utenteModel = new UtenteModel();
-		databaseTester = new JdbcDatabaseTester("com.mysql.jdbc.Driver","jdbc:mysql://localhost:3306/gameshub?useSSL=false","root","root");
+		ArrayList<Utente> utenti;
+		utenti = initialize();
+		
+		Collection<Utente> testingCollection = utenteModel.getAllUsers(null);
+		
+		assertEquals(utenti.size(), testingCollection.size());
+		Iterator<Utente> it = testingCollection.iterator();
+		for (int i=0;i<utenti.size();i++) {
+			Utente x = utenti.get(i);
+			Utente y = it.next();
+			assertEquals(x.getCodiceFiscale(), y.getCodiceFiscale());
+			assertEquals(x.getCognome(), y.getCognome());
+			assertEquals(x.getDataDiNascita(), y.getDataDiNascita());
+			assertEquals(x.getEmail(), y.getEmail());
+			assertEquals(x.getIndirizzoSpedizione(), y.getIndirizzoSpedizione());
+			assertEquals(x.getMyHash(), y.getMyHash());
+			assertEquals(x.getNome(), y.getNome());
+			assertEquals(x.getPin(), y.getPin());
+			assertEquals(x.getSesso(), y.getSesso());
+			assertEquals(x.getTelefono(), y.getTelefono());
+			assertEquals(x.getTipo(), y.getTipo());
+			assertEquals(x.getUsername(), y.getUsername());			
+			assertEquals(x.isVerificato(), y.isVerificato());
+			
+
+		}
+		
+		
+		
+	}
+	
+	
+	@Test
+	public void testDeleteUser() throws Exception {
+	
+		ArrayList<Utente> utenti;
+		utenti = initialize();
+		utenteModel.deleteUser(utenti.get(0).getUsername());
+		assertEquals(1,  utenteModel.getAllUsers(null).size());
 	}
 
 	@Test
-	public void testDeleteUser() throws Exception {
-		IDatabaseConnection connection = databaseTester.getConnection();
-		System.out.println(connection);
-		InputStream dataStream = new FileInputStream("test/full.xml");
+	public void testGetUser() throws SQLException {
+		ArrayList<Utente> utenti;
+		utenti = initialize();
 		
-		IDataSet initialDataSet = new FlatXmlDataSet(dataStream);
-
+		Utente x = utenti.get(0);
+		Utente y = utenteModel.getUser(x.getUsername());
 		
-		Date data1 = new Date(1997 - 1900, 5 - 1, 20);
-		Utente x = new Utente("user","password","Admin","Admin","1990-01-10","ADM","0000000000","admin@gameshub.it","via Giovanni Paolo II, Fisciano","Uomo","Gestore catalogo",true,data1);
-		utenteModel.saveUser(x);
-		dataStream = new FileInputStream("test/snapshot.xml");
-		ITable expectedUserTable = new FlatXmlDataSet(dataStream).getTable("utente");
-		ITable actualTable = connection.createDataSet().getTable("utente");
-		Assertion.assertEquals(new SortedTable(expectedUserTable), new SortedTable(actualTable));
+		assertEquals(x.getCodiceFiscale(), y.getCodiceFiscale());
+		assertEquals(x.getCognome(), y.getCognome());
+		assertEquals(x.getDataDiNascita(), y.getDataDiNascita());
+		assertEquals(x.getEmail(), y.getEmail());
+		assertEquals(x.getIndirizzoSpedizione(), y.getIndirizzoSpedizione());
+		assertEquals(x.getMyHash(), y.getMyHash());
+		assertEquals(x.getNome(), y.getNome());
+		assertEquals(x.getPin(), y.getPin());
+		assertEquals(x.getSesso(), y.getSesso());
+		assertEquals(x.getTelefono(), y.getTelefono());
+		assertEquals(x.getTipo(), y.getTipo());
+		assertEquals(x.getUsername(), y.getUsername());			
+		assertEquals(x.isVerificato(), y.isVerificato());
 		
-		
-//		ArrayList<Utente> utenti;
-//		utenti = initialize();
-		
-//		utenteModel.saveUser(utenti.get(0));
-//		utenteModel.saveUser(utenti.get(1));
-//		
-//		utenteModel.deleteUser(utenti.get(0).getUsername());
-//		utenti = (ArrayList<Utente>) utenteModel.getAllUsers(null);
-//		assertEquals(1, utenti.size());
 	}
 
-//	@Test
-//	public void testGetUser() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	public void testGetAllUsers() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	public void testIsAnUser() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	public void testActivateUser() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	public void testDoUpdate() {
-//		fail("Not yet implemented");
-//	}
+
+
+	@Test
+	public void testIsAnUser() throws SQLException {
+		
+		ArrayList<Utente> utenti;
+		utenti = initialize();
+		
+		assertTrue(utenteModel.isAnUser(utenti.get(0).getUsername()));
+		assertFalse(utenteModel.isAnUser("ciccio"));
+		
+	}
+
+	@Test
+	public void testActivateUser() throws SQLException {
+		ArrayList<Utente> utenti;
+		utenti = initialize();
+		Utente x = utenti.get(0);
+		
+		boolean status = utenteModel.activateUser(x.getEmail(), x.getMyHash());
+		assertTrue(status);
+		
+		Utente y = utenteModel.getUser(x.getUsername());
+		assertTrue(y.isVerificato());
+	}
+
+	@Test
+	public void testDoUpdate() throws SQLException {
+		
+		ArrayList<Utente> utenti;
+		utenti = initialize();
+		Utente x = utenti.get(0);
+		
+		utenteModel.doUpdate(x.getUsername(), "Ciccio87", "1234567897", "Via Calogero Nicastro 21, Palermo");
+		
+		Utente y = utenteModel.getUser(x.getUsername());
+		assertEquals("Ciccio87", y.getPin());
+		assertEquals("1234567897", y.getTelefono());
+		assertEquals("Via Calogero Nicastro 21, Palermo", y.getIndirizzoSpedizione());
+		
+		
+	}
 
 	
 	
 	
 	private ArrayList<Utente> initialize() throws SQLException{
 		Utente utente1,utente2;
-		PreparedStatement preparedStatement = null;
-		QueryDataSet queryDataSet = null;
-		try {
-			 queryDataSet = new QueryDataSet(getConnection());
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		ArrayList<Utente> utenti;
+		
+		PreparedStatement x = getConnection().prepareStatement("DELETE FROM utente");
+		x.executeUpdate();
+		
+		ArrayList<Utente> utenti = new ArrayList<Utente>();
 		utenteModel = new UtenteModel();      
         Date data1 = new Date(1997 - 1900, 5 - 1, 20);
         Date data2 = new Date(1979 - 1900, 7 - 1, 6);
-        utente1 = new Utente("user1", "pin1", "nome1", "cognome1", "CF1", "email1", "indirizzo1", "telefono1", "sesso1", "cliente", "myHash1",true,data1);
-        utente2 = new Utente("user2", "pin1", "nome2", "cognome2", "CF2", "email2", "indirizzo2", "telefono2", "sesso2", "cliente", "myHash2",true,data2);
+        utente1 = new Utente("user1", "pin1", "nome1", "cognome1", "CF1", "email1", "indirizzo1", "telefono1", "sesso1", "cliente", "myHash1",false,data1);
+        utente2 = new Utente("user2", "pin2", "nome2", "cognome2", "CF2", "email2", "indirizzo2", "telefono2", "sesso2", "cliente", "myHash2",false,data2);
+        utenteModel.saveUser(utente1);
+		utenteModel.saveUser(utente2);
         
-        try {
-			queryDataSet.addTable("utente", "SELECT * FROM " + "utente");
-//			Assertion.assertEquals(loadedDataSet, queryDataSet);
-		} catch (DatabaseUnitException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}   
-        
-        Statement insertStatement = jdbcConnection.createStatement();
-        insertStatement.execute("insert into utente values('asd23')");
-        insertStatement.close();
        
-        utenti = new ArrayList<Utente>();
         utenti.add(utente1);
         utenti.add(utente2);
         
