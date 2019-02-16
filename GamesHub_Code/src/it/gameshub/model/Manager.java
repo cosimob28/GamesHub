@@ -35,11 +35,13 @@ public class Manager {
     	
    		try {
     			Context initCtx = new InitialContext();
+    			System.out.println(initCtx.toString());
     			Context envCtx = (Context) initCtx.lookup("java:comp/env");
- 
+    			System.out.println(envCtx);
     			ds = (DataSource) envCtx.lookup("jdbc/gameshub");
+    			System.out.println(ds);
     			conn = ds.getConnection();
-
+    			System.out.println(ds);
     		} catch (NamingException e) {
    			System.out.println("Error:" + e.getMessage());
    		}
