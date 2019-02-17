@@ -83,7 +83,7 @@ public class OrdineModelTest {
 	@Test
 	public void testAddOrdine() throws SQLException {
 		ordineModel = new OrdineModel();
-		Date data = new Date(1958 - 1900, 2 - 1, 1);
+		Date data = new Date(2019 - 1900, 2 - 1, 20);
 		Ordine ordine2 = new Ordine(4, (float) 690.23, 9, data, "user1", "Accettato", "Via Lupo 54, Roma");
 		ordineModel.addOrdine(ordine2);
 		
@@ -145,32 +145,37 @@ public class OrdineModelTest {
 
 	
 	
-//	@Test
-//	public void  testGetListaOrdiniThreeParameters() throws SQLException {
-//		
-//		Collection<Ordine> testingCollection;
-//		ArrayList<Ordine> ordini = initialize();
-//		ordineModel = new OrdineModel();
-//		
-//		testingCollection = ordineModel.getListaOrdini("1", null, null);
-//		assertEquals(1, testingCollection.size());
-//		
-//		
-//		assertEquals(x.getDataOrdine(),y.getDataOrdine());
-//		assertEquals(x.getIdOrdine(),y.getIdOrdine());
-//		assertEquals(x.getImporto(),y.getImporto(),0.1);
-//		assertEquals(x.getIndirizzo(),y.getIndirizzo());
-//		assertEquals(x.getSpedizione(),y.getSpedizione());
-//		assertEquals(x.getStato(),y.getStato());
-//		assertEquals(x.getTrackingId(),y.getTrackingId());
-//		assertEquals(x.getUtente(),y.getUtente());
-//		
-//		
-//		
-//		Date data4 = new Date(1977 - 1900, 2 - 1, 1);
-//		
-//		
-//	}
+	@Test
+	public void  testGetListaOrdiniThreeParameters() throws SQLException {
+		
+		Collection<Ordine> testingCollection;
+		ArrayList<Ordine> ordini = initialize();
+		ordineModel = new OrdineModel();
+		
+		Ordine x = ordini.get(0);
+		String id = x.getIdOrdine()+"";
+		
+		testingCollection = ordineModel.getListaOrdini(id, null, null);
+		assertEquals(1, testingCollection.size());
+		
+		String anno = "2018";
+		
+		testingCollection = ordineModel.getListaOrdini(null, anno, null);
+		assertEquals(2, testingCollection.size());
+		
+		testingCollection = ordineModel.getListaOrdini(null, null, "Spedito");
+		assertEquals(1, testingCollection.size());
+		
+		testingCollection = ordineModel.getListaOrdini("3", anno, "Accettato");
+		assertEquals(1, testingCollection.size());
+		
+		testingCollection = ordineModel.getListaOrdini("3", anno, "Spedito");
+		assertEquals(0, testingCollection.size());
+		
+		
+		
+		
+	}
 	
 
 
@@ -228,14 +233,17 @@ public class OrdineModelTest {
 	private ArrayList<Ordine> initialize() throws SQLException {
 
 		Utente utente1,utente2;
+		
+		PreparedStatement x = getConnection().prepareStatement("DELETE FROM utente");
+		x.executeUpdate();
+		PreparedStatement z = getConnection().prepareStatement("DELETE FROM carta");
+		z.executeUpdate();
 		PreparedStatement y = getConnection().prepareStatement("DELETE FROM ordine");
 		y.executeUpdate();
 		PreparedStatement resetCounter = getConnection().prepareStatement("ALTER TABLE ordine AUTO_INCREMENT = 1");
 		resetCounter.executeUpdate();
-		PreparedStatement z = getConnection().prepareStatement("DELETE FROM carta");
-		z.executeUpdate();
-		PreparedStatement x = getConnection().prepareStatement("DELETE FROM utente");
-		x.executeUpdate();
+		
+		
 		
 		
 		utenteModel = new UtenteModel();      
@@ -247,8 +255,8 @@ public class OrdineModelTest {
 		utenteModel.saveUser(utente2);
 		
 		ordineModel = new OrdineModel();
-		Date data3 = new Date(1974 - 1900, 2 - 1, 1);
-		Date data4 = new Date(1977 - 1900, 2 - 1, 1);
+		Date data3 = new Date(2017 - 1900, 2 - 1, 1);
+		Date data4 = new Date(2018 - 1900, 2 - 1, 1);
 		Ordine ordine = new Ordine(1, (float) 178.00, 3, data3, "user1", "Spedito","Via Pendino 85, Fisciano");
 		Ordine ordine1 = new Ordine(2, (float) 124.70, 3, data4, "user1", "Accettato", "Via Roma 25, Napoli");
 		Ordine ordine2 = new Ordine(3, (float) 400.12, 9, data4, "user2", "Accettato", "Via Venezia 25, Bari");
