@@ -1,6 +1,7 @@
 package it.gameshub.model;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,6 +17,11 @@ public class ImmagineModel {
 
 	private static final String TABLE_NAME = "immagine";
 	
+	private Connection getConnection() throws SQLException {
+		return DriverManager.getConnection(
+				"jdbc:mysql://localhost:3306/gameshub?useSSL=false", "root", "root");
+	}
+	
 	/**
 	 * Inserisce un'immagine
 	 * 
@@ -30,14 +36,13 @@ public class ImmagineModel {
 		String insertSQL = "INSERT INTO " + ImmagineModel.TABLE_NAME + " (Nome,Gioco)" + " VALUES (?, ?)";
 
 		try {
-			connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setString(1, image.getName());
 			preparedStatement.setInt(2, image.getGame());
 
 			preparedStatement.executeUpdate();
 
-			connection.commit();
 		} finally {
 			try {
 				if (preparedStatement != null)
@@ -62,10 +67,10 @@ public class ImmagineModel {
 
 		int result = 0;
 
-		String deleteSQL = "DELETE FROM " + ImmagineModel.TABLE_NAME + " WHERE Nome = '?'";
+		String deleteSQL = "DELETE FROM " + ImmagineModel.TABLE_NAME + " WHERE Nome = ? ";
 
 		try {
-			connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setString(1, path);
 
@@ -96,10 +101,10 @@ public class ImmagineModel {
 
 		Immagine bean = new Immagine();
 
-		String selectSQL = "SELECT * FROM " + ImmagineModel.TABLE_NAME + " WHERE Nome = '?' ";
+		String selectSQL = "SELECT * FROM " + ImmagineModel.TABLE_NAME + " WHERE Nome = ? ";
 
 		try {
-			connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setString(1, path);
 
@@ -139,7 +144,7 @@ public class ImmagineModel {
 
 	
 		try {
-			connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 
 			ResultSet rs = preparedStatement.executeQuery();
