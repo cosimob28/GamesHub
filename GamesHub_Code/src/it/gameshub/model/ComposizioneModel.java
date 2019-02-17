@@ -1,6 +1,7 @@
 package it.gameshub.model;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,6 +19,10 @@ public class ComposizioneModel {
 
 	private static final String TABLE_NAME = "Composizione";
 	
+	private Connection getConnection() throws SQLException {
+		return DriverManager.getConnection("jdbc:mysql://localhost:3306/gameshub?useSSL=false", "root", "root");
+	}
+	
 	/**
 	 * Inserisce una composizione
 	 * 
@@ -31,7 +36,7 @@ public class ComposizioneModel {
 				+ " (Costo,Quantità,Ordine,Gioco,NomeGioco,Immagine) VALUES (?, ?, ?, ?, ?, ?)";
 
 		try {
-			connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setFloat(1, comp.getCosto());
 			preparedStatement.setInt(2, comp.getQuantità());
@@ -69,7 +74,7 @@ public class ComposizioneModel {
 		String selectSQL = "SELECT * FROM " + ComposizioneModel.TABLE_NAME + " WHERE Ordine = ?";
 
 		try {
-			connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setInt(1, idOrdine);
 
@@ -118,7 +123,7 @@ public class ComposizioneModel {
 		String deleteSQL = "DELETE FROM " + ComposizioneModel.TABLE_NAME + " WHERE Ordine = ?";
 
 		try {
-			connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setInt(1, idOrdine);
 
