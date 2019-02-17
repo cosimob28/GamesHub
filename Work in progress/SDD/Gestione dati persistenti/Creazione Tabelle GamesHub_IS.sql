@@ -3,7 +3,7 @@ create schema GamesHub;
 use GamesHub;
 
 create table Utente(
-Username varchar(30) primary key,
+Username varchar(30) primary key ,
 Pin varchar(250) not null,
 Nome varchar(20) not null,
 Cognome varchar(20) not null,
@@ -31,7 +31,7 @@ Stato varchar(20) not null,
 Indirizzo varchar(60) not null,
 TrackingId varchar(100),
 Utente varchar(30) not null,
-foreign key (Utente)  references Utente(Username)
+foreign key (Utente)  references Utente(Username) on delete cascade
 );
 
 
@@ -57,8 +57,8 @@ Ordine integer not null,
 Gioco integer not null,
 NomeGioco varchar(200) not null,
 Immagine varchar(100),
-foreign key (Ordine) references Ordine(IdOrdine),
-foreign key (Gioco)  references Gioco(SerialNumber)
+foreign key (Ordine) references Ordine(IdOrdine) on delete cascade,
+foreign key (Gioco)  references Gioco(SerialNumber) on delete cascade
 );
 
 
@@ -76,7 +76,7 @@ Cvv varchar(150) not null,
 Scadenza varchar(150) not null,
 Saldo long not null,
 Utente varchar(30),
-foreign key (Utente)  references Utente(Username)
+foreign key (Utente)  references Utente(Username) on delete cascade
 );
 
 
