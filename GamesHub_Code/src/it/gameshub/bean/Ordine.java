@@ -41,6 +41,16 @@ public class Ordine {
 		this.trackingId = trackingId;
 		this.indirizzo = indirizzo;
 	}
+	public Ordine(int idOrdine, float importo, int spedizione, Date dataOrdine, String utente, String stato,
+			 String indirizzo) {
+		this.idOrdine = idOrdine;
+		this.importo = importo;
+		this.spedizione = spedizione;
+		this.dataOrdine = dataOrdine;
+		this.utente = utente;
+		this.stato = stato;
+		this.indirizzo = indirizzo;
+	}
 
 	public int getSpedizione() {
 		return spedizione;

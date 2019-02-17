@@ -2,6 +2,7 @@ package it.gameshub.model;
 
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,6 +19,10 @@ public class OrdineModel {
 
 	private static final String TABLE_NAME = "Ordine";
 
+	private Connection getConnection() throws SQLException {
+		return DriverManager.getConnection(
+				"jdbc:mysql://localhost:3306/gameshub?useSSL=false", "root", "root");
+	}
 	/**
 	 * Inserisce un ordine
 	 * 
@@ -32,7 +37,9 @@ public class OrdineModel {
 				+ " (Importo,Spedizione,DataOrdine,Stato,Indirizzo,Utente) VALUES (?, ?, ?, ?, ?, ?)";
 
 		try {
-			connection = Manager.getConnection();
+			
+			//connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setFloat(1, ordine.getImporto());
 			preparedStatement.setInt(2, ordine.getSpedizione());
@@ -68,7 +75,8 @@ public class OrdineModel {
 		String selectSQL = "SELECT * FROM " + OrdineModel.TABLE_NAME + " WHERE Utente = ?";
 
 		try {
-			connection = Manager.getConnection();
+			//connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setString(1, user.getUsername());
 
@@ -115,7 +123,8 @@ public class OrdineModel {
 		String selectSQL = "SELECT * FROM " + OrdineModel.TABLE_NAME;
 
 		try {
-			connection = Manager.getConnection();
+			//connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 
 			ResultSet rs = preparedStatement.executeQuery();
@@ -173,7 +182,8 @@ public synchronized Collection<Ordine> getListaOrdini(String idOrdine, String an
 		
 
 		try {
-			connection = Manager.getConnection();
+			//connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 
 			ResultSet rs = preparedStatement.executeQuery();
@@ -222,7 +232,8 @@ public synchronized Collection<Ordine> getListaOrdini(String idOrdine, String an
 		String deleteSQL = "DELETE FROM " + OrdineModel.TABLE_NAME + " WHERE IdOrdine = ?";
 
 		try {
-			connection = Manager.getConnection();
+			//connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setInt(1, idOrdine);
 
@@ -253,7 +264,8 @@ public synchronized Collection<Ordine> getListaOrdini(String idOrdine, String an
 		Ordine bean = new Ordine();
 		String selectSQL = "SELECT * FROM " + OrdineModel.TABLE_NAME + " WHERE IdOrdine = ? ";
 		try {
-			connection = Manager.getConnection();
+			//connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setInt(1, idOrdine);
 
@@ -297,13 +309,15 @@ public synchronized Collection<Ordine> getListaOrdini(String idOrdine, String an
 
 		int result = 0;
 
-		String deleteSQL = "update " + OrdineModel.TABLE_NAME  + "  set Stato = ? " + " WHERE IdOrdine="+ idOrdine;
+		String deleteSQL = "update " + OrdineModel.TABLE_NAME  + "  set Stato = ? " + " WHERE IdOrdine = ? ";
 
 		try {
 			// connection = ds.getConnection();
-			connection = Manager.getConnection();
+			//connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setString(1, stato);
+			preparedStatement.setInt(2, idOrdine);
 
 			result = preparedStatement.executeUpdate();
 
@@ -334,7 +348,8 @@ public synchronized Collection<Ordine> getListaOrdini(String idOrdine, String an
 
 		try {
 			// connection = ds.getConnection();
-			connection = Manager.getConnection();
+			//connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setString(1, trackingId);
 
@@ -365,7 +380,8 @@ public synchronized Collection<Ordine> getListaOrdini(String idOrdine, String an
 		String selectSQL = "SELECT max(IdOrdine) as max FROM " + OrdineModel.TABLE_NAME;
 
 		try {
-			connection = Manager.getConnection();
+			//connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			ResultSet rs = preparedStatement.executeQuery();
 
@@ -402,7 +418,8 @@ public synchronized Collection<Ordine> getListaOrdini(String idOrdine, String an
 		String selectSQL = "SELECT *  FROM " + OrdineModel.TABLE_NAME + " WHERE IdOrdine = ? ";
 		try {
 		
-			connection = Manager.getConnection();
+			//connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setInt(1, idOrdine);
 			ResultSet rs = preparedStatement.executeQuery();
