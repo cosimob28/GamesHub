@@ -11,14 +11,25 @@ import it.gameshub.bean.Gioco;
 public class Carrello {
 	private List<ItemOrder> products;
 
+	/**
+	 * Costruttore di Carrello
+	 */
 	public Carrello() {
 		products = new ArrayList<ItemOrder>();
 	}
 
+	/**
+	 * Costruttore di Carrello
+	 */
 	public Carrello(ArrayList<ItemOrder> products) {
 		this.products = products;
 	}
 
+	/**
+	 * Aggiunge un prodotto al Carrello
+	 * 
+	 * @param ItemOrder ordine L'ItemOrder da aggiungere al carrello
+	 */
 	public void addProduct(ItemOrder ordine) throws SQLException {
 		int trovato = 0;
 		if (products.size() == 0)
@@ -40,6 +51,12 @@ public class Carrello {
 
 	}
 
+	/**
+	 * Elimina un prodotto dal carrello
+	 * 
+	 * @param Gioco gioco Il gioco da eliminare nel carrello.
+	 * 
+	 */
 	public void deleteGameInTheCart(Gioco gioco) throws SQLException {
 		for (ItemOrder prod : products) {
 			if (prod.getGioco().getCode() == gioco.getCode()) {
@@ -49,18 +66,37 @@ public class Carrello {
 		}
 	}
 
+	/**
+	 * Restituisce tutti gli ItemOrder presenti nel carrello
+	 * 
+	 * @return List<ItemOrder> La lista di ItemOrder presenti nel carrello.
+	 */
 	public List<ItemOrder> getGamesInTheCart() {
 		if (products.size() == 0)
 			return null;
 		else
 			return products;
 	}
-
+	
+	
+	/**
+	 * Inserisce un insieme di ItemOrder nel carrello
+	 * 
+	 * @param ArrayList<ItemOrder> list La lista di ItemOrder da inserire.
+	 * 
+	 */
 	public void setGames(ArrayList<ItemOrder> list) {
 		this.products = list;
 	}
 
-	// vecchio cercaOrdine
+	
+	/**
+	 * Cerca un prodotto nel carrello
+	 * 
+	 * @param String seriaNumber Il serialNumber del gioco da ricercare nel carrello
+	 * 
+	 * @return ItemOrder L'itemOrder che contiene il gioco cercato.
+	 */
 	public ItemOrder searchItemOrder(String serialNumber) {
 		int sNumber = Integer.parseInt(serialNumber);
 		for (ItemOrder prod : products) {
@@ -71,6 +107,12 @@ public class Carrello {
 		return null;
 	}
 
+	/**
+	 * Verifica se il carrello è vuoto
+	 * 
+	 * @return boolean True se è vuoto False altrimenti.
+	 * 
+	 */
 	public boolean isEmpty() {
 		if (products.size() == 0)
 			return true;
@@ -78,10 +120,20 @@ public class Carrello {
 			return false;
 	}
 
+	/**
+	 * Svuota il carrello
+	 * 
+	 */
 	public void svuotaCarrello() {
 		products = new ArrayList<ItemOrder>();
 	}
 
+	/**
+	 * Calcola il totale dei prezzi dei giochi presenti nel carrello
+	 * 
+	 * @return float Il totale dei prezzi.
+	 * 
+	 */
 	public float getTotale() {
 		double imponibile = 0;
 		for (ItemOrder prod : products) {

@@ -154,8 +154,15 @@
     var nameCorrect = false;
     var surnameCorrect = false;
     var cfCorrect = false;
+    
     /* Funzioni di validazione campi*/	 
 	 
+    
+      /**
+		 * Funzione utilizzata per validare il formato dell'email
+		 * 
+		 */
+    
 	 function ValidateEmail(uemail)
 		{
 		   var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -173,7 +180,10 @@
 		   }
 	    }
 		
-      
+	 /**
+		 * Funzione utilizzata per validare il formato del numero di telefono
+		 * 
+		 */
 		function phonenumber(inputtxt)
 		{
 		  var phoneno = /^\+?([0-9]{3})\)?([0-9]{7})$/;
@@ -191,6 +201,10 @@
 		        }
 		}
 		
+		/**
+		 * Funzione utilizzata per validare il formato dell'indirizzo.
+		 * 
+		 */
 		function addressValidator(indirizzo)
 		{
 			var ind= /^(([A-Z])([a-z]+)(\s))+(\d+)(,)(\s?)(([A-Z])([a-z]+)(\s?))+$/;
@@ -210,6 +224,10 @@
 			    	
 		}
 		
+		/**
+		 * Funzione utilizzata per validare il formato del nome
+		 * 
+		 */
 		function nameValidator(nome)
 		{
 			var nomeReg= /^(([A-Z])([a-z]+)(\s?))+$/;
@@ -229,6 +247,10 @@
 			    	
 		}
 		
+		/**
+		 * Funzione utilizzata per validare il formato del cognome
+		 * 
+		 */
 		function surnameValidator(cognome)
 		{
 			var cognomeReg= /^(([A-Z])([a-z]+)(\s?))+$/;
@@ -248,6 +270,11 @@
 			    	
 		}
 		
+		
+		/**
+		 * Funzione utilizzata per validare il formato del codice fiscale
+		 * 
+		 */
 		function cfValidator(cf)
 		{
 			var cfReg= /^(?:(?:[B-DF-HJ-NP-TV-Z]|[AEIOU])[AEIOU][AEIOUX]|[B-DF-HJ-NP-TV-Z]{2}[A-Z]){2}[\dLMNP-V]{2}(?:[A-EHLMPR-T](?:[04LQ][1-9MNP-V]|[1256LMRS][\dLMNP-V])|[DHPS][37PT][0L]|[ACELMRT][37PT][01LM])(?:[A-MZ][1-9MNP-V][\dLMNP-V]{2}|[A-M][0L](?:[1-9MNP-V][\dLMNP-V]|[0L][1-9MNP-V]))[A-Z]$/;
@@ -267,6 +294,10 @@
 			    	
 		}
 		
+		/**
+		 * Funzione utilizzata per validare il formato della password
+		 * 
+		 */
 		function passwordValidator(password)
 		{
 			var passw= /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{6,}$/;
@@ -286,6 +317,10 @@
 			    	
 		}
 		
+		/**
+		 * Funzione utilizzata per validare il campo ripeti password
+		 * 
+		 */
 		function passwordRepeat(password,repeat){
 			
 			if(repeat.value != password.value){
@@ -370,7 +405,11 @@
     
     
     
-    
+	  /**
+		 * Funzione utilizzata per verificare che l'username
+	        inserito non sia stato già utilizzato.
+		 * 
+		 */
     
     $(document).ready(function(){
     	 $("#userName").on("keyup click change",function (e){
@@ -411,11 +450,12 @@
         });
     	 
   
-    	 
-    
-    
-    
-    
+  
+    /**
+	 * Funzione utilizzata per verificare che l'email 
+        inserita non sia stata già utilizzata.
+	 * 
+	 */
    	 $("#mail").on("keyup  change",function (e){
    		   var email = $(this).val();
    			mailCorrect = ValidateEmail(this);

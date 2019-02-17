@@ -22,7 +22,8 @@ public class GiocoModel {
 	private static final String TABLE_NAME = "Gioco";
 
 	private Connection getConnection() throws SQLException {
-		return DriverManager.getConnection("jdbc:mysql://localhost:3306/gameshub?useSSL=false", "root", "root");
+		return DriverManager.getConnection(
+				"jdbc:mysql://localhost:3306/gameshub?useSSL=false", "root", "root");
 	}
 
 	/**

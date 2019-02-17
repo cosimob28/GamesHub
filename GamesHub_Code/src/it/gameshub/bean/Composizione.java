@@ -4,12 +4,18 @@ public class Composizione {
 	private float costo;
 	private int ordine, quantità, gioco;
 	String nomeGioco, immagine;
-
+	
+	
+	/**
+	 * Costruttore di Composizione
+	 */
 	public Composizione() {
 
 	}
 
-
+	/**
+	 * Costruttore di Composizione
+	 */
 	public Composizione(float costo, int ordine, int quantità, int gioco, String nomeGioco, String immagine) {
 		super();
 		this.costo = costo;
@@ -20,6 +26,8 @@ public class Composizione {
 		this.immagine = immagine;
 	}
 
+	
+	
 	public String getNomeGioco() {
 		return nomeGioco;
 	}
