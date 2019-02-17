@@ -12,14 +12,17 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
+import it.gameshub.bean.Gioco;
 import it.gameshub.bean.Immagine;
 import it.gameshub.bean.Utente;
+import it.gameshub.model.GiocoModel;
 import it.gameshub.model.ImmagineModel;
 import it.gameshub.model.UtenteModel;
 
 public class ImmagineModelTest {
 
 	protected ImmagineModel model;
+	protected GiocoModel giocoModel;
 
 	private Connection getConnection() throws SQLException {
 		return DriverManager.getConnection("jdbc:mysql://localhost:3306/gameshub?useSSL=false", "root", "root");
@@ -60,14 +63,21 @@ public class ImmagineModelTest {
 
 	private ArrayList<Immagine> initialize() throws SQLException {
 		Immagine image, image1;
+		Gioco gioco;
 
 		PreparedStatement x = getConnection().prepareStatement("DELETE FROM immagine");
+		x.executeUpdate();
+		x = getConnection().prepareStatement("DELETE FROM gioco");
 		x.executeUpdate();
 
 		ArrayList<Immagine> images = new ArrayList<Immagine>();
 		model = new ImmagineModel();
 		image = new Immagine("F://aaaa", 1);
 		image1 = new Immagine("C://bbbb", 1);
+		giocoModel = new GiocoModel();
+		gioco = new Gioco(1, 12, 30, 2018, "F1 2018", "PS4", "OKOKOKOKOKOKOKOKOK",
+				"https://www.youtube.com/watch?v=gLcJtkaIaYI", "sport", (float) 39.99);
+		giocoModel.saveGame(gioco);
 		model.saveImage(image);
 		model.saveImage(image1);
 
