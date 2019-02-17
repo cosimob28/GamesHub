@@ -27,10 +27,7 @@ public class CartaModelTest {
 				"jdbc:mysql://localhost:3306/gameshub?useSSL=false", "root", "root");
 	}
 
-//	@Test
-//	public void testAddCarta() {
-//		fail("Not yet implemented");
-//	}
+	
 
 	@Test
 	public void testGetCarta() throws SQLException {
@@ -58,7 +55,28 @@ public class CartaModelTest {
 		assertFalse(cartaModel.existCarta("ciccio"));
 		
 	}
-
+	
+	@Test
+	public void testAddCarta() throws SQLException {
+		cartaModel = new CartaModel();
+		utenteModel = new UtenteModel();
+		
+		Date data3 = new Date(1979 - 1900, 7 - 1, 6);
+        Utente utente3 = new Utente("user3", "pin3", "nome3", "cognome3", "CF3", "email3", "indirizzo3", "telefono3", "sesso3", "cliente", "myHash3",false,data3);
+        utenteModel.saveUser(utente3);
+        
+        Carta x = new Carta("123412341234", "1324", "03042029", (float) 432.43, "user3");
+		cartaModel.addCarta(x);
+		assertTrue(cartaModel.existCarta("user3"));
+		Carta y = cartaModel.getCarta("user3");
+		assertEquals(x.getCvv(), y.getCvv());
+		assertEquals(x.getNumeroCarta(), y.getNumeroCarta());
+		assertEquals(x.getSaldo(), y.getSaldo(),0.1);
+		assertEquals(x.getScadenza(), y.getScadenza());
+		assertEquals(x.getUtente(), y.getUtente());
+		
+	}
+	
 	@Test
 	public void testDeleteCarta() throws SQLException {
 		cartaModel = new CartaModel();

@@ -8,24 +8,7 @@ import java.util.Iterator;
 
 import javax.naming.InitialContext;
 
-import org.dbunit.Assertion;
-import org.dbunit.DBTestCase;
-import org.dbunit.DatabaseTestCase;
-import org.dbunit.DatabaseUnitException;
-import org.dbunit.IDatabaseTester;
-import org.dbunit.JdbcDatabaseTester;
-import org.dbunit.PropertiesBasedJdbcDatabaseTester;
-import org.dbunit.ant.Table;
-import org.dbunit.database.AmbiguousTableNameException;
-import org.dbunit.database.DatabaseConnection;
-import org.dbunit.database.IDatabaseConnection;
-import org.dbunit.database.QueryDataSet;
-import org.dbunit.dataset.DataSetException;
-import org.dbunit.dataset.IDataSet;
-import org.dbunit.dataset.ITable;
-import org.dbunit.dataset.SortedTable;
-import org.dbunit.dataset.xml.FlatXmlDataSet;
-import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
+
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -50,8 +33,7 @@ import it.gameshub.model.UtenteModel;
 public class UtenteModelTest{
 
 	private Connection jdbcConnection;
-	private IDatabaseTester databaseTester;
-	private FlatXmlDataSet loadedDataSet;
+	
 	private UtenteModel utenteModel = null;
 	
 	
@@ -98,6 +80,7 @@ public class UtenteModelTest{
 	}
 	
 	
+	
 	@Test
 	public void testDeleteUser() throws Exception {
 	
@@ -131,7 +114,16 @@ public class UtenteModelTest{
 		
 	}
 
-
+	@Test
+	public void testSaveUser() throws SQLException {
+		initialize();
+		utenteModel = new UtenteModel();
+		Date data1 = new Date(2000 - 1900, 5 - 1, 20);
+		Utente utente3 = new Utente("user3", "pin3", "nome3", "cognome3", "CF3", "email3", "indirizzo3", "telefono3", "sesso3", "cliente", "myHash3",false,data1);
+		utenteModel.saveUser(utente3);
+		assertEquals(3, utenteModel.getAllUsers(null).size());
+	
+	}
 
 	@Test
 	public void testIsAnUser() throws SQLException {
@@ -180,8 +172,11 @@ public class UtenteModelTest{
 	private ArrayList<Utente> initialize() throws SQLException{
 		Utente utente1,utente2;
 		
+		PreparedStatement y = getConnection().prepareStatement("DELETE FROM carta");
+		y.executeUpdate();
 		PreparedStatement x = getConnection().prepareStatement("DELETE FROM utente");
 		x.executeUpdate();
+		
 		
 		ArrayList<Utente> utenti = new ArrayList<Utente>();
 		utenteModel = new UtenteModel();      

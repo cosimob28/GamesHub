@@ -34,7 +34,6 @@ public class CartaModel {
 
 		String insertSQL = "INSERT INTO " + CartaModel.TABLE_NAME
 				+ " (NumeroCarta,Cvv,Scadenza,Saldo,Utente) VALUES (?, ?, ?, ?, ?)";
-
 		try {
 			connection = getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
