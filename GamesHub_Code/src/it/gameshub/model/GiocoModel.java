@@ -1,6 +1,7 @@
 package it.gameshub.model;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,10 +21,15 @@ public class GiocoModel {
 
 	private static final String TABLE_NAME = "Gioco";
 
+	private Connection getConnection() throws SQLException {
+		return DriverManager.getConnection("jdbc:mysql://localhost:3306/gameshub?useSSL=false", "root", "root");
+	}
+
 	/**
 	 * Inserisce un gioco
 	 * 
-	 * @param Gioco gioco L'oggetto Gioco da aggiungere
+	 * @param Gioco
+	 *            gioco L'oggetto Gioco da aggiungere
 	 */
 	public synchronized void saveGame(Gioco gioco) throws SQLException {
 
@@ -36,7 +42,7 @@ public class GiocoModel {
 		try {
 			// Si ottiene una connessione da utilizzare come
 			// una normale connessione JDBC
-			connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setInt(1, gioco.getCode());
 			preparedStatement.setString(2, gioco.getName());
@@ -48,7 +54,6 @@ public class GiocoModel {
 			preparedStatement.setString(8, gioco.getPiattaforma());
 			preparedStatement.setString(9, gioco.getVideo());
 			preparedStatement.setInt(10, gioco.getQuantity());
-			
 
 			preparedStatement.executeUpdate();
 
@@ -64,9 +69,10 @@ public class GiocoModel {
 	}
 
 	/**
-	 * Restituisce un gioco 
+	 * Restituisce un gioco
 	 * 
-	 * @param int code Il serial number del gioco da prelevare
+	 * @param int
+	 *            code Il serial number del gioco da prelevare
 	 * 
 	 * @return Gioco Il gioco
 	 */
@@ -76,11 +82,11 @@ public class GiocoModel {
 
 		Gioco bean = new Gioco();
 
-		String selectSQL = "SELECT * FROM " + GiocoModel.TABLE_NAME + " WHERE SerialNumber = ?";
+		String selectSQL = "SELECT * FROM " + GiocoModel.TABLE_NAME + " WHERE SerialNumber = ? ";
 
 		try {
-			
-			connection = Manager.getConnection();
+
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setInt(1, code);
 
@@ -97,7 +103,7 @@ public class GiocoModel {
 				bean.setPiattaforma(rs.getString("Piattaforma"));
 				bean.setVideo(rs.getString("Video"));
 				bean.setQuantity(rs.getInt("Quantità"));
-				
+
 			}
 
 		} finally {
@@ -116,7 +122,8 @@ public class GiocoModel {
 	/**
 	 * Elimina gioco
 	 * 
-	 * @param int code Il codice del gioco da eliminare
+	 * @param int
+	 *            code Il codice del gioco da eliminare
 	 * 
 	 * @return boolean True se il gioco è stato eliminato False altrimenti
 	 */
@@ -126,11 +133,11 @@ public class GiocoModel {
 
 		int result = 0;
 
-		String deleteSQL = "DELETE FROM " + GiocoModel.TABLE_NAME + " WHERE SerialNumber = ?";
+		String deleteSQL = "DELETE FROM " + GiocoModel.TABLE_NAME + " WHERE SerialNumber = ? ";
 
 		try {
-			
-			connection = Manager.getConnection();
+
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setInt(1, code);
 
@@ -162,7 +169,7 @@ public class GiocoModel {
 		String selectSQL = "SELECT *  FROM " + GiocoModel.TABLE_NAME;
 
 		try {
-			connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 
 			ResultSet rs = preparedStatement.executeQuery();
@@ -198,8 +205,10 @@ public class GiocoModel {
 	/**
 	 * Aggiorna la quantità disponibile di un gioco
 	 * 
-	 * @param int code Il codice del gioco
-	 * @param int quantità La nuova quantità del gioco
+	 * @param int
+	 *            code Il codice del gioco
+	 * @param int
+	 *            quantità La nuova quantità del gioco
 	 */
 	public synchronized void updateQuantity(int code, int quantità) throws SQLException {
 		Connection connection = null;
@@ -210,7 +219,7 @@ public class GiocoModel {
 		String deleteSQL = "update " + GiocoModel.TABLE_NAME + " set Quantità = ? " + " WHERE SerialNumber = ? ";
 
 		try {
-			connection = Manager.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setInt(1, quantità);
 			preparedStatement.setInt(2, code);
@@ -232,11 +241,16 @@ public class GiocoModel {
 	/**
 	 * Aggiorna le informazioni di un gioco
 	 * 
-	 * @param int code Il codice del gioco
-	 * @param String video Il nuovo link al video del gioco
-	 * @param String desricrizione La nuova decrizione del gioco
-	 * @param float prezzo Il nuovo prezzo del gioco
-	 * @param int qty La nuova quantità del gioco
+	 * @param int
+	 *            code Il codice del gioco
+	 * @param String
+	 *            video Il nuovo link al video del gioco
+	 * @param String
+	 *            desricrizione La nuova decrizione del gioco
+	 * @param float
+	 *            prezzo Il nuovo prezzo del gioco
+	 * @param int
+	 *            qty La nuova quantità del gioco
 	 */
 	public void updateGame(int code, String video, String descrizione, float prezzo, int qty) throws SQLException {
 		Connection connection = null;
@@ -248,8 +262,8 @@ public class GiocoModel {
 				+ " WHERE SerialNumber = ? ";
 
 		try {
-			
-			connection = Manager.getConnection();
+
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setInt(1, qty);
 			preparedStatement.setString(2, video);
