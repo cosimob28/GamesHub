@@ -276,7 +276,7 @@ font-style: oblique;
  <script type="text/javascript">
  
 
- var trackingIDCorrect = false;
+ var trackingIDCorrect = true;
  var inputSearchCorrect = true;
 
  function ValidateTrackingID(trackingID)
