@@ -292,7 +292,7 @@ public class UtenteModel {
 				preparedStatement1.setString(3, hash);
 
 				int i = preparedStatement1.executeUpdate();
-				System.out.print(i);
+				
 				if (i == 1) {
 					v = true;
 				} else {

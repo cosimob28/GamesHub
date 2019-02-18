@@ -267,7 +267,7 @@ font-style: oblique;
             <div class="container">
           
              <h1 class="display-4">Nessun ordine</h1>
-              <a class="btn btn-outline-success" href="HomeGestoreOrdini.jsp" > Vai all'homepage </a>
+              <a class="btn btn-outline-success" href="ButtonHomepageGestoreOrdiniControl" > Vai all'homepage </a>
              </div>
              </div>
              <% } %>

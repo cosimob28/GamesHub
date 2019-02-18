@@ -112,7 +112,7 @@
 							class="fa fa-user-circle"></span> I miei dati</a>
                           
 					</div></li>
-				<li class="nav-item"><a class="nav-link" href="ButtonCarrelloControl" id="carrello"><span><img src="img/website/cart.png"/><span id="infoi"><%=size %></span></span> Carrello</a></li>
+				<li class="nav-item"><a class="nav-link" href="ButtonCarrelloControl" id="carrello"><span><img src="img/website/cart.png"/><span id="infoi" style="color: darkorange;"><%=size %></span></span> Carrello</a></li>
 				<li class="nav-item"><a class="nav-link" href="ButtonMieiOrdiniControl"><span
 						class="fa fa-file-alt"></span> I Tuoi Ordini</a></li>
 			</ul> 

@@ -47,7 +47,7 @@ public class GiocoModel {
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setInt(1, gioco.getCode());
 			preparedStatement.setString(2, gioco.getName());
-			preparedStatement.setFloat(3, gioco.getPrice()); // modificare con setNumeric o setDouble
+			preparedStatement.setFloat(3, gioco.getPrice()); 
 			preparedStatement.setInt(4, gioco.getPegi());
 			preparedStatement.setString(5, gioco.getGenere());
 			preparedStatement.setString(6, gioco.getDescription());
